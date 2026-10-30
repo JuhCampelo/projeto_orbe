@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100e20">
+  <meta name="description" content="Encontre ferramentas de inteligência artificial para suas missões profissionais. Uma jornada de descoberta, criada para você.">
+  <title>Orbe — sua próxima ferramenta de IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="world-backdrop" aria-hidden="true">
+    <div class="starfield"></div>
+    <div class="sky-glow"></div>
+    <div class="mountain mountain--far"></div>
+    <div class="mountain mountain--near"></div>
+    <div class="ruin ruin--left"></div>
+    <div class="ruin ruin--right"></div>
+    <div class="ground"></div>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Orbe, início">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      <span>orbe<span class="brand-period">.</span></span>
+    </a>
+    <div class="topbar-note"><span class="status-dot"></span> GUIA DE DESCOBERTA DE IA</div>
+  </header>
+
+  <main>
+    <section class="view view--active" id="welcome" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> UM GUIA PARA SUA PRÓXIMA DESCOBERTA</div>
+        <h1 id="hero-title">Seu trabalho.<br>Sua missão. <span>Sua IA.</span></h1>
+        <p class="hero-description">Existe uma ferramenta certa para o que você faz. Vamos encontrá-la juntos — em uma jornada rápida, feita para a sua realidade.</p>
+        <button class="button button--primary" id="start-button">
+          <span>Começar minha jornada</span><span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="hero-meta"><span class="meta-spark" aria-hidden="true">✦</span> Cerca de 2 minutos <span class="meta-separator">·</span> Sem cadastro</div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Ilustração de um guia aventureiro diante de um portal mágico">
+        <div class="orbit orbit--one"></div><div class="orbit orbit--two"></div>
+        <div class="portal">
+          <div class="portal-inner"><div class="portal-grid"></div><span class="portal-glyph">✳</span></div>
+        </div>
+        <div class="crystal crystal--large"></div><div class="crystal crystal--small"></div>
+        <div class="pixel-guide" aria-hidden="true">
+          <div class="guide-cloak"></div><div class="guide-body"></div><div class="guide-head"></div>
+          <div class="guide-hood"></div><div class="guide-face"></div><div class="guide-visor"></div>
+          <div class="guide-emblem">✦</div><div class="guide-staff"></div><div class="guide-orb"></div>
+        </div>
+        <div class="art-caption"><span class="caption-icon">✦</span><span><b>Íris</b><small>seu guia de descobertas</small></span><span class="caption-signal"></span></div>
+        <div class="pixel-spark spark--one">✦</div><div class="pixel-spark spark--two">·</div><div class="pixel-spark spark--three">✧</div>
+      </div>
+      <div class="hero-bottom"><span>EXPLORE NOVAS POSSIBILIDADES</span><span class="bottom-line"></span><span>01 — 04</span></div>
+    </section>
+
+    <section class="view journey-view" id="journey" aria-labelledby="journey-title" hidden>
+      <div class="journey-top">
+        <div class="step-copy"><span class="eyebrow" id="step-label">ETAPA 01 <span class="eyebrow-line"></span> QUEM É VOCÊ?</span><h1 id="journey-title">Vamos nos conhecer.</h1><p id="journey-subtitle">Assim, Íris pode procurar algo que faça sentido para o seu dia a dia.</p></div>
+        <div class="mini-guide" aria-hidden="true"><div class="mini-guide-head"></div><div class="mini-guide-body"></div><div class="mini-guide-star">✦</div></div>
+      </div>
+      <div class="progress-track" aria-label="Progresso da jornada"><div class="progress-fill" id="progress-fill"></div><div class="progress-steps"><span class="progress-node progress-node--active">01 <span>Você</span></span><span class="progress-node">02 <span>Missão</span></span><span class="progress-node">03 <span>Descoberta</span></span></div></div>
+      <div class="journey-content">
+        <div class="stage-panel" id="stage-profile">
+          <div class="section-heading"><span class="section-index">A</span><div><h2>Onde você atua?</h2><p>Escolha a área que mais se aproxima do seu trabalho.</p></div></div>
+          <div class="choice-grid choice-grid--areas" id="area-options"></div>
+          <div class="field-row">
+            <label class="field"><span>Seu cargo ou função <span class="optional">(opcional)</span></span><input id="role-input" maxlength="80" placeholder="Ex.: Analista de marketing" autocomplete="organization-title"></label>
+            <label class="field"><span>Setor da empresa <span class="optional">(opcional)</span></span><input id="sector-input" maxlength="80" placeholder="Ex.: Educação, saúde, varejo"></label>
+          </div>
+        </div>
+        <div class="stage-panel" id="stage-mission" hidden>
+          <div class="section-heading"><span class="section-index">B</span><div><h2>Qual é a sua missão?</h2><p>Selecione até três tarefas que gostaria de tornar mais fáceis.</p></div></div>
+          <div class="choice-grid choice-grid--missions" id="mission-options"></div>
+          <label class="field field--wide"><span>Ou conte um pouco mais <span class="optional">(opcional)</span></span><textarea id="custom-input" maxlength="240" rows="2" placeholder="Ex.: Quero resumir relatórios longos e compartilhar os pontos principais com o time."></textarea></label>
+          <p class="privacy-note"><span aria-hidden="true">◈</span> Suas respostas ficam neste dispositivo e não são enviadas a um servidor.</p>
+        </div>
+        <div class="stage-panel analysis-panel" id="stage-analysis" hidden aria-live="polite">
+          <div class="analysis-orb"><span class="analysis-ring"></span><span class="analysis-core">✦</span></div>
+          <span class="eyebrow">ÍRIS ESTÁ CRUZANDO AS POSSIBILIDADES</span>
+          <h2 id="analysis-title">Lendo suas missões...</h2>
+          <p id="analysis-detail">Comparando suas necessidades com os pontos fortes de cada ferramenta.</p>
+          <div class="analysis-checks"><span>✦ Missões identificadas</span><span>✦ Compatibilidade avaliada</span><span>✦ Alternativas comparadas</span></div>
+        </div>
+      </div>
+      <div class="journey-actions" id="journey-actions">
+        <button class="button button--quiet" id="back-button"><span aria-hidden="true">←</span> Voltar</button>
+        <span class="selection-hint" id="selection-hint">Escolha uma área para continuar</span>
+        <button class="button button--primary" id="continue-button" disabled><span>Continuar</span><span class="button-arrow" aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="view results-view" id="results" aria-labelledby="results-title" hidden>
+      <div class="results-heading">
+        <div><span class="eyebrow"><span class="eyebrow-line"></span> JORNADA CONCLUÍDA <span class="eyebrow-line"></span></span><h1 id="results-title">Uma nova descoberta.</h1><p id="results-intro"></p></div>
+        <div class="result-badge" aria-hidden="true"><span>✦</span><small>RECOMENDAÇÃO<br>PERSONALIZADA</small></div>
+      </div>
+      <div class="results-layout">
+        <div class="recommendations" id="recommendations"></div>
+        <aside class="journey-summary">
+          <div class="summary-label"><span class="summary-star">✦</span> SEU MAPA DE MISSÃO</div>
+          <div class="summary-item"><small>ÁREA</small><strong id="summary-area"></strong></div>
+          <div class="summary-item"><small>MISSÕES</small><div class="summary-tags" id="summary-missions"></div></div>
+          <div class="summary-note"><span>◈</span> Compatibilidade calculada pelas tarefas e área selecionadas — sem enviar respostas a um modelo de IA.</div>
+          <div class="summary-note"><span>◈</span> Recomendações orientativas. Confirme recursos, preços e políticas de dados diretamente com cada fornecedor.</div>
+          <button class="button button--quiet restart-button" id="restart-button"><span aria-hidden="true">↺</span> Refazer jornada</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>ORBE <span class="footer-divider">/</span> UM MAPA PARA NOVAS POSSIBILIDADES</span><span>FEITO PARA CURIOSOS <span class="footer-star">✦</span></span></footer>
+</body>
+</html>
