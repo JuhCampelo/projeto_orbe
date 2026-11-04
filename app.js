@@ -1,29 +1,3 @@
-const areas = [
-  { id: "administrativo", label: "Administrativo", icon: "▤" },
-  { id: "marketing", label: "Marketing", icon: "✧" },
-  { id: "tecnologia", label: "Tecnologia", icon: "⌘" },
-  { id: "dados", label: "Dados & análise", icon: "◫" },
-  { id: "rh", label: "Pessoas & RH", icon: "♧" },
-  { id: "vendas", label: "Vendas", icon: "↗" },
-  { id: "atendimento", label: "Atendimento", icon: "◌" },
-  { id: "outra", label: "Outra área", icon: "✦" }
-];
-
-const missions = [
-  { id: "escrita", label: "Escrever e revisar", icon: "✎" },
-  { id: "pesquisa", label: "Pesquisar e resumir", icon: "⌕" },
-  { id: "dados", label: "Analisar dados", icon: "▥" },
-  { id: "apresentacoes", label: "Criar apresentações", icon: "▣" },
-  { id: "imagem", label: "Criar imagens", icon: "◈" },
-  { id: "codigo", label: "Desenvolver software", icon: "{ }" },
-  { id: "automacao", label: "Automatizar tarefas", icon: "⟳" },
-  { id: "reunioes", label: "Trabalhar com reuniões", icon: "◉" },
-  { id: "atendimento", label: "Atender clientes", icon: "◌" },
-  { id: "documentos", label: "Entender documentos", icon: "▤" },
-  { id: "video", label: "Criar vídeos", icon: "▷" },
-  { id: "ideias", label: "Explorar ideias", icon: "✧" }
-];
-
 const tools = [
   { id: "copilot", name: "Microsoft 365 Copilot", maker: "Microsoft", monogram: "M", tasks: ["escrita", "pesquisa", "dados", "apresentacoes", "reunioes", "documentos"], areas: ["administrativo", "marketing", "dados", "rh", "vendas"], description: "Assistente integrado aos aplicativos Microsoft 365 para ajudar com documentos, planilhas, apresentações e reuniões.", why: "Boa opção se sua empresa já trabalha com Microsoft 365: conecta tarefas do dia a dia ao contexto dos aplicativos.", strengths: "Integração com o ecossistema Microsoft 365.", limits: "Disponibilidade e recursos dependem do plano, da licença e das configurações da organização.", alternatives: "Google Workspace com Gemini · ChatGPT", url: "https://www.microsoft.com/microsoft-365/copilot" },
   { id: "gemini", name: "Gemini para Google Workspace", maker: "Google", monogram: "G", tasks: ["escrita", "pesquisa", "dados", "apresentacoes", "reunioes", "documentos", "ideias"], areas: ["administrativo", "marketing", "dados", "rh", "vendas"], description: "Assistente de IA integrado às ferramentas Google Workspace, com recursos que variam conforme a edição e as configurações.", why: "Faz sentido para equipes que já criam, colaboram e se organizam no ecossistema Google.", strengths: "Integração com aplicativos Google Workspace elegíveis.", limits: "Recursos, elegibilidade e tratamento de dados variam por plano e configuração.", alternatives: "Microsoft 365 Copilot · ChatGPT", url: "https://workspace.google.com/solutions/ai/" },
@@ -41,6 +15,23 @@ const tools = [
   { id: "gamma", name: "Gamma", maker: "Gamma", monogram: "Γ", tasks: ["apresentacoes"], areas: ["marketing", "vendas", "rh", "outra"], description: "Ferramenta para criar apresentações e outros conteúdos visuais com assistência de IA.", why: "Alinhada a quem quer transformar uma ideia ou estrutura inicial em uma apresentação visual.", strengths: "Criação rápida de rascunhos visuais e apresentações.", limits: "Revise conteúdo, formatação, exportação e limites do plano antes de adotar.", alternatives: "Canva · Microsoft PowerPoint", url: "https://gamma.app/" }
 ];
 
+const toolLogos = {
+  copilot: "assets/logos/microsoft-365-copilot.ico",
+  gemini: "assets/logos/gemini.png",
+  chatgpt: "assets/logos/chatgpt.png",
+  claude: "assets/logos/claude.ico",
+  "github-copilot": "assets/logos/github-copilot.svg",
+  notebooklm: "assets/logos/notebooklm.svg",
+  canva: "assets/logos/canva.png",
+  "adobe-firefly": "assets/logos/adobe-firefly.png",
+  "power-automate": "assets/logos/power-automate.png",
+  zapier: "assets/logos/zapier.ico",
+  otter: "assets/logos/otter.png",
+  "zendesk-ai": "assets/logos/zendesk.svg",
+  "power-bi": "assets/logos/power-bi.ico",
+  gamma: "assets/logos/gamma.jpg"
+};
+
 const specialistTools = {
   apresentacoes: ["canva", "gamma"],
   atendimento: ["zendesk-ai"],
@@ -54,21 +45,81 @@ const specialistTools = {
   video: ["canva", "adobe-firefly"]
 };
 
-const state = { area: "", selectedMissions: [], custom: "", currentStage: 1, analysisFrameId: null };
+const state = {
+  area: "",
+  custom: "",
+  currentStage: 1,
+  promptTimer: null,
+  analysisFrameId: null,
+  identity: (() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("orbe-identity") || sessionStorage.getItem("orbe-identity") || "null");
+      return saved || { name: "", phone: "", instagram: "" };
+    } catch (error) {
+      try {
+        const sessionSaved = JSON.parse(sessionStorage.getItem("orbe-identity") || "null");
+        if (sessionSaved) return sessionSaved;
+      } catch (sessionError) {
+        console.warn("Não foi possível recuperar os dados de identificação salvos.", sessionError);
+      }
+      console.warn("Não foi possível recuperar os dados de identificação salvos.", error);
+      return { name: "", phone: "", instagram: "" };
+    }
+  })()
+};
 const $ = (selector) => document.querySelector(selector);
 const welcome = $("#welcome");
+const opening = $("#opening");
 const journey = $("#journey");
 const results = $("#results");
-const esc = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+const closing = $("#closing");
 
-function renderChoices(container, items, selected, multi) {
-  container.innerHTML = items.map((item) => {
-    const active = multi ? selected.includes(item.id) : selected === item.id;
-    return `<button type="button" class="choice-card" data-choice="${item.id}" aria-pressed="${active}"><span class="choice-check" aria-hidden="true">✓</span><span class="choice-icon" aria-hidden="true">${item.icon}</span><span class="choice-title">${item.label}</span></button>`;
-  }).join("");
+function renderQrCode() {
+  const image = $("#qr-code");
+  const status = $("#qr-status");
+  const siteLink = $("#qr-site-link");
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.hash = "";
+  const hostname = url.hostname.toLowerCase();
+  const isLocalAddress = hostname === "localhost"
+    || hostname.endsWith(".localhost")
+    || hostname.endsWith(".local")
+    || hostname.endsWith(".test")
+    || hostname.endsWith(".invalid")
+    || hostname === "[::1]"
+    || /^(0|10|127)\./.test(hostname)
+    || /^169\.254\./.test(hostname)
+    || /^192\.168\./.test(hostname)
+    || /^172\.(1[6-9]|2\d|3[01])\./.test(hostname);
+
+  if (url.protocol !== "https:" || isLocalAddress) {
+    return;
+  }
+
+  siteLink.href = url.href;
+  siteLink.textContent = url.href;
+  siteLink.hidden = false;
+  image.src = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&format=svg&ecc=Q&margin=12&color=0B192C&bgcolor=F8F9FA&data=${encodeURIComponent(url.href)}`;
+  image.hidden = false;
+  status.hidden = true;
 }
 
+$("#qr-code").addEventListener("error", () => {
+  $("#qr-code").hidden = true;
+  $("#qr-status").textContent = "Não foi possível carregar o QR Code agora. Use o endereço público abaixo para acessar o Orbe.";
+  $("#qr-status").hidden = false;
+});
+
+renderQrCode();
+const esc = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+
 function setStage(stage) {
+  if (state.promptTimer) {
+    window.clearInterval(state.promptTimer);
+    state.promptTimer = null;
+  }
+
   state.currentStage = stage;
   const isProfile = stage === 1;
   const isMission = stage === 2;
@@ -82,36 +133,177 @@ function setStage(stage) {
   $("#journey-title").textContent = isProfile ? "Vamos nos conhecer." : "O que você quer realizar?";
   $("#journey-subtitle").textContent = isProfile
     ? "Assim, Íris pode procurar algo que faça sentido para o seu dia a dia."
-    : "Escolha até três tarefas. Cada escolha ajuda a encontrar ferramentas mais relevantes.";
+    : "Descreva o que você gostaria de realizar ou melhorar no seu trabalho.";
   $("#progress-fill").style.width = isProfile ? "3%" : "50%";
   document.querySelectorAll(".progress-node").forEach((node, index) => {
     node.classList.toggle("progress-node--active", index === (stage === 1 ? 0 : stage === 2 ? 1 : 2));
   });
   $("#back-button").hidden = isProfile;
   if (isProfile) {
-    $("#continue-button").disabled = !state.area;
-    $("#selection-hint").textContent = state.area ? "Área selecionada" : "Escolha uma área para continuar";
+    typeAreaPrompt();
+    $("#continue-button").disabled = !state.area.trim();
+    $("#selection-hint").textContent = state.area ? "Área informada" : "Informe sua área de atuação para continuar";
   } else if (isMission) {
+    typeMissionPrompt();
     updateMissionAction();
   }
 }
 
+function typeAreaPrompt() {
+  const prompt = $("#area-prompt-text");
+  const cursor = $(".typing-cursor");
+  const message = "Onde você atua?";
+  prompt.textContent = "";
+  cursor.hidden = false;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    prompt.textContent = message;
+    cursor.hidden = true;
+    return;
+  }
+
+  let index = 0;
+  state.promptTimer = window.setInterval(() => {
+    prompt.textContent += message[index];
+    index += 1;
+    if (index === message.length) {
+      window.clearInterval(state.promptTimer);
+      state.promptTimer = null;
+      cursor.hidden = true;
+    }
+  }, 75);
+}
+
+function typeMissionPrompt() {
+  const prompt = $("#mission-prompt-text");
+  const cursor = prompt.nextElementSibling;
+  const message = "Qual é a sua missão?";
+  prompt.textContent = "";
+  cursor.hidden = false;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    prompt.textContent = message;
+    cursor.hidden = true;
+    return;
+  }
+
+  let index = 0;
+  state.promptTimer = window.setInterval(() => {
+    prompt.textContent += message[index];
+    index += 1;
+    if (index === message.length) {
+      window.clearInterval(state.promptTimer);
+      state.promptTimer = null;
+      cursor.hidden = true;
+    }
+  }, 75);
+}
+
 function updateMissionAction() {
-  const valid = state.selectedMissions.length > 0 || state.custom.trim().length >= 12;
+  const valid = Boolean(state.custom.trim());
   $("#continue-button").disabled = !valid;
-  $("#selection-hint").textContent = state.selectedMissions.length
-    ? `${state.selectedMissions.length} de 3 missões selecionadas`
-    : state.custom.trim().length >= 12 ? "Necessidade descrita" : "Escolha ao menos uma missão";
+  $("#selection-hint").textContent = valid ? "Missão informada" : "Descreva sua missão para continuar";
 }
 
 function openJourney() {
+  if (!state.identity.name || !state.identity.phone || !state.identity.instagram) {
+    showIdentityForm();
+    return;
+  }
+  hideIdentityForm();
+  opening.hidden = true;
   welcome.hidden = true;
   results.hidden = true;
+  closing.hidden = true;
   journey.hidden = false;
-  renderChoices($("#area-options"), areas, state.area, false);
-  renderChoices($("#mission-options"), missions, state.selectedMissions, true);
+  $("#area-input").value = state.area;
+  $("#custom-input").value = state.custom;
   setStage(1);
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showIdentityForm() {
+  const form = $("#identity-form");
+  if (!form) return;
+  form.classList.remove("is-hidden");
+  form.classList.add("is-visible");
+  form.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function hideIdentityForm() {
+  const form = $("#identity-form");
+  if (!form) return;
+  form.classList.add("is-hidden");
+  form.classList.remove("is-visible");
+  $("#identity-error").textContent = "";
+}
+
+function formatPhone(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 10) {
+    return digits.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d)/, "$1-$2");
+  }
+  return digits.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+}
+
+function normalizeInstagram(value) {
+  return String(value || "").trim().replace(/\s+/g, "").replace(/^@+/, "");
+}
+
+function formatInstagramInput(value) {
+  const cleaned = normalizeInstagram(value);
+  return cleaned ? `@${cleaned}` : "";
+}
+
+function saveIdentityProfile(data) {
+  try {
+    localStorage.setItem("orbe-identity", JSON.stringify(data));
+  } catch (error) {
+    try {
+      sessionStorage.setItem("orbe-identity", JSON.stringify(data));
+    } catch (sessionError) {
+      console.warn("Não foi possível persistir os dados de identificação no navegador.", sessionError);
+    }
+  }
+  state.identity = data;
+}
+
+function validateIdentityForm() {
+  const name = $("#identity-name").value.trim();
+  const phone = $("#identity-phone").value.trim();
+  const instagram = normalizeInstagram($("#identity-instagram").value);
+
+  if (name.length < 2) {
+    return "Informe seu nome completo para continuar.";
+  }
+  if (phone.replace(/\D/g, "").length < 10) {
+    return "Informe um telefone ou WhatsApp válido.";
+  }
+  if (instagram.length < 2) {
+    return "Informe seu usuário do Instagram.";
+  }
+  return "";
+}
+
+function submitIdentityForm(event) {
+  event.preventDefault();
+  const error = validateIdentityForm();
+  const errorNode = $("#identity-error");
+
+  if (error) {
+    errorNode.textContent = error;
+    return;
+  }
+
+  const payload = {
+    name: $("#identity-name").value.trim(),
+    phone: formatPhone($("#identity-phone").value),
+    instagram: `@${normalizeInstagram($("#identity-instagram").value)}`
+  };
+
+  errorNode.textContent = "";
+  saveIdentityProfile(payload);
+  openJourney();
 }
 
 function identifyCustomTasks(text) {
@@ -135,7 +327,7 @@ function identifyCustomTasks(text) {
 
 function getRecommendations() {
   const customTasks = identifyCustomTasks(state.custom);
-  const chosenTasks = [...new Set([...state.selectedMissions, ...customTasks])];
+  const chosenTasks = [...new Set(customTasks)];
   return tools.map((tool) => {
     const taskMatches = chosenTasks.filter((task) => tool.tasks.includes(task));
     const areaMatch = tool.areas.includes(state.area);
@@ -151,7 +343,7 @@ function renderResults() {
   const recommendations = getRecommendations();
   if (recommendations.length === 0) {
     $("#analysis-title").textContent = "Precisamos de mais um detalhe.";
-    $("#analysis-detail").textContent = "Não identifiquei uma missão específica na descrição. Volte e selecione ao menos uma tarefa para receber recomendações úteis.";
+    $("#analysis-detail").textContent = "Não identifiquei uma missão específica na descrição. Volte e explique sua necessidade com mais detalhes para receber recomendações úteis.";
     $("#journey-actions").hidden = false;
     $("#stage-analysis").hidden = false;
     $("#stage-mission").hidden = true;
@@ -159,15 +351,13 @@ function renderResults() {
     $("#continue-button").disabled = true;
     return;
   }
-  const missionNames = state.selectedMissions.map((id) => missions.find((mission) => mission.id === id)?.label).filter(Boolean);
-  const context = [state.role, state.sector].filter(Boolean).join(" · ");
-  $("#results-intro").textContent = `${context ? `Para ${context}, ` : ""}encontramos ferramentas que podem apoiar suas missões. Comece pela mais compatível e explore as alternativas.`;
-  $("#summary-area").textContent = areas.find((area) => area.id === state.area)?.label || "Não informada";
-  $("#summary-missions").innerHTML = (missionNames.length ? missionNames : ["Necessidade descrita"]).map((label) => `<span class="summary-tag">${esc(label)}</span>`).join("");
+  $("#results-intro").textContent = "encontramos ferramentas que podem apoiar suas missões. Comece pela mais compatível e explore as alternativas.";
+  $("#summary-area").textContent = state.area || "Não informada";
+  $("#summary-missions").innerHTML = `<span class="summary-tag">${esc(state.custom.trim() || "Necessidade descrita")}</span>`;
   $("#recommendations").innerHTML = recommendations.map((tool, index) => {
     const matchLabel = index === 0 ? "MAIS COMPATÍVEL" : `${tool.matchedTasks.length} ${tool.matchedTasks.length === 1 ? "MISSÃO" : "MISSÕES"} EM COMUM`;
     return `<article class="tool-card${index === 0 ? " tool-card--featured" : ""}">
-      <div class="tool-card-top"><div class="tool-monogram" aria-hidden="true">${tool.monogram}</div><div class="tool-title-wrap"><h2 class="tool-name">${esc(tool.name)}</h2><div class="tool-maker">${esc(tool.maker)}</div></div><span class="match-badge">${matchLabel}</span></div>
+      <div class="tool-card-top"><div class="tool-monogram" aria-hidden="true"><img class="tool-logo" src="${toolLogos[tool.id]}" alt=""><span hidden>${esc(tool.monogram)}</span></div><div class="tool-title-wrap"><h2 class="tool-name">${esc(tool.name)}</h2><div class="tool-maker">${esc(tool.maker)}</div></div><span class="match-badge">${matchLabel}</span></div>
       <p class="tool-description">${esc(tool.description)} ${esc(tool.why)}</p>
       <div class="tool-details"><div class="detail-block"><b>Vantagem</b><p>${esc(tool.strengths)}</p></div><div class="detail-block"><b>Atenção</b><p>${esc(tool.limits)}</p></div></div>
       <div class="tool-actions"><a class="tool-link" href="${tool.url}" target="_blank" rel="noopener noreferrer">Conhecer ${esc(tool.name)} ↗</a><span class="tool-alternatives">Alternativas: ${esc(tool.alternatives)}</span></div>
@@ -177,35 +367,51 @@ function renderResults() {
   document.querySelectorAll(".progress-node").forEach((node) => node.classList.toggle("progress-node--active", node.textContent.includes("03")));
   journey.hidden = true;
   results.hidden = false;
+  closing.hidden = true;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-$("#start-button").addEventListener("click", openJourney);
-$("#area-options").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-choice]");
-  if (!button) return;
-  state.area = button.dataset.choice;
-  renderChoices($("#area-options"), areas, state.area, false);
-  $("#continue-button").disabled = false;
-  $("#selection-hint").textContent = "Área selecionada";
+$("#recommendations").addEventListener("error", (event) => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement) || !image.classList.contains("tool-logo")) return;
+  image.hidden = true;
+  if (image.nextElementSibling) image.nextElementSibling.hidden = false;
+}, true);
+
+$("#start-button").addEventListener("click", () => {
+  showIdentityForm();
 });
-$("#mission-options").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-choice]");
-  if (!button) return;
-  const id = button.dataset.choice;
-  if (state.selectedMissions.includes(id)) {
-    state.selectedMissions = state.selectedMissions.filter((mission) => mission !== id);
-  } else if (state.selectedMissions.length < 3) {
-    state.selectedMissions.push(id);
-  } else {
-    $("#selection-hint").textContent = "Limite de 3 missões. Remova uma para escolher outra.";
-    return;
-  }
-  renderChoices($("#mission-options"), missions, state.selectedMissions, true);
-  updateMissionAction();
+$("#enter-orbe-button").addEventListener("click", () => {
+  opening.hidden = true;
+  welcome.hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
-$("#role-input").addEventListener("input", (event) => { state.role = event.target.value.trim(); });
-$("#sector-input").addEventListener("input", (event) => { state.sector = event.target.value.trim(); });
+$("#closing-button").addEventListener("click", () => {
+  results.hidden = true;
+  closing.hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+$("#closing-back-button").addEventListener("click", () => {
+  closing.hidden = true;
+  results.hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+$("#identity-phone").addEventListener("input", (event) => {
+  event.target.value = formatPhone(event.target.value);
+});
+$("#identity-instagram").addEventListener("input", (event) => {
+  event.target.value = formatInstagramInput(event.target.value);
+});
+$("#identity-form").addEventListener("submit", submitIdentityForm);
+$("#identity-name").value = state.identity.name || "";
+$("#identity-phone").value = state.identity.phone || "";
+$("#identity-instagram").value = state.identity.instagram ? formatInstagramInput(state.identity.instagram) : "";
+showIdentityForm();
+$("#area-input").addEventListener("input", (event) => {
+  state.area = event.target.value.trim();
+  $("#continue-button").disabled = !state.area;
+  $("#selection-hint").textContent = state.area ? "Área informada" : "Informe sua área de atuação para continuar";
+});
 $("#custom-input").addEventListener("input", (event) => { state.custom = event.target.value; updateMissionAction(); });
 $("#continue-button").addEventListener("click", () => {
   if (state.currentStage === 1 && state.area) {
@@ -231,17 +437,17 @@ $("#back-button").addEventListener("click", () => {
     welcome.hidden = false;
   }
 });
-$("#restart-button").addEventListener("click", () => {
+function restartJourney() {
   window.cancelAnimationFrame(state.analysisFrameId);
   state.area = "";
-  state.role = "";
-  state.sector = "";
   state.custom = "";
-  state.selectedMissions = [];
-  $("#role-input").value = "";
-  $("#sector-input").value = "";
+  $("#area-input").value = "";
   $("#custom-input").value = "";
   results.hidden = true;
+  closing.hidden = true;
+  opening.hidden = true;
   welcome.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
-});
+}
+$("#restart-button").addEventListener("click", restartJourney);
+$("#closing-restart-button").addEventListener("click", restartJourney);
