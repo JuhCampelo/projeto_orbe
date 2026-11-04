@@ -285,12 +285,19 @@ async function registerVisitor(payload) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome: payload.name, telefone: payload.phone, instagram: payload.instagram })
     });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(`HTTP ${response.status}: ${(data.erros || []).join(" ")}`);
     saveIdentityProfile({ ...state.identity, visitorId: data.visitante_id });
   } catch (error) {
     console.warn("Não foi possível registrar o cadastro no servidor.", error);
   }
+}
+
+// Antes de salvar a jornada: se o cadastro ainda não chegou ao servidor, tenta de novo.
+async function ensureVisitorRegistered() {
+  const identity = state.identity || {};
+  if (identity.visitorId || !identity.name || !identity.phone) return;
+  await registerVisitor(identity);
 }
 
 function showAnalysisMessage(title, detail) {
@@ -309,6 +316,8 @@ async function renderResults() {
   state.analysisController = controller;
   let data;
   try {
+    await ensureVisitorRegistered();
+    if (controller.signal.aborted) return;
     const response = await fetch(`${API_BASE}/api/jornadas`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
