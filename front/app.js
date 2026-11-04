@@ -1,48 +1,94 @@
-const areas = [
-  { id: "administrativo", label: "Administrativo", icon: "▤" },
-  { id: "marketing", label: "Marketing", icon: "✧" },
-  { id: "tecnologia", label: "Tecnologia", icon: "⌘" },
-  { id: "dados", label: "Dados & análise", icon: "◫" },
-  { id: "rh", label: "Pessoas & RH", icon: "♧" },
-  { id: "vendas", label: "Vendas", icon: "↗" },
-  { id: "atendimento", label: "Atendimento", icon: "◌" },
-  { id: "outra", label: "Outra área", icon: "✦" }
-];
-
-const missions = [
-  { id: "escrita", label: "Escrever e revisar", icon: "✎" },
-  { id: "pesquisa", label: "Pesquisar e resumir", icon: "⌕" },
-  { id: "dados", label: "Analisar dados", icon: "▥" },
-  { id: "apresentacoes", label: "Criar apresentações", icon: "▣" },
-  { id: "imagem", label: "Criar imagens", icon: "◈" },
-  { id: "codigo", label: "Desenvolver software", icon: "{ }" },
-  { id: "automacao", label: "Automatizar tarefas", icon: "⟳" },
-  { id: "reunioes", label: "Trabalhar com reuniões", icon: "◉" },
-  { id: "atendimento", label: "Atender clientes", icon: "◌" },
-  { id: "documentos", label: "Entender documentos", icon: "▤" },
-  { id: "video", label: "Criar vídeos", icon: "▷" },
-  { id: "ideias", label: "Explorar ideias", icon: "✧" }
-];
-
 // Etapa 3: os cartões vêm do backend (gerados pela IA a partir das respostas, com dados do catálogo do estudo).
 // Mesmo domínio do site por padrão; defina window.ORBE_API se o backend estiver em outro endereço.
 const API_BASE = window.ORBE_API || "";
 
-const state = { area: "", selectedMissions: [], custom: "", currentStage: 1, analysisController: null };
+// Logos de assets/logos por aplicação do catálogo (aplicacao_id). Sem logo, o cartão mostra a inicial.
+const toolLogos = {
+  "APP-copilot": "assets/logos/microsoft-365-copilot.ico",
+  "APP-gemini": "assets/logos/gemini.png",
+  "APP-chatgpt": "assets/logos/chatgpt.png",
+  "APP-claude": "assets/logos/claude.ico",
+  "APP-notebook": "assets/logos/notebooklm.svg",
+  "APP-canva": "assets/logos/canva.png",
+  "APP-firefly": "assets/logos/adobe-firefly.png",
+  "APP-gamma": "assets/logos/gamma.jpg"
+};
+
+const state = {
+  area: "",
+  custom: "",
+  currentStage: 1,
+  promptTimer: null,
+  analysisController: null,
+  identity: (() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("orbe-identity") || sessionStorage.getItem("orbe-identity") || "null");
+      return saved || { name: "", phone: "", instagram: "" };
+    } catch (error) {
+      try {
+        const sessionSaved = JSON.parse(sessionStorage.getItem("orbe-identity") || "null");
+        if (sessionSaved) return sessionSaved;
+      } catch (sessionError) {
+        console.warn("Não foi possível recuperar os dados de identificação salvos.", sessionError);
+      }
+      console.warn("Não foi possível recuperar os dados de identificação salvos.", error);
+      return { name: "", phone: "", instagram: "" };
+    }
+  })()
+};
 const $ = (selector) => document.querySelector(selector);
 const welcome = $("#welcome");
+const opening = $("#opening");
 const journey = $("#journey");
 const results = $("#results");
-const esc = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+const closing = $("#closing");
 
-function renderChoices(container, items, selected, multi) {
-  container.innerHTML = items.map((item) => {
-    const active = multi ? selected.includes(item.id) : selected === item.id;
-    return `<button type="button" class="choice-card" data-choice="${item.id}" aria-pressed="${active}"><span class="choice-check" aria-hidden="true">✓</span><span class="choice-icon" aria-hidden="true">${item.icon}</span><span class="choice-title">${item.label}</span></button>`;
-  }).join("");
+function renderQrCode() {
+  const image = $("#qr-code");
+  const status = $("#qr-status");
+  const siteLink = $("#qr-site-link");
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.hash = "";
+  const hostname = url.hostname.toLowerCase();
+  const isLocalAddress = hostname === "localhost"
+    || hostname.endsWith(".localhost")
+    || hostname.endsWith(".local")
+    || hostname.endsWith(".test")
+    || hostname.endsWith(".invalid")
+    || hostname === "[::1]"
+    || /^(0|10|127)\./.test(hostname)
+    || /^169\.254\./.test(hostname)
+    || /^192\.168\./.test(hostname)
+    || /^172\.(1[6-9]|2\d|3[01])\./.test(hostname);
+
+  if (url.protocol !== "https:" || isLocalAddress) {
+    return;
+  }
+
+  siteLink.href = url.href;
+  siteLink.textContent = url.href;
+  siteLink.hidden = false;
+  image.src = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&format=svg&ecc=Q&margin=12&color=0B192C&bgcolor=F8F9FA&data=${encodeURIComponent(url.href)}`;
+  image.hidden = false;
+  status.hidden = true;
 }
 
+$("#qr-code").addEventListener("error", () => {
+  $("#qr-code").hidden = true;
+  $("#qr-status").textContent = "Não foi possível carregar o QR Code agora. Use o endereço público abaixo para acessar o Orbe.";
+  $("#qr-status").hidden = false;
+});
+
+renderQrCode();
+const esc = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+
 function setStage(stage) {
+  if (state.promptTimer) {
+    window.clearInterval(state.promptTimer);
+    state.promptTimer = null;
+  }
+
   state.currentStage = stage;
   const isProfile = stage === 1;
   const isMission = stage === 2;
@@ -56,36 +102,195 @@ function setStage(stage) {
   $("#journey-title").textContent = isProfile ? "Vamos nos conhecer." : "O que você quer realizar?";
   $("#journey-subtitle").textContent = isProfile
     ? "Assim, Íris pode procurar algo que faça sentido para o seu dia a dia."
-    : "Escolha até três tarefas. Cada escolha ajuda a encontrar ferramentas mais relevantes.";
+    : "Descreva o que você gostaria de realizar ou melhorar no seu trabalho.";
   $("#progress-fill").style.width = isProfile ? "3%" : "50%";
   document.querySelectorAll(".progress-node").forEach((node, index) => {
     node.classList.toggle("progress-node--active", index === (stage === 1 ? 0 : stage === 2 ? 1 : 2));
   });
   $("#back-button").hidden = isProfile;
   if (isProfile) {
-    $("#continue-button").disabled = !state.area;
-    $("#selection-hint").textContent = state.area ? "Área selecionada" : "Escolha uma área para continuar";
+    typeAreaPrompt();
+    $("#continue-button").disabled = !state.area.trim();
+    $("#selection-hint").textContent = state.area ? "Área informada" : "Informe sua área de atuação para continuar";
   } else if (isMission) {
+    typeMissionPrompt();
     updateMissionAction();
   }
 }
 
+function typeAreaPrompt() {
+  const prompt = $("#area-prompt-text");
+  const cursor = $(".typing-cursor");
+  const message = "Onde você atua?";
+  prompt.textContent = "";
+  cursor.hidden = false;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    prompt.textContent = message;
+    cursor.hidden = true;
+    return;
+  }
+
+  let index = 0;
+  state.promptTimer = window.setInterval(() => {
+    prompt.textContent += message[index];
+    index += 1;
+    if (index === message.length) {
+      window.clearInterval(state.promptTimer);
+      state.promptTimer = null;
+      cursor.hidden = true;
+    }
+  }, 75);
+}
+
+function typeMissionPrompt() {
+  const prompt = $("#mission-prompt-text");
+  const cursor = prompt.nextElementSibling;
+  const message = "Qual é a sua missão?";
+  prompt.textContent = "";
+  cursor.hidden = false;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    prompt.textContent = message;
+    cursor.hidden = true;
+    return;
+  }
+
+  let index = 0;
+  state.promptTimer = window.setInterval(() => {
+    prompt.textContent += message[index];
+    index += 1;
+    if (index === message.length) {
+      window.clearInterval(state.promptTimer);
+      state.promptTimer = null;
+      cursor.hidden = true;
+    }
+  }, 75);
+}
+
 function updateMissionAction() {
-  const valid = state.selectedMissions.length > 0 || state.custom.trim().length >= 12;
+  const valid = Boolean(state.custom.trim());
   $("#continue-button").disabled = !valid;
-  $("#selection-hint").textContent = state.selectedMissions.length
-    ? `${state.selectedMissions.length} de 3 missões selecionadas`
-    : state.custom.trim().length >= 12 ? "Necessidade descrita" : "Escolha ao menos uma missão";
+  $("#selection-hint").textContent = valid ? "Missão informada" : "Descreva sua missão para continuar";
 }
 
 function openJourney() {
+  if (!state.identity.name || !state.identity.phone || !state.identity.instagram) {
+    showIdentityForm();
+    return;
+  }
+  hideIdentityForm();
+  opening.hidden = true;
   welcome.hidden = true;
   results.hidden = true;
+  closing.hidden = true;
   journey.hidden = false;
-  renderChoices($("#area-options"), areas, state.area, false);
-  renderChoices($("#mission-options"), missions, state.selectedMissions, true);
+  $("#area-input").value = state.area;
+  $("#custom-input").value = state.custom;
   setStage(1);
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showIdentityForm() {
+  const form = $("#identity-form");
+  if (!form) return;
+  form.classList.remove("is-hidden");
+  form.classList.add("is-visible");
+  form.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function hideIdentityForm() {
+  const form = $("#identity-form");
+  if (!form) return;
+  form.classList.add("is-hidden");
+  form.classList.remove("is-visible");
+  $("#identity-error").textContent = "";
+}
+
+function formatPhone(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 10) {
+    return digits.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d)/, "$1-$2");
+  }
+  return digits.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+}
+
+function normalizeInstagram(value) {
+  return String(value || "").trim().replace(/\s+/g, "").replace(/^@+/, "");
+}
+
+function formatInstagramInput(value) {
+  const cleaned = normalizeInstagram(value);
+  return cleaned ? `@${cleaned}` : "";
+}
+
+function saveIdentityProfile(data) {
+  try {
+    localStorage.setItem("orbe-identity", JSON.stringify(data));
+  } catch (error) {
+    try {
+      sessionStorage.setItem("orbe-identity", JSON.stringify(data));
+    } catch (sessionError) {
+      console.warn("Não foi possível persistir os dados de identificação no navegador.", sessionError);
+    }
+  }
+  state.identity = data;
+}
+
+function validateIdentityForm() {
+  const name = $("#identity-name").value.trim();
+  const phone = $("#identity-phone").value.trim();
+  const instagram = normalizeInstagram($("#identity-instagram").value);
+
+  if (name.length < 2) {
+    return "Informe seu nome completo para continuar.";
+  }
+  if (phone.replace(/\D/g, "").length < 10) {
+    return "Informe um telefone ou WhatsApp válido.";
+  }
+  if (instagram.length < 2) {
+    return "Informe seu usuário do Instagram.";
+  }
+  return "";
+}
+
+function submitIdentityForm(event) {
+  event.preventDefault();
+  const error = validateIdentityForm();
+  const errorNode = $("#identity-error");
+
+  if (error) {
+    errorNode.textContent = error;
+    return;
+  }
+
+  const payload = {
+    name: $("#identity-name").value.trim(),
+    phone: formatPhone($("#identity-phone").value),
+    instagram: `@${normalizeInstagram($("#identity-instagram").value)}`
+  };
+
+  errorNode.textContent = "";
+  const saved = state.identity || {};
+  const unchanged = saved.visitorId && saved.name === payload.name && saved.phone === payload.phone && saved.instagram === payload.instagram;
+  saveIdentityProfile(unchanged ? { ...payload, visitorId: saved.visitorId } : payload);
+  if (!unchanged) registerVisitor(payload);
+  openJourney();
+}
+
+async function registerVisitor(payload) {
+  try {
+    const response = await fetch(`${API_BASE}/api/visitantes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome: payload.name, telefone: payload.phone, instagram: payload.instagram })
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    saveIdentityProfile({ ...state.identity, visitorId: data.visitante_id });
+  } catch (error) {
+    console.warn("Não foi possível registrar o cadastro no servidor.", error);
+  }
 }
 
 function showAnalysisMessage(title, detail) {
@@ -108,17 +313,15 @@ async function renderResults() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        area: state.area,
-        missoes: state.selectedMissions,
-        cargo: state.role || undefined,
-        setor: state.sector || undefined,
-        descricao: state.custom.trim() || undefined
+        visitante_id: state.identity && state.identity.visitorId ? state.identity.visitorId : undefined,
+        area_texto: state.area,
+        descricao: state.custom.trim()
       }),
       signal: controller.signal
     });
     data = await response.json();
-    if (response.status === 422 || (response.status === 400 && state.selectedMissions.length === 0)) {
-      showAnalysisMessage("Precisamos de mais um detalhe.", "Não identifiquei uma missão específica na descrição. Volte e selecione ao menos uma tarefa para receber recomendações úteis.");
+    if (response.status === 422) {
+      showAnalysisMessage("Precisamos de mais um detalhe.", "Não identifiquei uma missão específica na descrição. Volte e explique sua necessidade com mais detalhes para receber recomendações úteis.");
       return;
     }
     if (!response.ok) throw new Error((data.erros || []).join(" "));
@@ -130,22 +333,25 @@ async function renderResults() {
   if (controller.signal.aborted) return;
   const recommendations = (data.etapa3 && data.etapa3.cartoes) || [];
   if (recommendations.length === 0) {
-    showAnalysisMessage("Precisamos de mais um detalhe.", "Não encontrei ferramentas para essa combinação. Volte e selecione outra tarefa.");
+    showAnalysisMessage("Precisamos de mais um detalhe.", "Não identifiquei uma missão específica na descrição. Volte e explique sua necessidade com mais detalhes para receber recomendações úteis.");
     return;
   }
-  const missionNames = state.selectedMissions.map((id) => missions.find((mission) => mission.id === id)?.label).filter(Boolean);
   $("#results-intro").textContent = data.etapa3.introducao || "";
-  $("#summary-area").textContent = areas.find((area) => area.id === state.area)?.label || "Não informada";
-  $("#summary-missions").innerHTML = (missionNames.length ? missionNames : ["Necessidade descrita"]).map((label) => `<span class="summary-tag">${esc(label)}</span>`).join("");
+  $("#summary-area").textContent = state.area || "Não informada";
+  $("#summary-missions").innerHTML = `<span class="summary-tag">${esc(state.custom.trim() || "Necessidade descrita")}</span>`;
   const sourceNote = document.querySelector(".journey-summary .summary-note");
   if (sourceNote) {
     sourceNote.innerHTML = data.etapa3.origem === "ia"
       ? `<span>◈</span> Indicações escritas por IA a partir das suas respostas e da base do estudo (${esc(data.data_catalogo || "")}) — sem teste comparativo entre as ferramentas.`
-      : `<span>◈</span> Indicações da base do estudo (${esc(data.data_catalogo || "")}) para as tarefas e a área selecionadas — sem teste comparativo entre as ferramentas.`;
+      : `<span>◈</span> Indicações da base do estudo (${esc(data.data_catalogo || "")}) para a missão descrita — sem teste comparativo entre as ferramentas.`;
   }
   $("#recommendations").innerHTML = recommendations.map((tool, index) => {
+    const logo = toolLogos[tool.aplicacao_id];
+    const mark = logo
+      ? `<img class="tool-logo" src="${esc(logo)}" alt=""><span hidden>${esc(tool.monogram)}</span>`
+      : `<span>${esc(tool.monogram)}</span>`;
     return `<article class="tool-card${index === 0 ? " tool-card--featured" : ""}">
-      <div class="tool-card-top"><div class="tool-monogram" aria-hidden="true">${esc(tool.monogram)}</div><div class="tool-title-wrap"><h2 class="tool-name">${esc(tool.name)}</h2><div class="tool-maker">${esc(tool.maker)}</div></div><span class="match-badge">${esc(tool.selo)}</span></div>
+      <div class="tool-card-top"><div class="tool-monogram" aria-hidden="true">${mark}</div><div class="tool-title-wrap"><h2 class="tool-name">${esc(tool.name)}</h2><div class="tool-maker">${esc(tool.maker)}</div></div><span class="match-badge">${esc(tool.selo)}</span></div>
       <p class="tool-description">${esc(tool.description)} ${esc(tool.why)}</p>
       <div class="tool-details"><div class="detail-block"><b>Vantagem</b><p>${esc(tool.strengths)}</p></div><div class="detail-block"><b>Atenção</b><p>${esc(tool.limits)}</p></div></div>
       <div class="tool-actions"><a class="tool-link" href="${esc(tool.url)}" target="_blank" rel="noopener noreferrer">Conhecer ${esc(tool.name)} ↗</a><span class="tool-alternatives">${tool.alternatives ? `Alternativas: ${esc(tool.alternatives)}` : ""}</span></div>
@@ -155,35 +361,51 @@ async function renderResults() {
   document.querySelectorAll(".progress-node").forEach((node) => node.classList.toggle("progress-node--active", node.textContent.includes("03")));
   journey.hidden = true;
   results.hidden = false;
+  closing.hidden = true;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-$("#start-button").addEventListener("click", openJourney);
-$("#area-options").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-choice]");
-  if (!button) return;
-  state.area = button.dataset.choice;
-  renderChoices($("#area-options"), areas, state.area, false);
-  $("#continue-button").disabled = false;
-  $("#selection-hint").textContent = "Área selecionada";
+$("#recommendations").addEventListener("error", (event) => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement) || !image.classList.contains("tool-logo")) return;
+  image.hidden = true;
+  if (image.nextElementSibling) image.nextElementSibling.hidden = false;
+}, true);
+
+$("#start-button").addEventListener("click", () => {
+  showIdentityForm();
 });
-$("#mission-options").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-choice]");
-  if (!button) return;
-  const id = button.dataset.choice;
-  if (state.selectedMissions.includes(id)) {
-    state.selectedMissions = state.selectedMissions.filter((mission) => mission !== id);
-  } else if (state.selectedMissions.length < 3) {
-    state.selectedMissions.push(id);
-  } else {
-    $("#selection-hint").textContent = "Limite de 3 missões. Remova uma para escolher outra.";
-    return;
-  }
-  renderChoices($("#mission-options"), missions, state.selectedMissions, true);
-  updateMissionAction();
+$("#enter-orbe-button").addEventListener("click", () => {
+  opening.hidden = true;
+  welcome.hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
-$("#role-input").addEventListener("input", (event) => { state.role = event.target.value.trim(); });
-$("#sector-input").addEventListener("input", (event) => { state.sector = event.target.value.trim(); });
+$("#closing-button").addEventListener("click", () => {
+  results.hidden = true;
+  closing.hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+$("#closing-back-button").addEventListener("click", () => {
+  closing.hidden = true;
+  results.hidden = false;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+$("#identity-phone").addEventListener("input", (event) => {
+  event.target.value = formatPhone(event.target.value);
+});
+$("#identity-instagram").addEventListener("input", (event) => {
+  event.target.value = formatInstagramInput(event.target.value);
+});
+$("#identity-form").addEventListener("submit", submitIdentityForm);
+$("#identity-name").value = state.identity.name || "";
+$("#identity-phone").value = state.identity.phone || "";
+$("#identity-instagram").value = state.identity.instagram ? formatInstagramInput(state.identity.instagram) : "";
+showIdentityForm();
+$("#area-input").addEventListener("input", (event) => {
+  state.area = event.target.value.trim();
+  $("#continue-button").disabled = !state.area;
+  $("#selection-hint").textContent = state.area ? "Área informada" : "Informe sua área de atuação para continuar";
+});
 $("#custom-input").addEventListener("input", (event) => { state.custom = event.target.value; updateMissionAction(); });
 $("#continue-button").addEventListener("click", () => {
   if (state.currentStage === 1 && state.area) {
@@ -209,17 +431,17 @@ $("#back-button").addEventListener("click", () => {
     welcome.hidden = false;
   }
 });
-$("#restart-button").addEventListener("click", () => {
+function restartJourney() {
   if (state.analysisController) state.analysisController.abort();
   state.area = "";
-  state.role = "";
-  state.sector = "";
   state.custom = "";
-  state.selectedMissions = [];
-  $("#role-input").value = "";
-  $("#sector-input").value = "";
+  $("#area-input").value = "";
   $("#custom-input").value = "";
   results.hidden = true;
+  closing.hidden = true;
+  opening.hidden = true;
   welcome.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
-});
+}
+$("#restart-button").addEventListener("click", restartJourney);
+$("#closing-restart-button").addEventListener("click", restartJourney);

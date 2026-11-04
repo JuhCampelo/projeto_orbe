@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#100e20">
+  <meta name="theme-color" content="#0B192C">
   <meta name="description" content="Encontre ferramentas de inteligência artificial para suas missões profissionais. Uma jornada de descoberta, criada para você.">
   <title>Orbe — sua próxima ferramenta de IA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,25 @@
   </header>
 
   <main>
-    <section class="view view--active" id="welcome" aria-labelledby="hero-title">
+    <section class="view view--active qr-view" id="opening" aria-labelledby="opening-title">
+      <div class="qr-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ACESSE O ORBE</div>
+        <h1 id="opening-title">Explore o Orbe.</h1>
+        <p class="hero-description">Aponte a câmera do celular para o QR Code e acesse o site.</p>
+        <button class="button button--primary" id="enter-orbe-button" type="button">
+          <span>Entrar no Orbe</span><span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+      <div class="qr-card">
+        <div class="qr-frame">
+          <img id="qr-code" alt="QR Code para acessar o site público do Orbe" hidden>
+          <p class="qr-status" id="qr-status" aria-live="polite">O QR Code ficará disponível quando o Orbe estiver publicado em um endereço HTTPS público.</p>
+        </div>
+        <a class="qr-site-link" id="qr-site-link" hidden></a>
+      </div>
+    </section>
+
+    <section class="view view--active" id="welcome" aria-labelledby="hero-title" hidden>
       <div class="hero-copy">
         <div class="eyebrow"><span class="eyebrow-line"></span> UM GUIA PARA SUA PRÓXIMA DESCOBERTA</div>
         <h1 id="hero-title">Seu trabalho.<br>Sua missão. <span>Sua IA.</span></h1>
@@ -39,7 +57,46 @@
         <button class="button button--primary" id="start-button">
           <span>Começar minha jornada</span><span class="button-arrow" aria-hidden="true">→</span>
         </button>
-        <div class="hero-meta"><span class="meta-spark" aria-hidden="true">✦</span> Cerca de 2 minutos <span class="meta-separator">·</span> Sem cadastro</div>
+        <div class="hero-meta"><span class="meta-spark" aria-hidden="true">✦</span> Cerca de 2 minutos</div>
+
+        <form class="identity-form" id="identity-form" novalidate>
+          <div class="identity-card">
+            <div class="identity-head">
+              <div class="eyebrow"><span class="eyebrow-line"></span> IDENTIFICAÇÃO INICIAL</div>
+              <h2>Antes de começar sua jornada, queremos conhecer você!</h2>
+              <p>Informe seus dados para iniciar sua experiência no Orbe.</p>
+            </div>
+
+            <div class="field-row">
+              <label class="field">
+                <span>Nome</span>
+                <input id="identity-name" name="name" type="text" maxlength="80" placeholder="Ex.: Ana Silva" autocomplete="name" required>
+              </label>
+              <label class="field">
+                <span>Telefone / WhatsApp</span>
+                <input id="identity-phone" name="phone" type="tel" maxlength="15" placeholder="Ex.: (11) 99999-9999" autocomplete="tel" inputmode="numeric" required>
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label class="field">
+                <span>Instagram</span>
+                <input id="identity-instagram" name="instagram" type="text" maxlength="80" placeholder="Ex.: @orbeai ou orbeai" autocomplete="username" required>
+              </label>
+              <div class="field">
+                <span>Privacidade</span>
+                <div class="privacy-note"><span aria-hidden="true">◈</span> Seus dados são usados apenas para personalizar sua jornada e não substituem uma verificação de identidade.</div>
+              </div>
+            </div>
+
+            <div class="identity-actions">
+              <button class="button button--primary" id="identity-submit" type="submit">
+                <span>Continuar</span><span class="button-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+            <div id="identity-error" class="identity-error" aria-live="polite"></div>
+          </div>
+        </form>
       </div>
       <div class="hero-art" role="img" aria-label="Ilustração de um guia aventureiro diante de um portal mágico">
         <div class="orbit orbit--one"></div><div class="orbit orbit--two"></div>
@@ -66,17 +123,26 @@
       <div class="progress-track" aria-label="Progresso da jornada"><div class="progress-fill" id="progress-fill"></div><div class="progress-steps"><span class="progress-node progress-node--active">01 <span>Você</span></span><span class="progress-node">02 <span>Missão</span></span><span class="progress-node">03 <span>Descoberta</span></span></div></div>
       <div class="journey-content">
         <div class="stage-panel" id="stage-profile">
-          <div class="section-heading"><span class="section-index">A</span><div><h2>Onde você atua?</h2><p>Escolha a área que mais se aproxima do seu trabalho.</p></div></div>
-          <div class="choice-grid choice-grid--areas" id="area-options"></div>
-          <div class="field-row">
-            <label class="field"><span>Seu cargo ou função <span class="optional">(opcional)</span></span><input id="role-input" maxlength="80" placeholder="Ex.: Analista de marketing" autocomplete="organization-title"></label>
-            <label class="field"><span>Setor da empresa <span class="optional">(opcional)</span></span><input id="sector-input" maxlength="80" placeholder="Ex.: Educação, saúde, varejo"></label>
+          <div class="iris-message" role="group" aria-labelledby="area-prompt-label">
+            <span class="iris-message-avatar" aria-hidden="true">✦</span>
+            <div class="iris-message-bubble">
+              <span class="iris-message-name">ÍRIS</span>
+              <p class="iris-message-text" aria-hidden="true"><span id="area-prompt-text"></span><span class="typing-cursor"></span></p>
+              <span class="visually-hidden" id="area-prompt-label">Íris pergunta: Onde você atua?</span>
+            </div>
           </div>
+          <label class="field field--wide"><span>Sua área de atuação</span><input id="area-input" type="text" maxlength="120" placeholder="Ex.: marketing, educação, saúde ou tecnologia" autocomplete="organization"></label>
         </div>
         <div class="stage-panel" id="stage-mission" hidden>
-          <div class="section-heading"><span class="section-index">B</span><div><h2>Qual é a sua missão?</h2><p>Selecione até três tarefas que gostaria de tornar mais fáceis.</p></div></div>
-          <div class="choice-grid choice-grid--missions" id="mission-options"></div>
-          <label class="field field--wide"><span>Ou conte um pouco mais <span class="optional">(opcional)</span></span><textarea id="custom-input" maxlength="240" rows="2" placeholder="Ex.: Quero resumir relatórios longos e compartilhar os pontos principais com o time."></textarea></label>
+          <div class="iris-message" role="group" aria-labelledby="mission-prompt-label">
+            <span class="iris-message-avatar" aria-hidden="true">✦</span>
+            <div class="iris-message-bubble">
+              <span class="iris-message-name">ÍRIS</span>
+              <p class="iris-message-text" aria-hidden="true"><span id="mission-prompt-text"></span><span class="typing-cursor"></span></p>
+              <span class="visually-hidden" id="mission-prompt-label">Íris pergunta: Qual é a sua missão?</span>
+            </div>
+          </div>
+          <label class="field field--wide"><span>Descreva sua missão</span><textarea id="custom-input" rows="4" placeholder="Conte o que você gostaria de realizar ou melhorar no seu trabalho."></textarea></label>
           <p class="privacy-note"><span aria-hidden="true">◈</span> Suas respostas ficam neste dispositivo e não são enviadas a um servidor.</p>
         </div>
         <div class="stage-panel analysis-panel" id="stage-analysis" hidden aria-live="polite">
@@ -105,10 +171,26 @@
           <div class="summary-label"><span class="summary-star">✦</span> SEU MAPA DE MISSÃO</div>
           <div class="summary-item"><small>ÁREA</small><strong id="summary-area"></strong></div>
           <div class="summary-item"><small>MISSÕES</small><div class="summary-tags" id="summary-missions"></div></div>
-          <div class="summary-note"><span>◈</span> Compatibilidade calculada pelas tarefas e área selecionadas — sem enviar respostas a um modelo de IA.</div>
+          <div class="summary-note"><span>◈</span> Compatibilidade estimada a partir da descrição e da área informadas — sem enviar respostas a um modelo de IA.</div>
           <div class="summary-note"><span>◈</span> Recomendações orientativas. Confirme recursos, preços e políticas de dados diretamente com cada fornecedor.</div>
           <button class="button button--quiet restart-button" id="restart-button"><span aria-hidden="true">↺</span> Refazer jornada</button>
         </aside>
+      </div>
+      <div class="results-actions">
+        <button class="button button--primary" id="closing-button" type="button">
+          <span>Continuar</span><span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="view closing-view" id="closing" aria-labelledby="closing-title" hidden>
+      <div class="closing-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> UM CONVITE PARA COLOCAR IDEIAS EM AÇÃO</div>
+        <h1 id="closing-title">Seu desafio pode transformar sua empresa. E o melhor deles pode ganhar uma mentoria gratuita, dentro da própria empresa — seja qual for o seu tamanho!</h1>
+        <div class="closing-actions">
+          <button class="button button--quiet" id="closing-back-button" type="button"><span aria-hidden="true">←</span> Voltar às recomendações</button>
+          <button class="button button--primary" id="closing-restart-button" type="button"><span aria-hidden="true">↺</span> Refazer jornada</button>
+        </div>
       </div>
     </section>
   </main>
