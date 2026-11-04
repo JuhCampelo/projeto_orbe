@@ -1,0 +1,54 @@
+{
+  "status": "proposta_orbe_validacao_pendente",
+  "observacao": "Ligacao entre as opcoes do front/app.js e o catalogo BASE_CONSULTA_PROJETO.json. Feita pela equipe Orbe, nao consta dos documentos de origem e deve ser validada. As rotas genericas sao ponto de partida, nao validacao. A ordem das listas nao e ranking.",
+  "areas": {
+    "administrativo": {
+      "label": "Administrativo",
+      "areas_catalogo": ["Tramitação administrativa", "Apoio administrativo a projetos", "Apoio administrativo hospitalar", "Suprimentos / Compras", "Gestão de qualidade"]
+    },
+    "marketing": {
+      "label": "Marketing",
+      "areas_catalogo": ["Marketing, Dados e Tecnologia", "Captação de Recursos e Relacionamento", "Client Services"]
+    },
+    "tecnologia": {
+      "label": "Tecnologia",
+      "areas_catalogo": ["Suporte técnico", "Marketing, Dados e Tecnologia"]
+    },
+    "dados": {
+      "label": "Dados & análise",
+      "areas_catalogo": ["Dados de Soluções de Crédito e Negócios", "Inteligência de soluções", "Business Operations — BizOps"]
+    },
+    "rh": {
+      "label": "Pessoas & RH",
+      "areas_catalogo": ["Administração de Pessoal / RH", "Departamento Pessoal", "Desenvolvimento Humano e Organizacional", "Apoio administrativo em gestão de pessoas"]
+    },
+    "vendas": {
+      "label": "Vendas",
+      "areas_catalogo": ["Seção de Vendas", "Operação de loja"]
+    },
+    "atendimento": {
+      "label": "Atendimento",
+      "areas_catalogo": ["Recepção", "Suporte técnico", "Client Services"]
+    },
+    "outra": {
+      "label": "Outra área",
+      "areas_catalogo": ["Engenharia de obras", "Engenharia de projetos e obras", "Atividades físicas"]
+    }
+  },
+  "missoes": {
+    "escrita":       { "label": "Escrever e revisar",      "rotas": ["U01"],        "capacidades": ["CAP-redacao"] },
+    "pesquisa":      { "label": "Pesquisar e resumir",     "rotas": ["U05", "U04"], "capacidades": ["CAP-sintese", "CAP-busca"] },
+    "dados":         { "label": "Analisar dados",          "rotas": ["U03", "U22"], "capacidades": ["CAP-calculo", "CAP-qualidade_dados"] },
+    "apresentacoes": { "label": "Criar apresentações",     "rotas": ["U07"],        "capacidades": ["CAP-design"] },
+    "imagem":        { "label": "Criar imagens",           "rotas": ["U08", "U15"], "capacidades": ["CAP-imagem", "CAP-edicao_imagem"] },
+    "codigo":        { "label": "Desenvolver software",    "rotas": ["U21"],        "capacidades": ["CAP-codigo"] },
+    "automacao":     { "label": "Automatizar tarefas",     "rotas": ["U06"],        "capacidades": ["CAP-planejamento"],
+                       "lacuna": "O catálogo 2026-11-03 não cobre plataformas de automação de fluxos. A rota U06 (reutilizar procedimento) é uma aproximação." },
+    "reunioes":      { "label": "Trabalhar com reuniões",  "rotas": ["U20"],        "capacidades": ["CAP-sintese", "CAP-extracao"],
+                       "lacuna": "Transcrição automática de áudio é outra etapa a validar (limite da rota U20)." },
+    "atendimento":   { "label": "Atender clientes",        "rotas": ["U19", "U18"], "capacidades": ["CAP-redacao", "CAP-busca", "CAP-classificacao", "CAP-traducao"] },
+    "documentos":    { "label": "Entender documentos",     "rotas": ["U02", "U04"], "capacidades": ["CAP-extracao", "CAP-comparacao"] },
+    "video":         { "label": "Criar vídeos",            "rotas": ["U10", "U16"], "capacidades": ["CAP-video", "CAP-edicao_video"] },
+    "ideias":        { "label": "Explorar ideias",         "rotas": ["U14"],        "capacidades": ["CAP-planejamento", "CAP-sintese"] }
+  }
+}

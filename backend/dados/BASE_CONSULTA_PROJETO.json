@@ -1,0 +1,4851 @@
+{
+  "schema_version": "2.0-consulta-chat",
+  "data_referencia": "2026-11-03",
+  "status": "indicacao_documental_provisoria",
+  "regras": [
+    "A unidade de recomendação é tarefa + contexto + aplicação + modo + modelo identificável + ferramentas + configuração + data.",
+    "Não transformar anúncio de capacidade, benchmark externo ou inferência em resultado de teste local.",
+    "Primeiro aplicar requisitos obrigatórios e restrições; só depois comparar qualidade e facilidade.",
+    "Ausência de evidência significa desconhecido, não incapacidade. Não atribuir nota zero.",
+    "Não inferir especialização ou treinamento setorial pelo cargo, nome do produto ou instrução de sistema.",
+    "Preferir fontes oficiais para recursos e fontes metodológicas para interpretar benchmarks; manter data e versão.",
+    "Quando uma plataforma orquestra modelos, recomendar a rota de produto e registrar modelo como desconhecido.",
+    "Resultados numéricos precisam de execução/fórmula verificável quando o critério exige exatidão.",
+    "Somente casos equivalentes, versões registradas e avaliação pertinente podem sustentar comparação experimental.",
+    "Preços, contratação e liberações regionais não participam da pontuação desta etapa.",
+    "Nunca declarar um vencedor entre os 132 vínculos documentais atuais: nenhum tem teste local comparativo.",
+    "Para tarefas fora das 44, construir nova ficha contextual; rotas genéricas são ponto de partida, não validação."
+  ],
+  "tarefas": [
+    {
+      "id": "TAR-slc-1",
+      "organizacao": "SLC Agrícola",
+      "area": "Suprimentos / Compras",
+      "cargo": "Analista de Suprimentos Júnior (Indiretos - MRO)",
+      "tarefa": "Equalizar propostas de fornecimento",
+      "entradas": "Requisição, propostas e premissas de comparação",
+      "saida": "Tabela com custos totais, condições e lacunas",
+      "criterio": "Conferir unidades, quantidades, frete e condições; não escolher com dados incompletos.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-calculo",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://slcagricola.gupy.io/jobs/12747853"
+    },
+    {
+      "id": "TAR-slc-2",
+      "organizacao": "SLC Agrícola",
+      "area": "Suprimentos / Compras",
+      "cargo": "Analista de Suprimentos Júnior (Indiretos - MRO)",
+      "tarefa": "Preparar perguntas para completar uma cotação",
+      "entradas": "Proposta recebida e lista de requisitos da compra",
+      "saida": "Lista de esclarecimentos a solicitar",
+      "criterio": "Cada pergunta deve corresponder a informação ausente ou contraditória.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-redacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C41"
+      ],
+      "regra_configuracao": "Usar conteúdo aprovado, público, tom e restrições; não inventar fatos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://slcagricola.gupy.io/jobs/12747853"
+    },
+    {
+      "id": "TAR-nexa-1",
+      "organizacao": "Nexa Resources",
+      "area": "Desenvolvimento Humano e Organizacional",
+      "cargo": "Analista RH SR – Custos e Orçamento",
+      "tarefa": "Conferir desvios entre orçamento e realizado",
+      "entradas": "Planilhas por centro de custo e período",
+      "saida": "Quadro de diferenças e registros sem correspondência",
+      "criterio": "Reconciliar totais e preservar períodos; causas não documentadas ficam como hipótese.",
+      "capacidades_ids": [
+        "CAP-calculo",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://vagas.sc/vaga/analista-rh-sr-custos-e-orcamento-vempranexa-brasil-sao-paulo-sp/"
+    },
+    {
+      "id": "TAR-nexa-2",
+      "organizacao": "Nexa Resources",
+      "area": "Desenvolvimento Humano e Organizacional",
+      "cargo": "Analista RH SR – Custos e Orçamento",
+      "tarefa": "Preparar explicação dos desvios documentados",
+      "entradas": "Quadro de diferenças e justificativas fornecidas",
+      "saida": "Minuta de relatório com referências às linhas",
+      "criterio": "Separar fatos, justificativas recebidas e pontos pendentes.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-redacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C41"
+      ],
+      "regra_configuracao": "Usar conteúdo aprovado, público, tom e restrições; não inventar fatos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://vagas.sc/vaga/analista-rh-sr-custos-e-orcamento-vempranexa-brasil-sao-paulo-sp/"
+    },
+    {
+      "id": "TAR-weg-1",
+      "organizacao": "WEG",
+      "area": "Seção de Vendas",
+      "cargo": "Analista Vendas Transformadores",
+      "tarefa": "Montar matriz de atendimento de requisitos",
+      "entradas": "Solicitação do cliente e fichas técnicas autorizadas",
+      "saida": "Matriz requisito, evidência e situação",
+      "criterio": "Marcar como não demonstrado o requisito sem evidência; não certificar conformidade técnica.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C11"
+      ],
+      "regra_configuracao": "Usar matriz requisito/evidência/situação; ilegível e ausente são estados diferentes.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://weg.gupy.io/jobs/12819521?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-weg-2",
+      "organizacao": "WEG",
+      "area": "Seção de Vendas",
+      "cargo": "Analista Vendas Transformadores",
+      "tarefa": "Redigir minuta de proposta a partir da matriz",
+      "entradas": "Matriz revisada e condições comerciais aprovadas",
+      "saida": "Minuta com escopo, condições e ressalvas",
+      "criterio": "Não criar preço, prazo, garantia ou capacidade técnica.",
+      "capacidades_ids": [
+        "CAP-redacao",
+        "CAP-sintese"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C41"
+      ],
+      "regra_configuracao": "Usar conteúdo aprovado, público, tom e restrições; não inventar fatos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://weg.gupy.io/jobs/12819521?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-tigre-1",
+      "organizacao": "Grupo Tigre",
+      "area": "Administração de Pessoal / RH",
+      "cargo": "Analista Administração RH Sr - COJ",
+      "tarefa": "Identificar inconsistências de marcação de ponto",
+      "entradas": "Marcações, escala e regras fornecidas para o caso",
+      "saida": "Lista de marcações ausentes ou incompatíveis",
+      "criterio": "Não inferir falta, fraude ou sanção; sinalizar o registro para conferência.",
+      "capacidades_ids": [
+        "CAP-comparacao",
+        "CAP-qualidade_dados"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://tigre.gupy.io/jobs/12768851?jobBoardSource=linkedin"
+    },
+    {
+      "id": "TAR-tigre-2",
+      "organizacao": "Grupo Tigre",
+      "area": "Administração de Pessoal / RH",
+      "cargo": "Analista Administração RH Sr - COJ",
+      "tarefa": "Conferir variações da folha por evento",
+      "entradas": "Duas competências e eventos de folha autorizados",
+      "saida": "Comparação por pessoa e rubrica, com pendências",
+      "criterio": "Não recalcular direitos sem regras vigentes fornecidas; proteger identificadores pessoais.",
+      "capacidades_ids": [
+        "CAP-calculo",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://tigre.gupy.io/jobs/12768851?jobBoardSource=linkedin"
+    },
+    {
+      "id": "TAR-energisa-1",
+      "organizacao": "Grupo Energisa",
+      "area": "Engenharia de projetos e obras",
+      "cargo": "Engenheiro(a) Projetos e Obras II",
+      "tarefa": "Consolidar registros de execução",
+      "entradas": "Diários de obra e cronograma disponibilizados",
+      "saida": "Relatório de avanço e pendências documentadas",
+      "criterio": "Vincular cada afirmação ao registro; não liberar serviço de campo.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-sintese"
+      ],
+      "candidatos_sem_ranking": [
+        "C11",
+        "C05",
+        "C03"
+      ],
+      "alternativas_condicionais": [
+        "C10"
+      ],
+      "regra_configuracao": "Citar fatos e distinguir proposta, decisão e pendência.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://grupoenergisa.gupy.io/jobs/12685441?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-energisa-2",
+      "organizacao": "Grupo Energisa",
+      "area": "Engenharia de projetos e obras",
+      "cargo": "Engenheiro(a) Projetos e Obras II",
+      "tarefa": "Comparar marcos previstos e registrados",
+      "entradas": "Cronograma e registros de conclusão",
+      "saida": "Tabela de marcos concluídos, atrasados e sem evidência",
+      "criterio": "Usar data de corte explícita e não inventar percentuais de avanço.",
+      "capacidades_ids": [
+        "CAP-comparacao",
+        "CAP-calculo"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://grupoenergisa.gupy.io/jobs/12685441?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-aegea-1",
+      "organizacao": "Aegea Saneamento",
+      "area": "Gestão de qualidade",
+      "cargo": "Analista de engenharia Jr | gestão de qualidade",
+      "tarefa": "Estruturar demanda de uma unidade",
+      "entradas": "Relato da unidade e formulário de requisitos",
+      "saida": "Registro com problema, impacto, evidências e lacunas",
+      "criterio": "Separar dado informado de dado ausente; não presumir causa técnica.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-classificacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C15"
+      ],
+      "regra_configuracao": "Usar esquema de campos e taxonomia fornecidos; preservar não informado.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://aegea.gupy.io/jobs/12543626?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-aegea-2",
+      "organizacao": "Aegea Saneamento",
+      "area": "Gestão de qualidade",
+      "cargo": "Analista de engenharia Jr | gestão de qualidade",
+      "tarefa": "Preparar resumo de acompanhamento da implantação",
+      "entradas": "Cronograma e status informados pelas frentes",
+      "saida": "Lista de entregas, impedimentos e decisões pendentes",
+      "criterio": "Não atribuir conclusão sem evidência nem decidir escalonamento estratégico.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-planejamento"
+      ],
+      "candidatos_sem_ranking": [
+        "C06",
+        "C03",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C17"
+      ],
+      "regra_configuracao": "Separar fatos, hipóteses e ações; não criar responsáveis ou prazos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://aegea.gupy.io/jobs/12543626?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-mrv-1",
+      "organizacao": "MRV&CO",
+      "area": "Engenharia de obras",
+      "cargo": "Engenheiro(a) Civil ou Arquiteto(a) Obras",
+      "tarefa": "Comparar consumo previsto e realizado",
+      "entradas": "Planilha de orçamento e registros de consumo",
+      "saida": "Quadro de diferenças por insumo",
+      "criterio": "Preservar unidade e etapa; não confundir compra, consumo e medição.",
+      "capacidades_ids": [
+        "CAP-calculo",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://vagas-mrveco.gupy.io/jobs/5218201?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-mrv-2",
+      "organizacao": "MRV&CO",
+      "area": "Engenharia de obras",
+      "cargo": "Engenheiro(a) Civil ou Arquiteto(a) Obras",
+      "tarefa": "Conferir completude de documentação de medição",
+      "entradas": "Boletim de medição e checklist fornecido",
+      "saida": "Pendências documentais para revisão do engenheiro",
+      "criterio": "Não aprovar medição nem atestar execução física.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C11"
+      ],
+      "regra_configuracao": "Usar matriz requisito/evidência/situação; ilegível e ausente são estados diferentes.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://vagas-mrveco.gupy.io/jobs/5218201?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-magalu_loja-1",
+      "organizacao": "Magazine Luiza",
+      "area": "Operação de loja",
+      "cargo": "Assistente de Loja",
+      "tarefa": "Conferir dados de pedido para retirada",
+      "entradas": "Pedido e checklist autorizado da loja",
+      "saida": "Lista de campos presentes e pendências",
+      "criterio": "Não liberar produto nem substituir conferência presencial de identidade.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C11"
+      ],
+      "regra_configuracao": "Usar matriz requisito/evidência/situação; ilegível e ausente são estados diferentes.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://carreiras.magazineluiza.com.br/vagas/340092-assistente-de-loja/"
+    },
+    {
+      "id": "TAR-magalu_loja-2",
+      "organizacao": "Magazine Luiza",
+      "area": "Operação de loja",
+      "cargo": "Assistente de Loja",
+      "tarefa": "Preparar resposta a uma dúvida de pós-venda",
+      "entradas": "Solicitação do cliente e política fornecida",
+      "saida": "Minuta de resposta com informações verificadas",
+      "criterio": "Não inventar garantia, reembolso ou prazo.",
+      "capacidades_ids": [
+        "CAP-redacao",
+        "CAP-busca"
+      ],
+      "candidatos_sem_ranking": [
+        "C11",
+        "C09",
+        "C08"
+      ],
+      "alternativas_condicionais": [
+        "C03"
+      ],
+      "regra_configuracao": "Restringir-se ao procedimento autorizado e à sua versão; citar trecho aplicável.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://carreiras.magazineluiza.com.br/vagas/340092-assistente-de-loja/"
+    },
+    {
+      "id": "TAR-magalu_dp-1",
+      "organizacao": "Magazine Luiza",
+      "area": "Departamento Pessoal",
+      "cargo": "Assistente de Folha de Pagamento",
+      "tarefa": "Conciliar eventos recebidos e lançados",
+      "entradas": "Base de eventos autorizados e exportação da folha",
+      "saida": "Diferenças por identificador e rubrica",
+      "criterio": "Não tratar ausência como zero nem efetuar alteração de folha.",
+      "capacidades_ids": [
+        "CAP-comparacao",
+        "CAP-calculo"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sites.google.com/magazineluiza.com.br/trilhadecarreira-corporativo/trilhas/adm-e-controle/csc-departamento-pessoal/dp-assistente"
+    },
+    {
+      "id": "TAR-magalu_dp-2",
+      "organizacao": "Magazine Luiza",
+      "area": "Departamento Pessoal",
+      "cargo": "Assistente de Folha de Pagamento",
+      "tarefa": "Estruturar chamado de dúvida sobre contracheque",
+      "entradas": "Relato do colaborador e documentos autorizados",
+      "saida": "Resumo da dúvida e informações necessárias",
+      "criterio": "Não inferir direitos ou valores sem documentação e regras.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-redacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C15"
+      ],
+      "regra_configuracao": "Usar esquema de campos e taxonomia fornecidos; preservar não informado.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sites.google.com/magazineluiza.com.br/trilhadecarreira-corporativo/trilhas/adm-e-controle/csc-departamento-pessoal/dp-assistente"
+    },
+    {
+      "id": "TAR-esm-1",
+      "organizacao": "Expresso São Miguel",
+      "area": "Inteligência de soluções",
+      "cargo": "Analista de Inteligência de Soluções JR - Corporativo",
+      "tarefa": "Apurar entregas pendentes por data de corte",
+      "entradas": "Registros de entrega, previsão e data de referência",
+      "saida": "Relação de pendências e atrasos documentados",
+      "criterio": "Não inferir causa do atraso; distinguir data ausente de entrega concluída.",
+      "capacidades_ids": [
+        "CAP-calculo",
+        "CAP-qualidade_dados"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sejaesm.gupy.io/jobs/12772147?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-esm-2",
+      "organizacao": "Expresso São Miguel",
+      "area": "Inteligência de soluções",
+      "cargo": "Analista de Inteligência de Soluções JR - Corporativo",
+      "tarefa": "Identificar inconsistências em base operacional",
+      "entradas": "Extrato operacional e regras de preenchimento",
+      "saida": "Relatório de duplicidades e campos inválidos",
+      "criterio": "Preservar registros originais e apresentar as chaves afetadas.",
+      "capacidades_ids": [
+        "CAP-qualidade_dados",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sejaesm.gupy.io/jobs/12772147?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-accor-1",
+      "organizacao": "Accor — Novotel São Paulo Jardins",
+      "area": "Recepção",
+      "cargo": "Recepcionista Tournant Bilíngue",
+      "tarefa": "Redigir resposta bilíngue sobre uma reserva",
+      "entradas": "Mensagem do hóspede e dados/políticas fornecidos",
+      "saida": "Minuta de resposta em inglês ou português",
+      "criterio": "Manter datas e valores; indicar perguntas sem resposta documental.",
+      "capacidades_ids": [
+        "CAP-redacao",
+        "CAP-extracao",
+        "CAP-traducao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C10"
+      ],
+      "regra_configuracao": "Preservar datas, valores, nomes e intenção nas duas línguas.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://careers.accor.com/br/pt/job/recepcionista-tournant-bilingue-in-novotel-sao-paulo-jardins-sao-paulo-brazil-jid-89253"
+    },
+    {
+      "id": "TAR-accor-2",
+      "organizacao": "Accor — Novotel São Paulo Jardins",
+      "area": "Recepção",
+      "cargo": "Recepcionista Tournant Bilíngue",
+      "tarefa": "Conferir campos da reserva para atendimento",
+      "entradas": "Registro da reserva e checklist fornecido",
+      "saida": "Lista de campos ausentes ou conflitantes",
+      "criterio": "Não confirmar disponibilidade nem alterar reserva sem sistema autorizado.",
+      "capacidades_ids": [
+        "CAP-comparacao",
+        "CAP-qualidade_dados"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://careers.accor.com/br/pt/job/recepcionista-tournant-bilingue-in-novotel-sao-paulo-jardins-sao-paulo-brazil-jid-89253"
+    },
+    {
+      "id": "TAR-totvs-1",
+      "organizacao": "TOTVS",
+      "area": "Suporte técnico",
+      "cargo": "Analista de Suporte Técnico Pleno | iPaaS",
+      "tarefa": "Extrair informações de um chamado",
+      "entradas": "Relato do cliente e evidências anexadas ao caso",
+      "saida": "Chamado estruturado e lista de dados faltantes",
+      "criterio": "Não declarar causa raiz sem evidência nem executar correções.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-classificacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C15"
+      ],
+      "regra_configuracao": "Usar esquema de campos e taxonomia fornecidos; preservar não informado.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://atracaodetalentos.totvs.app/vempratotvs/11951/suporte-analista-de-suporte-tecnico-pleno-ipaas-remoto"
+    },
+    {
+      "id": "TAR-totvs-2",
+      "organizacao": "TOTVS",
+      "area": "Suporte técnico",
+      "cargo": "Analista de Suporte Técnico Pleno | iPaaS",
+      "tarefa": "Preparar artigo de solução a partir de caso resolvido",
+      "entradas": "Registro de caso e solução validada",
+      "saida": "Minuta de artigo de conhecimento",
+      "criterio": "Distinguir procedimento confirmado de sugestão; remover dados pessoais.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-redacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C41"
+      ],
+      "regra_configuracao": "Usar conteúdo aprovado, público, tom e restrições; não inventar fatos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://atracaodetalentos.totvs.app/vempratotvs/11951/suporte-analista-de-suporte-tecnico-pleno-ipaas-remoto"
+    },
+    {
+      "id": "TAR-sicredi-1",
+      "organizacao": "Sicredi",
+      "area": "Dados de Soluções de Crédito e Negócios",
+      "cargo": "Analista de Dados - Foco em Soluções de Crédito e Negócios",
+      "tarefa": "Calcular indicador segundo definição fornecida",
+      "entradas": "Tabela agregada e definição explícita de numerador e denominador",
+      "saida": "Indicador por grupo com denominadores e exceções",
+      "criterio": "Tratar denominador zero como não calculável; não tomar decisão de crédito individual.",
+      "capacidades_ids": [
+        "CAP-calculo",
+        "CAP-qualidade_dados"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sicredi.gupy.io/jobs/12434575"
+    },
+    {
+      "id": "TAR-sicredi-2",
+      "organizacao": "Sicredi",
+      "area": "Dados de Soluções de Crédito e Negócios",
+      "cargo": "Analista de Dados - Foco em Soluções de Crédito e Negócios",
+      "tarefa": "Resumir variação de indicadores",
+      "entradas": "Séries agregadas e notas explicativas fornecidas",
+      "saida": "Resumo descritivo com limitações",
+      "criterio": "Não converter correlação em causalidade nem inferir dados individuais.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sicredi.gupy.io/jobs/12434575"
+    },
+    {
+      "id": "TAR-quintoandar-1",
+      "organizacao": "Grupo QuintoAndar",
+      "area": "Business Operations — BizOps",
+      "cargo": "Business Operations Specialist",
+      "tarefa": "Organizar hipóteses para uma variação de métrica",
+      "entradas": "Série de indicadores e contexto fornecido",
+      "saida": "Hipóteses e evidências necessárias para testá-las",
+      "criterio": "Separar hipóteses de conclusões e não afirmar causa raiz.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-planejamento"
+      ],
+      "candidatos_sem_ranking": [
+        "C06",
+        "C03",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C17"
+      ],
+      "regra_configuracao": "Separar fatos, hipóteses e ações; não criar responsáveis ou prazos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://job-boards.greenhouse.io/quintoandar/jobs/4429078009"
+    },
+    {
+      "id": "TAR-quintoandar-2",
+      "organizacao": "Grupo QuintoAndar",
+      "area": "Business Operations — BizOps",
+      "cargo": "Business Operations Specialist",
+      "tarefa": "Consolidar plano de ação de uma iniciativa",
+      "entradas": "Registro de reunião e decisões explícitas",
+      "saida": "Ações, responsáveis informados e prazos documentados",
+      "criterio": "Usar não informado quando faltar responsável ou prazo.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-planejamento"
+      ],
+      "candidatos_sem_ranking": [
+        "C06",
+        "C03",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C17"
+      ],
+      "regra_configuracao": "Separar fatos, hipóteses e ações; não criar responsáveis ou prazos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://job-boards.greenhouse.io/quintoandar/jobs/4429078009"
+    },
+    {
+      "id": "TAR-cadastra-1",
+      "organizacao": "Cadastra",
+      "area": "Client Services",
+      "cargo": "Account Analyst Pleno",
+      "tarefa": "Extrair ações de uma reunião de conta",
+      "entradas": "Notas ou transcrição autorizada",
+      "saida": "Ações com responsável e prazo apenas quando explícitos",
+      "criterio": "Não transformar sugestão em decisão nem atribuir responsabilidade não declarada.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-sintese"
+      ],
+      "candidatos_sem_ranking": [
+        "C11",
+        "C05",
+        "C03"
+      ],
+      "alternativas_condicionais": [
+        "C10"
+      ],
+      "regra_configuracao": "Citar fatos e distinguir proposta, decisão e pendência.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://cadastra.gupy.io/jobs/12470271?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-cadastra-2",
+      "organizacao": "Cadastra",
+      "area": "Client Services",
+      "cargo": "Account Analyst Pleno",
+      "tarefa": "Conferir pendências do backlog da conta",
+      "entradas": "Backlog, responsáveis e datas fornecidos",
+      "saida": "Lista de itens vencidos ou sem informação",
+      "criterio": "Não alterar prioridades acordadas; explicitar critério de ordenação proposto.",
+      "capacidades_ids": [
+        "CAP-comparacao",
+        "CAP-planejamento"
+      ],
+      "candidatos_sem_ranking": [
+        "C06",
+        "C03",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C17"
+      ],
+      "regra_configuracao": "Separar fatos, hipóteses e ações; não criar responsáveis ou prazos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://cadastra.gupy.io/jobs/12470271?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-localiza-1",
+      "organizacao": "Localiza&Co",
+      "area": "Marketing, Dados e Tecnologia",
+      "cargo": "Analista de Dados Pleno (MarTech / Marketing Data)",
+      "tarefa": "Detectar eventos duplicados ou incompletos",
+      "entradas": "Eventos sintéticos e contrato de campos",
+      "saida": "Lista de IDs duplicados e campos ausentes",
+      "criterio": "Não alterar a base original nem ativar perfis de clientes.",
+      "capacidades_ids": [
+        "CAP-qualidade_dados",
+        "CAP-codigo"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://localiza.gupy.io/jobs/12444066?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-localiza-2",
+      "organizacao": "Localiza&Co",
+      "area": "Marketing, Dados e Tecnologia",
+      "cargo": "Analista de Dados Pleno (MarTech / Marketing Data)",
+      "tarefa": "Documentar transformação de uma tabela",
+      "entradas": "Código ou especificação de transformação fornecida",
+      "saida": "Dicionário de origem, destino e regras",
+      "criterio": "Não inventar campos ou linhagem não demonstrada.",
+      "capacidades_ids": [
+        "CAP-codigo",
+        "CAP-sintese"
+      ],
+      "candidatos_sem_ranking": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C15"
+      ],
+      "regra_configuracao": "Analisar apenas código/especificação fornecidos; executar somente caso pertinente em ambiente isolado.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://localiza.gupy.io/jobs/12444066?jobBoardSource=gupy_public_page"
+    },
+    {
+      "id": "TAR-inss-1",
+      "organizacao": "Instituto Nacional do Seguro Social — INSS",
+      "area": "Tramitação administrativa",
+      "cargo": "Técnico do Seguro Social",
+      "tarefa": "Conferir documentos contra checklist fornecido",
+      "entradas": "Lista de documentos recebidos e checklist do caso",
+      "saida": "Itens presentes, ausentes e ilegíveis",
+      "criterio": "Não criar exigência legal nem decidir concessão ou indeferimento.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C11"
+      ],
+      "regra_configuracao": "Usar matriz requisito/evidência/situação; ilegível e ausente são estados diferentes.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://legis.senado.gov.br/norma/584707/publicacao/15624777"
+    },
+    {
+      "id": "TAR-inss-2",
+      "organizacao": "Instituto Nacional do Seguro Social — INSS",
+      "area": "Tramitação administrativa",
+      "cargo": "Técnico do Seguro Social",
+      "tarefa": "Preparar resumo de tramitação",
+      "entradas": "Histórico documental com datas e eventos",
+      "saida": "Linha do tempo com lacunas explícitas",
+      "criterio": "Não presumir eventos, prazos legais ou situação de benefício.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C11",
+        "C05",
+        "C03"
+      ],
+      "alternativas_condicionais": [
+        "C10"
+      ],
+      "regra_configuracao": "Citar fatos e distinguir proposta, decisão e pendência.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://legis.senado.gov.br/norma/584707/publicacao/15624777"
+    },
+    {
+      "id": "TAR-ufes-1",
+      "organizacao": "Universidade Federal do Espírito Santo — UFES",
+      "area": "Apoio administrativo em gestão de pessoas",
+      "cargo": "Assistente em Administração",
+      "tarefa": "Conferir completude de registros de frequência",
+      "entradas": "Planilha de frequência e campos exigidos no caso",
+      "saida": "Lista de registros incompletos para conferência",
+      "criterio": "Não classificar ausência como falta nem aplicar regras trabalhistas de outra organização.",
+      "capacidades_ids": [
+        "CAP-qualidade_dados",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://progep.ufes.br/cargo-d-assitente-em-administra%C3%A7%C3%A3o"
+    },
+    {
+      "id": "TAR-ufes-2",
+      "organizacao": "Universidade Federal do Espírito Santo — UFES",
+      "area": "Apoio administrativo em gestão de pessoas",
+      "cargo": "Assistente em Administração",
+      "tarefa": "Preparar resposta baseada em procedimento interno fornecido",
+      "entradas": "Pergunta de servidor e procedimento autorizado",
+      "saida": "Minuta com trechos de referência e lacunas",
+      "criterio": "Não misturar regimes de contratação nem criar interpretação jurídica.",
+      "capacidades_ids": [
+        "CAP-busca",
+        "CAP-redacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C11",
+        "C09",
+        "C08"
+      ],
+      "alternativas_condicionais": [
+        "C03"
+      ],
+      "regra_configuracao": "Restringir-se ao procedimento autorizado e à sua versão; citar trecho aplicável.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://progep.ufes.br/cargo-d-assitente-em-administra%C3%A7%C3%A3o"
+    },
+    {
+      "id": "TAR-hubrasil-1",
+      "organizacao": "HU Brasil / Ebserh — HDT-UFNT",
+      "area": "Apoio administrativo hospitalar",
+      "cargo": "Assistente Administrativo",
+      "tarefa": "Conferir formulário administrativo",
+      "entradas": "Formulário sintético e requisitos administrativos fornecidos",
+      "saida": "Lista de campos ausentes ou inconsistentes",
+      "criterio": "Não analisar diagnóstico, prescrever conduta ou expor dados de pacientes.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "alternativas_condicionais": [
+        "C11"
+      ],
+      "regra_configuracao": "Usar matriz requisito/evidência/situação; ilegível e ausente são estados diferentes.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://www.gov.br/hubrasil/pt-br/hospitais-universitarios/regiao-norte/hdt-ufnt/acesso-a-informacao/servidores/atribuicoes-de-cargos/atribuicoes-dos-cargos"
+    },
+    {
+      "id": "TAR-hubrasil-2",
+      "organizacao": "HU Brasil / Ebserh — HDT-UFNT",
+      "area": "Apoio administrativo hospitalar",
+      "cargo": "Assistente Administrativo",
+      "tarefa": "Resumir solicitação de fornecedor",
+      "entradas": "Mensagem e registros administrativos autorizados",
+      "saida": "Resumo e encaminhamento proposto para revisão",
+      "criterio": "Não autorizar compra, pagamento ou acesso a prontuário.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-classificacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C15"
+      ],
+      "regra_configuracao": "Usar esquema de campos e taxonomia fornecidos; preservar não informado.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://www.gov.br/hubrasil/pt-br/hospitais-universitarios/regiao-norte/hdt-ufnt/acesso-a-informacao/servidores/atribuicoes-de-cargos/atribuicoes-dos-cargos"
+    },
+    {
+      "id": "TAR-sesc-1",
+      "organizacao": "Sesc Santa Catarina",
+      "area": "Atividades físicas",
+      "cargo": "Instrutor de Atividades Físicas - Musculação e Ginástica",
+      "tarefa": "Consolidar frequência das turmas",
+      "entradas": "Listas sintéticas de presença e identificadores pseudônimos",
+      "saida": "Totais e inconsistências de presença por turma",
+      "criterio": "Não avaliar aptidão física nem prescrever exercícios.",
+      "capacidades_ids": [
+        "CAP-calculo",
+        "CAP-qualidade_dados"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Fornecer tabelas com chaves, unidades, períodos e regras; exigir execução e trilha de cálculo.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sescsc.enlizt.me/vagas/instrutor_de_atividades_fisicas_-_tmf_e_ginastica_-sao_joao_batista--091026"
+    },
+    {
+      "id": "TAR-sesc-2",
+      "organizacao": "Sesc Santa Catarina",
+      "area": "Atividades físicas",
+      "cargo": "Instrutor de Atividades Físicas - Musculação e Ginástica",
+      "tarefa": "Organizar relatório de atividades realizadas",
+      "entradas": "Registros do instrutor e modelo fornecido",
+      "saida": "Minuta de relatório com evidência de cada atividade",
+      "criterio": "Não inventar evolução individual nem avaliação clínica.",
+      "capacidades_ids": [
+        "CAP-sintese",
+        "CAP-redacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C41"
+      ],
+      "regra_configuracao": "Usar conteúdo aprovado, público, tom e restrições; não inventar fatos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://sescsc.enlizt.me/vagas/instrutor_de_atividades_fisicas_-_tmf_e_ginastica_-sao_joao_batista--091026"
+    },
+    {
+      "id": "TAR-ethos-1",
+      "organizacao": "Instituto Ethos",
+      "area": "Captação de Recursos e Relacionamento",
+      "cargo": "Analista de Captação de Recursos e Relacionamento",
+      "tarefa": "Consolidar pendências de relacionamento",
+      "entradas": "Registros sintéticos de CRM e datas de acompanhamento",
+      "saida": "Lista de contatos e providências documentadas",
+      "criterio": "Não enriquecer perfis com dados externos nem disparar mensagens.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-comparacao"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://www.ethos.org.br/wp-content/uploads/2022/09/Instituto-Ethos-abre-vaga-para-Analista-de-Captacao-de-Recursos-e-Relacionamento.pdf"
+    },
+    {
+      "id": "TAR-ethos-2",
+      "organizacao": "Instituto Ethos",
+      "area": "Captação de Recursos e Relacionamento",
+      "cargo": "Analista de Captação de Recursos e Relacionamento",
+      "tarefa": "Preparar minuta de acompanhamento",
+      "entradas": "Histórico autorizado e objetivo aprovado do contato",
+      "saida": "Minuta individual para revisão",
+      "criterio": "Não prometer benefícios, resultados ou condições não aprovados.",
+      "capacidades_ids": [
+        "CAP-redacao",
+        "CAP-sintese"
+      ],
+      "candidatos_sem_ranking": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "alternativas_condicionais": [
+        "C42",
+        "C41"
+      ],
+      "regra_configuracao": "Usar conteúdo aprovado, público, tom e restrições; não inventar fatos.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://www.ethos.org.br/wp-content/uploads/2022/09/Instituto-Ethos-abre-vaga-para-Analista-de-Captacao-de-Recursos-e-Relacionamento.pdf"
+    },
+    {
+      "id": "TAR-unhabitat-1",
+      "organizacao": "ONU-Habitat — Escritório Brasil",
+      "area": "Apoio administrativo a projetos",
+      "cargo": "Administrative Assistant",
+      "tarefa": "Preparar registro de decisões de reunião",
+      "entradas": "Notas autorizadas e modelo de ata",
+      "saida": "Minuta de decisões, responsáveis e pendências",
+      "criterio": "Não atribuir aprovação institucional a propostas ainda não decididas.",
+      "capacidades_ids": [
+        "CAP-extracao",
+        "CAP-sintese"
+      ],
+      "candidatos_sem_ranking": [
+        "C11",
+        "C05",
+        "C03"
+      ],
+      "alternativas_condicionais": [
+        "C10"
+      ],
+      "regra_configuracao": "Citar fatos e distinguir proposta, decisão e pendência.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://www.impactpool.org/jobs/1198739"
+    },
+    {
+      "id": "TAR-unhabitat-2",
+      "organizacao": "ONU-Habitat — Escritório Brasil",
+      "area": "Apoio administrativo a projetos",
+      "cargo": "Administrative Assistant",
+      "tarefa": "Conferir inventário administrativo",
+      "entradas": "Listagem sintética de bens e registros de movimentação",
+      "saida": "Divergências documentais por identificador",
+      "criterio": "Não concluir extravio nem autorizar baixa de patrimônio.",
+      "capacidades_ids": [
+        "CAP-comparacao",
+        "CAP-qualidade_dados"
+      ],
+      "candidatos_sem_ranking": [
+        "C02",
+        "C07",
+        "C12"
+      ],
+      "alternativas_condicionais": [
+        "C43"
+      ],
+      "regra_configuracao": "Preservar a base original; localizar IDs afetados e regra de validação.",
+      "status": "tarefa_proposta_validacao_organizacional_pendente",
+      "fonte_contexto": "https://www.impactpool.org/jobs/1198739"
+    }
+  ],
+  "configuracoes": [
+    {
+      "id": "C01",
+      "aplicacao_id": "APP-chatgpt",
+      "modelo_id": "M001",
+      "modo": "Chat — GPT-6 Sol High",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar GPT-6 Sol e High quando expostos.",
+        "Anexar fontes e modelo de saída.",
+        "Pedir referências e lacunas; revisar a minuta."
+      ],
+      "fontes_ids": [
+        "S01",
+        "S52",
+        "S53"
+      ],
+      "limites": "Não presumir que High execute código; usar C02 para cálculo tabular verificável.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C02",
+      "aplicacao_id": "APP-chatgpt",
+      "modelo_id": "M003",
+      "modo": "Work — análise de dados",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "execucao_codigo",
+        "arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Abrir Work com GPT-6.1 Sol.",
+        "Anexar CSV/XLSX e regras de cálculo.",
+        "Solicitar execução, script, contagens e arquivo de divergências."
+      ],
+      "fontes_ids": [
+        "S02",
+        "S52"
+      ],
+      "limites": "Se execução não ocorrer, resultado numérico não passa pelo critério de auditabilidade.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C03",
+      "aplicacao_id": "APP-chatgpt",
+      "modelo_id": "M003",
+      "modo": "Work — documentos e entregáveis",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "criacao_arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Abrir Work e anexar documentos legíveis.",
+        "Fornecer contrato de saída e critérios.",
+        "Solicitar entrega com evidências por página/linha."
+      ],
+      "fontes_ids": [
+        "S02",
+        "S52",
+        "S53"
+      ],
+      "limites": "PDF escaneado exige conferir extração antes de comparar.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C04",
+      "aplicacao_id": "APP-chatgpt",
+      "modelo_id": null,
+      "modo": "Pesquisa aprofundada disponível na plataforma",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "busca_web",
+        "citacoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Definir pergunta, período e fontes prioritárias.",
+        "Selecionar pesquisa aprofundada quando habilitada.",
+        "Verificar alegações no documento original."
+      ],
+      "fontes_ids": [
+        "S53"
+      ],
+      "limites": "Modelo interno não fixado; não usar web para preencher fatos privados ausentes.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C05",
+      "aplicacao_id": "APP-claude",
+      "modelo_id": "M005",
+      "modo": "Conversa — Sonnet 5.5",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Sonnet 5.5.",
+        "Anexar fontes e especificar tom e limites.",
+        "Solicitar minuta e referências."
+      ],
+      "fontes_ids": [
+        "S09",
+        "S54"
+      ],
+      "limites": "Sem benchmark local; não afirmar superioridade de escrita.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C06",
+      "aplicacao_id": "APP-claude",
+      "modelo_id": "M006",
+      "modo": "Conversa — Opus 5.5",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Opus 5.5.",
+        "Entregar fontes e matriz de critérios.",
+        "Pedir conflitos, lacunas e conclusão limitada ao escopo."
+      ],
+      "fontes_ids": [
+        "S09",
+        "S54"
+      ],
+      "limites": "Mais capacidade anunciada não garante ganho em tarefa simples.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C07",
+      "aplicacao_id": "APP-claude",
+      "modelo_id": "M005",
+      "modo": "Sonnet 5.5 — cálculo e arquivos",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "execucao_codigo",
+        "criacao_arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Habilitar Create and edit files quando necessário.",
+        "Anexar tabelas e regras.",
+        "Pedir código executado, verificações e arquivo de saída."
+      ],
+      "fontes_ids": [
+        "S09",
+        "S54"
+      ],
+      "limites": "Separar ambiente de cálculo de conectores; usar apenas os dados do caso.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C08",
+      "aplicacao_id": "APP-claude",
+      "modelo_id": "M006",
+      "modo": "Opus 5.5 — procedimento reutilizável",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "skills",
+        "criacao_arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Organizar instruções de procedimento e modelo de saída.",
+        "Usar projeto ou skill suportada.",
+        "Registrar versão das instruções e verificar ativação no caso."
+      ],
+      "fontes_ids": [
+        "S09",
+        "S54",
+        "S55"
+      ],
+      "limites": "Skill não comprova treinamento setorial nem elimina validação.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C09",
+      "aplicacao_id": "APP-gemini",
+      "modelo_id": "M010",
+      "modo": "Gem — procedimento com fontes",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "gems",
+        "arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Criar Gem com escopo e regras.",
+        "Adicionar procedimento autorizado ao conhecimento.",
+        "Solicitar citação da regra utilizada e perguntas para lacunas."
+      ],
+      "fontes_ids": [
+        "S10",
+        "S56",
+        "S57"
+      ],
+      "limites": "Gems não equivalem a execução de código; não recomendar cálculo exato sem ferramenta verificável.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C10",
+      "aplicacao_id": "APP-gemini",
+      "modelo_id": "M009",
+      "modo": "Gemini Argon — análise de documentos",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "raciocinio"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Argon e nível alto, quando exibidos.",
+        "Anexar arquivos e definir recorte.",
+        "Pedir matriz e referências de cada afirmação."
+      ],
+      "fontes_ids": [
+        "S10",
+        "S56"
+      ],
+      "limites": "Família/versão técnica não fixa; para grandes arquivos, verificar cobertura.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C11",
+      "aplicacao_id": "APP-notebook",
+      "modelo_id": null,
+      "modo": "Chat com fontes selecionadas",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "fontes_selecionadas",
+        "citacoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Criar notebook com documentos autorizados.",
+        "Selecionar somente fontes pertinentes e versões vigentes.",
+        "Pedir resposta com citações; abrir cada trecho usado."
+      ],
+      "fontes_ids": [
+        "S58"
+      ],
+      "limites": "Configuração delimitada à consulta documental; recursos agentivos experimentais ficam separados.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C12",
+      "aplicacao_id": "APP-copilot",
+      "modelo_id": null,
+      "modo": "Analyst",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "analise_dados",
+        "arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Abrir Analyst em Agents.",
+        "Anexar tabelas e regra do indicador.",
+        "Solicitar passos verificáveis, reconciliação e exportação da tabela."
+      ],
+      "fontes_ids": [
+        "S13"
+      ],
+      "limites": "Motor não exposto; exigir comprovação do cálculo na saída, sem presumir Python específico nesta interface.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C13",
+      "aplicacao_id": "APP-copilot",
+      "modelo_id": null,
+      "modo": "Researcher",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "busca_web",
+        "fontes_autorizadas",
+        "citacoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Definir fontes de trabalho ou web.",
+        "Entregar pergunta e data de corte.",
+        "Revisar relatório e referências."
+      ],
+      "fontes_ids": [
+        "S59"
+      ],
+      "limites": "Não confundir com Copilot Chat genérico; modelo interno não fixado.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C14",
+      "aplicacao_id": "APP-perplexity",
+      "modelo_id": null,
+      "modo": "Research",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "busca_web",
+        "citacoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Definir questão e período.",
+        "Usar Research e especificar fontes primárias.",
+        "Abrir referências para verificar as conclusões."
+      ],
+      "fontes_ids": [
+        "S17",
+        "S62"
+      ],
+      "limites": "Orquestração automática; não atribuir a resposta a um modelo parceiro específico.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C15",
+      "aplicacao_id": "APP-deepseek",
+      "modelo_id": "M013",
+      "modo": "Chat — raciocínio",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "chat",
+        "arquivos_se_disponiveis"
+      ],
+      "passos_de_uso_propostos": [
+        "Registrar versão exibida.",
+        "Colar texto ou anexar arquivo aceito.",
+        "Pedir evidências e revisar um caso antes de ampliar."
+      ],
+      "fontes_ids": [
+        "S18"
+      ],
+      "limites": "Ferramentas específicas do app não completamente mapeadas; não é candidato principal para cálculo auditável.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C16",
+      "aplicacao_id": "APP-qwen",
+      "modelo_id": "M014",
+      "modo": "Chat multimodal",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "chat",
+        "arquivos_se_disponiveis"
+      ],
+      "passos_de_uso_propostos": [
+        "Confirmar modelo do seletor.",
+        "Anexar material compatível.",
+        "Pedir extração estruturada e conferir com o original."
+      ],
+      "fontes_ids": [
+        "S19"
+      ],
+      "limites": "Leitura direta da documentação incompleta; confirmar versão e ferramenta.",
+      "status": "condicional_documentacao_parcial",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C17",
+      "aplicacao_id": "APP-mistral",
+      "modelo_id": "M015",
+      "modo": "Vibe Work — think",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Abrir interface unificada.",
+        "Selecionar think e fornecer fontes.",
+        "Usar skill se disponível e inspecionar entrega."
+      ],
+      "fontes_ids": [
+        "S63"
+      ],
+      "limites": "Não fixar versão de modelo; alguns ambientes ainda podem estar em migração.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C18",
+      "aplicacao_id": "APP-grok",
+      "modelo_id": null,
+      "modo": "Chat — versão a confirmar",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "chat"
+      ],
+      "passos_de_uso_propostos": [
+        "Registrar modelo realmente exibido.",
+        "Usar um caso de texto sem dados sensíveis.",
+        "Conferir fatos e ferramentas antes de adoção."
+      ],
+      "fontes_ids": [
+        "S22",
+        "S23"
+      ],
+      "limites": "Grok 4.7 na API não comprova acesso no chat.",
+      "status": "condicional_confirmacao_modelo",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C19",
+      "aplicacao_id": "APP-meta",
+      "modelo_id": null,
+      "modo": "Meta AI — conversa",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "chat"
+      ],
+      "passos_de_uso_propostos": [
+        "Usar material não sensível no chat.",
+        "Definir objetivo e público.",
+        "Revisar resultado e registrar versão se informada."
+      ],
+      "fontes_ids": [
+        "S24"
+      ],
+      "limites": "Não inferir motor atual a partir do anúncio histórico.",
+      "status": "exploratorio",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C20",
+      "aplicacao_id": "APP-canva",
+      "modelo_id": "M019",
+      "modo": "Canva AI — design editável",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "editor_design",
+        "referencias"
+      ],
+      "passos_de_uso_propostos": [
+        "Fornecer texto aprovado e identidade visual.",
+        "Pedir design com elementos editáveis.",
+        "Revisar texto, imagens e exportação."
+      ],
+      "fontes_ids": [
+        "S26",
+        "S27"
+      ],
+      "limites": "Craft/Brush podem atuar internamente; não atribuir toda entrega a um motor único.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C21",
+      "aplicacao_id": "APP-gamma",
+      "modelo_id": null,
+      "modo": "Gamma Agent — Plan",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "editor_apresentacao",
+        "exportacao"
+      ],
+      "passos_de_uso_propostos": [
+        "Anexar conteúdo aprovado.",
+        "Revisar plano de slides antes de gerar.",
+        "Exportar PPTX e conferir editabilidade e conteúdo."
+      ],
+      "fontes_ids": [
+        "S64",
+        "S65"
+      ],
+      "limites": "Evitar Image slides quando for preciso editar texto individualmente; sem exportação DOCX.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C22",
+      "aplicacao_id": "APP-chatgpt",
+      "modelo_id": "M022",
+      "modo": "Imagens — criação e edição",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_imagem",
+        "referencias"
+      ],
+      "passos_de_uso_propostos": [
+        "Anexar referências autorizadas e briefing.",
+        "Especificar proporção, texto exato e o que preservar.",
+        "Inspecionar cada revisão e exportar."
+      ],
+      "fontes_ids": [
+        "S29"
+      ],
+      "limites": "Não fixar Sunburst/Flare com base no nome ChatGPT Imagens.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C23",
+      "aplicacao_id": "APP-firefly",
+      "modelo_id": "M025",
+      "modo": "Firefly Image 5 — web",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_imagem",
+        "editor"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Image 5.",
+        "Configurar proporção e referências compatíveis.",
+        "Gerar e revisar detalhes e texto."
+      ],
+      "fontes_ids": [
+        "S66",
+        "S67"
+      ],
+      "limites": "Edição e geração podem ter controles distintos por superfície.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C24",
+      "aplicacao_id": "APP-midjourney",
+      "modelo_id": "M029",
+      "modo": "Imagine — V8.2",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_imagem",
+        "personalizacao"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar V8.2.",
+        "Definir composição e referência estética.",
+        "Comparar variações e usar editor compatível se necessário."
+      ],
+      "fontes_ids": [
+        "S33"
+      ],
+      "limites": "Personalização pode alterar estética; registrar parâmetros e referência.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C25",
+      "aplicacao_id": "APP-ideogram",
+      "modelo_id": "M031",
+      "modo": "Precise Edit — 4.5",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "edicao_imagem"
+      ],
+      "passos_de_uso_propostos": [
+        "Enviar imagem e área/alteração desejada.",
+        "Selecionar qualidade disponível.",
+        "Verificar regiões preservadas e texto após cada edição."
+      ],
+      "fontes_ids": [
+        "S34"
+      ],
+      "limites": "Alegação de preservação não substitui conferência local.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C26",
+      "aplicacao_id": "APP-flow",
+      "modelo_id": "M035",
+      "modo": "Veo 3.1 Quality",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_video"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Quality.",
+        "Usar texto ou quadros aceitos.",
+        "Fixar duração/proporção e revisar continuidade."
+      ],
+      "fontes_ids": [
+        "S36"
+      ],
+      "limites": "Não usar esta configuração para Ingredients, extensão ou edição video-to-video.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C27",
+      "aplicacao_id": "APP-flow",
+      "modelo_id": "M034",
+      "modo": "Veo 3.1 Fast — referências",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_video",
+        "referencias"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Fast.",
+        "Usar referências compatíveis e duração permitida.",
+        "Revisar movimento e identidade dos elementos."
+      ],
+      "fontes_ids": [
+        "S36"
+      ],
+      "limites": "Extensão e edição não suportadas nesta rota.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C28",
+      "aplicacao_id": "APP-flow",
+      "modelo_id": "M036",
+      "modo": "Gemini Omni Flash 1.1 — edição",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "edicao_video",
+        "referencias"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Omni.",
+        "Enviar clipe compatível.",
+        "Descrever alteração e verificar continuidade."
+      ],
+      "fontes_ids": [
+        "S36"
+      ],
+      "limites": "O escopo documentado limita a duração de edição; não presumir longa metragem.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C29",
+      "aplicacao_id": "APP-flow",
+      "modelo_id": "M038",
+      "modo": "Nano Banana 2.1 — imagem",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_imagem",
+        "referencias"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Nano Banana 2.1.",
+        "Fornecer briefing e referências.",
+        "Conferir conteúdo e consistência."
+      ],
+      "fontes_ids": [
+        "S36"
+      ],
+      "limites": "Geração de quadro não comprova editabilidade em camadas.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C30",
+      "aplicacao_id": "APP-runway",
+      "modelo_id": "M040",
+      "modo": "Gen-4.5 — vídeo",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_video"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Gen-4.5.",
+        "Fornecer texto ou imagem e descrever movimento.",
+        "Fixar duração, proporção e FPS permitidos."
+      ],
+      "fontes_ids": [
+        "S37"
+      ],
+      "limites": "Não usar Gen-4.5 como sinônimo de editor de vídeo existente.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C31",
+      "aplicacao_id": "APP-runway",
+      "modelo_id": "M042",
+      "modo": "Aleph 2.0 — edição",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "edicao_video"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Aleph 2.0.",
+        "Enviar vídeo e mudança solicitada.",
+        "Conferir o que foi alterado e preservado."
+      ],
+      "fontes_ids": [
+        "S38"
+      ],
+      "limites": "Elegibilidade dos arquivos e controles devem ser registrados no teste.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C32",
+      "aplicacao_id": "APP-runway",
+      "modelo_id": "M043",
+      "modo": "Act-Two — atuação",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "video_atuacao",
+        "referencia_personagem"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Act-Two.",
+        "Fornecer atuação e personagem autorizados.",
+        "Revisar expressão, movimento e sincronismo."
+      ],
+      "fontes_ids": [
+        "S38"
+      ],
+      "limites": "É transferência de atuação, distinta de apresentador gerado só por roteiro.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C33",
+      "aplicacao_id": "APP-eleven",
+      "modelo_id": "M044",
+      "modo": "Studio — narração",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "sintese_fala",
+        "dicionario_pronuncia"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Eleven v4 no projeto.",
+        "Inserir roteiro aprovado e voz autorizada.",
+        "Conferir pronúncia pt-BR e exportar áudio."
+      ],
+      "fontes_ids": [
+        "S39"
+      ],
+      "limites": "Não presumir que v4 seja o padrão; validar nomes próprios e números.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C34",
+      "aplicacao_id": "APP-suno",
+      "modelo_id": "M047",
+      "modo": "Create — v6",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_musica"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar v6.",
+        "Definir letra, estilo e duração.",
+        "Ouvir a faixa inteira e conferir briefing."
+      ],
+      "fontes_ids": [
+        "S41"
+      ],
+      "limites": "Aderência e adequação de uso devem ser verificadas; condições comerciais ficam em etapa posterior.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C35",
+      "aplicacao_id": "APP-suno",
+      "modelo_id": "M048",
+      "modo": "Create — v6-wild",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_musica"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar wild.",
+        "Definir espaço de exploração.",
+        "Comparar variações pelo briefing."
+      ],
+      "fontes_ids": [
+        "S41"
+      ],
+      "limites": "Não indicado para exigir máxima fidelidade literal ao briefing.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C36",
+      "aplicacao_id": "APP-kling",
+      "modelo_id": "M050",
+      "modo": "Kling 4.0 — vídeo",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "geracao_video",
+        "referencias"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Kling 4.0.",
+        "Fornecer storyboard e referências.",
+        "Conferir movimento, áudio e continuidade."
+      ],
+      "fontes_ids": [
+        "S43"
+      ],
+      "limites": "Não há comparação local com Veo ou Runway.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C37",
+      "aplicacao_id": "APP-heygen",
+      "modelo_id": "M052",
+      "modo": "Studio / Video Agent — Avatar V",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "avatar_video",
+        "roteiro"
+      ],
+      "passos_de_uso_propostos": [
+        "Usar avatar humano autorizado e look de vídeo.",
+        "Inserir roteiro aprovado.",
+        "Conferir pronúncia, sincronismo e representação."
+      ],
+      "fontes_ids": [
+        "S44"
+      ],
+      "limites": "Não usar Avatar V para look apenas de foto nesta documentação.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C38",
+      "aplicacao_id": "APP-heygen",
+      "modelo_id": "M053",
+      "modo": "Avatar IV — foto ou personagem",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "avatar_foto",
+        "roteiro"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Avatar IV para look de foto/personagem.",
+        "Inserir roteiro aprovado.",
+        "Conferir sincronismo e aparência."
+      ],
+      "fontes_ids": [
+        "S44"
+      ],
+      "limites": "Separar uso de pessoa real autorizada de personagem virtual.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C39",
+      "aplicacao_id": "APP-chatgpt",
+      "modelo_id": "M002",
+      "modo": "GPT-6 Astra — revisão complexa",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Astra/Pro na superfície que o exponha.",
+        "Fornecer caso e critérios.",
+        "Comparar com C01/C03 sem pressupor ganho."
+      ],
+      "fontes_ids": [
+        "S01"
+      ],
+      "limites": "Opção de investigação para dificuldade elevada; não vencedor automático.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C40",
+      "aplicacao_id": "APP-claude",
+      "modelo_id": "M008",
+      "modo": "Fable 5.1 — revisão complexa",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Fable 5.1 quando disponível.",
+        "Usar o mesmo caso e critérios.",
+        "Registrar diferenças de entrega e revisão."
+      ],
+      "fontes_ids": [
+        "S07",
+        "S54"
+      ],
+      "limites": "Não usar apenas reputação ou custo como evidência de adequação.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C41",
+      "aplicacao_id": "APP-gemini",
+      "modelo_id": "M011",
+      "modo": "Gemini Flash — conversa simples",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Flash.",
+        "Fornecer texto curto e contrato de saída.",
+        "Comparar fidelidade com a configuração mais complexa."
+      ],
+      "fontes_ids": [
+        "S10",
+        "S56"
+      ],
+      "limites": "Somente candidato para testar se um modelo mais simples basta.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C42",
+      "aplicacao_id": "APP-claude",
+      "modelo_id": "M007",
+      "modo": "Haiku 5.5 — conversa simples",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "arquivos",
+        "instrucoes"
+      ],
+      "passos_de_uso_propostos": [
+        "Selecionar Haiku 5.5.",
+        "Usar caso simples e saída curta.",
+        "Conferir extração e fidelidade."
+      ],
+      "fontes_ids": [
+        "S09",
+        "S54"
+      ],
+      "limites": "Não extrapolar resultados para documentos extensos.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C43",
+      "aplicacao_id": "APP-copilot",
+      "modelo_id": null,
+      "modo": "Copilot no Excel — análise por Python",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "excel",
+        "execucao_codigo"
+      ],
+      "passos_de_uso_propostos": [
+        "Abrir planilha estruturada no Excel.",
+        "Pedir análise no Copilot.",
+        "Inspecionar código e resultados; exportar evidências."
+      ],
+      "fontes_ids": [
+        "S60"
+      ],
+      "limites": "Suporte a dados estruturados; não equivale a análise de PDF não estruturado.",
+      "status": "candidato_documental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    },
+    {
+      "id": "C44",
+      "aplicacao_id": "APP-notebook",
+      "modelo_id": null,
+      "modo": "Recursos agentivos experimentais",
+      "versao_configuracao": "2.0-proposta",
+      "ferramentas_requeridas": [
+        "execucao_codigo",
+        "criacao_arquivos"
+      ],
+      "passos_de_uso_propostos": [
+        "Confirmar recurso experimental na interface.",
+        "Delimitar fontes e ferramentas.",
+        "Solicitar arquivo e verificar execução."
+      ],
+      "fontes_ids": [
+        "S58"
+      ],
+      "limites": "Não herdar automaticamente a restrição às fontes do chat documental.",
+      "status": "experimental",
+      "exige_programar": false,
+      "exige_api": false,
+      "parametros_api": null,
+      "modelo_observado_na_execucao": null,
+      "proficiencia_pt_br_medida": false,
+      "precos_contratacao_regiao": "adiados_por_escopo",
+      "teste_local_executado": false
+    }
+  ],
+  "aplicacoes": [
+    {
+      "id": "APP-chatgpt",
+      "nome": "ChatGPT",
+      "fornecedor_id": "FOR-openai",
+      "url_produto": "https://chatgpt.com",
+      "categoria": "generalista",
+      "superficies": [
+        "Chat",
+        "Work",
+        "Imagens"
+      ],
+      "personalizacao_documentada": "Projetos e instruções; skills em superfícies documentadas.",
+      "limites": "Não atribuir GPT-6.1 Sol ao Chat comum; não equiparar variantes API de imagem ao seletor.",
+      "adequacao_proposta": "Análise de arquivos, redação, pesquisa e entregáveis.",
+      "fontes_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S52",
+        "S53"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-claude",
+      "nome": "Claude",
+      "fornecedor_id": "FOR-anthropic",
+      "url_produto": "https://claude.ai",
+      "categoria": "generalista",
+      "superficies": [
+        "Conversa",
+        "Projetos",
+        "Skills"
+      ],
+      "personalizacao_documentada": "Instruções, arquivos de projeto e skills com execução habilitada.",
+      "limites": "Conferir criação de arquivos e modelo selecionado; resultados de testes do fabricante não são vitória local.",
+      "adequacao_proposta": "Documentos, síntese, comparação, cálculos com código e procedimentos.",
+      "fontes_ids": [
+        "S09",
+        "S54",
+        "S55"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-gemini",
+      "nome": "Gemini Apps",
+      "fornecedor_id": "FOR-google",
+      "url_produto": "https://gemini.google.com",
+      "categoria": "generalista",
+      "superficies": [
+        "Chat",
+        "Tarefas",
+        "Gems"
+      ],
+      "personalizacao_documentada": "Gems com instruções e fontes.",
+      "limites": "Arquivos grandes podem perder detalhes; seletores automáticos podem mudar o modelo.",
+      "adequacao_proposta": "Análise multimodal, redação e consulta a materiais.",
+      "fontes_ids": [
+        "S10",
+        "S56",
+        "S57"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-notebook",
+      "nome": "Gemini Notebook / NotebookLM",
+      "fornecedor_id": "FOR-google",
+      "url_produto": "https://notebooklm.google.com",
+      "categoria": "fontes",
+      "superficies": [
+        "Chat com fontes",
+        "Recursos agentivos experimentais"
+      ],
+      "personalizacao_documentada": "Notebooks com fontes selecionadas e instruções.",
+      "limites": "Modo com fontes e funções agentivas têm escopos diferentes; não presumir execução habilitada.",
+      "adequacao_proposta": "Estudo, manuais, respostas documentadas e síntese com referências.",
+      "fontes_ids": [
+        "S12",
+        "S58"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-copilot",
+      "nome": "Microsoft 365 Copilot",
+      "fornecedor_id": "FOR-microsoft",
+      "url_produto": "https://microsoft365.com",
+      "categoria": "produtividade",
+      "superficies": [
+        "Chat",
+        "Analyst",
+        "Researcher",
+        "Excel",
+        "Agent Builder"
+      ],
+      "personalizacao_documentada": "Agentes declarativos por instruções e conhecimento.",
+      "limites": "Modelo interno e disponibilidade de recursos podem variar; manter rastreabilidade do agente usado.",
+      "adequacao_proposta": "Análise tabular, pesquisa corporativa e documentos no ambiente Microsoft.",
+      "fontes_ids": [
+        "S13",
+        "S15",
+        "S59",
+        "S60"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-perplexity",
+      "nome": "Perplexity",
+      "fornecedor_id": "FOR-perplexity",
+      "url_produto": "https://perplexity.ai",
+      "categoria": "pesquisa",
+      "superficies": [
+        "Pro Search",
+        "Research",
+        "Computer / Projects"
+      ],
+      "personalizacao_documentada": "Projetos, fontes e instruções.",
+      "limites": "Research orquestra modelos; nomes da ajuda não garantem o seletor atual. Citação requer conferência.",
+      "adequacao_proposta": "Pesquisa com fontes e síntese de informação atual.",
+      "fontes_ids": [
+        "S17",
+        "S61",
+        "S62"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-deepseek",
+      "nome": "DeepSeek Chat",
+      "fornecedor_id": "FOR-deepseek",
+      "url_produto": "https://chat.deepseek.com",
+      "categoria": "generalista",
+      "superficies": [
+        "Chat"
+      ],
+      "personalizacao_documentada": "Contexto e instruções na conversa; persistência não verificada.",
+      "limites": "Documentação técnica não comprova todas as ferramentas do app.",
+      "adequacao_proposta": "Alternativa para raciocínio, texto e visão; validação local pendente.",
+      "fontes_ids": [
+        "S18"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-qwen",
+      "nome": "Qwen Chat",
+      "fornecedor_id": "FOR-alibaba-qwen",
+      "url_produto": "https://chat.qwen.ai",
+      "categoria": "generalista",
+      "superficies": [
+        "Chat"
+      ],
+      "personalizacao_documentada": "Contexto e instruções; ferramentas documentadas genericamente.",
+      "limites": "Modelo recuperado por índice; abertura direta incompleta.",
+      "adequacao_proposta": "Alternativa para texto, imagem, vídeo e raciocínio visual.",
+      "fontes_ids": [
+        "S19"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-mistral",
+      "nome": "Mistral Vibe",
+      "fornecedor_id": "FOR-mistral-ai",
+      "url_produto": "https://chat.mistral.ai",
+      "categoria": "generalista",
+      "superficies": [
+        "Work com fast/think",
+        "Chat legado"
+      ],
+      "personalizacao_documentada": "Skills invocáveis e fontes conectadas.",
+      "limites": "Work e Chat foram unificados; documentação antiga ainda descreve abas separadas. Modelo exato não fixado.",
+      "adequacao_proposta": "Pesquisa, rascunhos e rotinas com arquivos.",
+      "fontes_ids": [
+        "S20",
+        "S63"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-grok",
+      "nome": "Grok",
+      "fornecedor_id": "FOR-xai-spacexsi",
+      "url_produto": "https://grok.com",
+      "categoria": "generalista",
+      "superficies": [
+        "Chat"
+      ],
+      "personalizacao_documentada": "Instruções e contexto; configuração persistente não aprofundada.",
+      "limites": "Grok 4.7 confirmado na API; seleção no chat não revalidada.",
+      "adequacao_proposta": "Candidato exploratório para conversa e pesquisa, sujeito a comprovação de ferramentas.",
+      "fontes_ids": [
+        "S22",
+        "S23"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-meta",
+      "nome": "Meta AI",
+      "fornecedor_id": "FOR-meta",
+      "url_produto": "https://meta.ai",
+      "categoria": "generalista",
+      "superficies": [
+        "Chat",
+        "Assistência pessoal"
+      ],
+      "personalizacao_documentada": "Contexto conversacional; procedimentos empresariais não validados.",
+      "limites": "Anúncio de julho confirma Spark 1.1 à época, não a versão exata atual; não presumir equivalência com WhatsApp.",
+      "adequacao_proposta": "Conversação, planejamento e conteúdo cotidiano.",
+      "fontes_ids": [
+        "S24"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-canva",
+      "nome": "Canva AI",
+      "fornecedor_id": "FOR-canva",
+      "url_produto": "https://canva.com",
+      "categoria": "design",
+      "superficies": [
+        "Design conversacional",
+        "Editor"
+      ],
+      "personalizacao_documentada": "Instruções de marca e referências visuais.",
+      "limites": "Design editável não é o mesmo que imagem raster; recursos podem escolher modelos internamente.",
+      "adequacao_proposta": "Peças de marca, apresentações e materiais visuais editáveis.",
+      "fontes_ids": [
+        "S26",
+        "S27"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-gamma",
+      "nome": "Gamma",
+      "fornecedor_id": "FOR-gamma",
+      "url_produto": "https://gamma.app",
+      "categoria": "apresentacao",
+      "superficies": [
+        "Plan",
+        "Express",
+        "Research"
+      ],
+      "personalizacao_documentada": "Temas, modelos e documentos de referência.",
+      "limites": "PPTX não inclui slide mestre; exportação Word não suportada; imagem-slide perde editabilidade individual.",
+      "adequacao_proposta": "Apresentações e documentos visuais a partir de conteúdo aprovado.",
+      "fontes_ids": [
+        "S64",
+        "S65"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-firefly",
+      "nome": "Adobe Firefly",
+      "fornecedor_id": "FOR-adobe",
+      "url_produto": "https://firefly.adobe.com",
+      "categoria": "imagem_video",
+      "superficies": [
+        "Gerar imagem",
+        "Editar imagem",
+        "Vídeo"
+      ],
+      "personalizacao_documentada": "Referências e modelos personalizados no produto.",
+      "limites": "Controles variam por modelo e superfície; parceiros têm características próprias.",
+      "adequacao_proposta": "Geração, edição e consistência visual de marca.",
+      "fontes_ids": [
+        "S31",
+        "S66",
+        "S67"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-midjourney",
+      "nome": "Midjourney",
+      "fornecedor_id": "FOR-midjourney",
+      "url_produto": "https://midjourney.com",
+      "categoria": "imagem",
+      "superficies": [
+        "Imagine",
+        "Edit"
+      ],
+      "personalizacao_documentada": "Referências e personalização estética.",
+      "limites": "Versões e editor têm compatibilidades diferentes.",
+      "adequacao_proposta": "Exploração estética, conceitos e direção de arte.",
+      "fontes_ids": [
+        "S33"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-ideogram",
+      "nome": "Ideogram",
+      "fornecedor_id": "FOR-ideogram",
+      "url_produto": "https://ideogram.ai",
+      "categoria": "imagem",
+      "superficies": [
+        "Geração",
+        "Precise Edit"
+      ],
+      "personalizacao_documentada": "Referências e instruções de edição.",
+      "limites": "Superioridade de edição é alegação do fabricante até teste próprio.",
+      "adequacao_proposta": "Edição localizada e imagens com requisitos visuais específicos.",
+      "fontes_ids": [
+        "S34"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-flow",
+      "nome": "Google Flow",
+      "fornecedor_id": "FOR-google",
+      "url_produto": "https://labs.google/fx/tools/flow",
+      "categoria": "imagem_video",
+      "superficies": [
+        "Vídeo",
+        "Imagem",
+        "Edição"
+      ],
+      "personalizacao_documentada": "Projetos e referências visuais.",
+      "limites": "Veo Quality não aceita todos os recursos de Lite/Fast; edição de vídeo tem rota distinta.",
+      "adequacao_proposta": "Cenas, referências, edição de clipes e quadros.",
+      "fontes_ids": [
+        "S36"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-runway",
+      "nome": "Runway",
+      "fornecedor_id": "FOR-runway",
+      "url_produto": "https://app.runwayml.com",
+      "categoria": "video",
+      "superficies": [
+        "Gen-4.5",
+        "Aleph",
+        "Act-Two"
+      ],
+      "personalizacao_documentada": "Referências, cenas e controles por modelo.",
+      "limites": "Geração, edição e atuação exigem modelos diferentes; não tratar todos como Gen-4.5.",
+      "adequacao_proposta": "Vídeo generativo, transformação de clipes e animação por atuação.",
+      "fontes_ids": [
+        "S37",
+        "S38"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-eleven",
+      "nome": "ElevenCreative / ElevenLabs",
+      "fornecedor_id": "FOR-elevenlabs",
+      "url_produto": "https://elevenlabs.io",
+      "categoria": "audio",
+      "superficies": [
+        "Studio",
+        "Narração"
+      ],
+      "personalizacao_documentada": "Vozes e dicionário de pronúncia.",
+      "limites": "Modelo padrão do Studio pode ser diferente do mais recente; selecionar e registrar.",
+      "adequacao_proposta": "Narração, áudio longo e projetos com roteiro.",
+      "fontes_ids": [
+        "S39"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-suno",
+      "nome": "Suno",
+      "fornecedor_id": "FOR-suno",
+      "url_produto": "https://suno.com",
+      "categoria": "musica",
+      "superficies": [
+        "Create",
+        "Remix / Edit"
+      ],
+      "personalizacao_documentada": "Letra, estilo e modelos personalizados quando habilitados.",
+      "limites": "Wild favorece exploração e pode se afastar do briefing; não usar como garantia de fidelidade.",
+      "adequacao_proposta": "Trilhas, canções, variações e ideias musicais.",
+      "fontes_ids": [
+        "S41"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-kling",
+      "nome": "Kling AI",
+      "fornecedor_id": "FOR-kuaishou-kling",
+      "url_produto": "https://kling.ai",
+      "categoria": "imagem_video",
+      "superficies": [
+        "Canvas",
+        "Vídeo",
+        "Imagem"
+      ],
+      "personalizacao_documentada": "Referências, storyboard e organização em Canvas.",
+      "limites": "Página apresenta capacidades comerciais; testar continuidade e fidelidade.",
+      "adequacao_proposta": "Vídeos, imagens e sequências para comunicação.",
+      "fontes_ids": [
+        "S43"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    },
+    {
+      "id": "APP-heygen",
+      "nome": "HeyGen",
+      "fornecedor_id": "FOR-heygen",
+      "url_produto": "https://heygen.com",
+      "categoria": "avatar",
+      "superficies": [
+        "Studio",
+        "Video Agent"
+      ],
+      "personalizacao_documentada": "Avatar e voz autorizados.",
+      "limites": "Avatar V exige look baseado em vídeo; Avatar IV cobre looks de foto e personagens.",
+      "adequacao_proposta": "Treinamentos e comunicações com apresentador virtual.",
+      "fontes_ids": [
+        "S44"
+      ],
+      "disponibilidade_brasil": "fora_do_escopo",
+      "preco": "fora_do_escopo",
+      "teste_em_conta": false
+    }
+  ],
+  "modelos": [
+    {
+      "id": "M001",
+      "nome": "GPT-6 Sol",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Chat; níveis de esforço distintos",
+      "fontes_ids": [
+        "S01"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M002",
+      "nome": "GPT-6 Astra / GPT-6 Pro",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Raciocínio e trabalho complexo",
+      "fontes_ids": [
+        "S01"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Pro é rótulo do produto; Astra é o motor documentado.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M003",
+      "nome": "GPT-6.1 Sol",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Work e entregáveis com ferramentas",
+      "fontes_ids": [
+        "S02"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Documentado em Work, não no Chat comum.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M004",
+      "nome": "GPT-5.6 Luna",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Conversa cotidiana",
+      "fontes_ids": [
+        "S01"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Ajuda ainda indica esta versão em Free/Go; não substituir automaticamente por GPT-6 Luna.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M005",
+      "nome": "Claude Sonnet 5.5",
+      "fornecedor_id": "FOR-anthropic",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Trabalho geral e instruções",
+      "fontes_ids": [
+        "S09",
+        "S73"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M006",
+      "nome": "Claude Opus 5.5",
+      "fornecedor_id": "FOR-anthropic",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Raciocínio e tarefas complexas",
+      "fontes_ids": [
+        "S09",
+        "S74"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M007",
+      "nome": "Claude Haiku 5.5",
+      "fornecedor_id": "FOR-anthropic",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Tarefas simples e resposta rápida",
+      "fontes_ids": [
+        "S09",
+        "S72"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M008",
+      "nome": "Claude Fable 5.1",
+      "fornecedor_id": "FOR-anthropic",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Opção de maior esforço para investigar",
+      "fontes_ids": [
+        "S07"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Disponibilidade documental não equivale a melhor resultado por tarefa.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M009",
+      "nome": "Gemini Argon",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "familia_rotulo_interface",
+      "funcao_documentada": "Raciocínio profundo e tarefas",
+      "fontes_ids": [
+        "S10"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Não inferir identificador API nem versão exata apenas do seletor.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M010",
+      "nome": "Gemini Pro",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "familia_rotulo_interface",
+      "funcao_documentada": "Problemas complexos e análise",
+      "fontes_ids": [
+        "S10"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M011",
+      "nome": "Gemini Flash",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "familia_rotulo_interface",
+      "funcao_documentada": "Interação geral e resposta rápida",
+      "fontes_ids": [
+        "S10"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M012",
+      "nome": "Gemini Flash-Lite",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "familia_rotulo_interface",
+      "funcao_documentada": "Perguntas simples",
+      "fontes_ids": [
+        "S10"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M013",
+      "nome": "DeepSeek-V4.1-Flash-1017",
+      "fornecedor_id": "FOR-deepseek",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Texto, raciocínio e visão",
+      "fontes_ids": [
+        "S18"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Changelog afirma atualização simultânea da web e app.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M014",
+      "nome": "Qwen3.7-Plus",
+      "fornecedor_id": "FOR-alibaba-qwen",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Texto, imagem, vídeo e raciocínio visual",
+      "fontes_ids": [
+        "S19"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Conteúdo do índice; confirmar rótulo na execução.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M015",
+      "nome": "Família Mistral",
+      "fornecedor_id": "FOR-mistral-ai",
+      "tipo_identificacao": "familia_nao_versionada",
+      "funcao_documentada": "Produtividade e chat",
+      "fontes_ids": [
+        "S63"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Motor exato não identificado.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M016",
+      "nome": "Grok 4.6",
+      "fornecedor_id": "FOR-xai-spacexsi",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Chat e raciocínio",
+      "fontes_ids": [
+        "S22"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Referência da v1; não revalidado nesta revisão.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M017",
+      "nome": "Grok 4.7",
+      "fornecedor_id": "FOR-xai-spacexsi",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Texto, código e ferramentas",
+      "fontes_ids": [
+        "S23"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Não elegível como escolha de versão no chat nesta base.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M018",
+      "nome": "Muse Spark 1.1",
+      "fornecedor_id": "FOR-meta",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Assistência pessoal",
+      "fontes_ids": [
+        "S24"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Anúncio de julho; versão atual desconhecida.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M019",
+      "nome": "Canva Design Model",
+      "fornecedor_id": "FOR-canva",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Composição editável",
+      "fontes_ids": [
+        "S26"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M020",
+      "nome": "Canva Craft",
+      "fornecedor_id": "FOR-canva",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Geração de imagem",
+      "fontes_ids": [
+        "S27"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M021",
+      "nome": "Canva Brush",
+      "fornecedor_id": "FOR-canva",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Edição de design",
+      "fontes_ids": [
+        "S27"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Modelo integrado; não presumir seletor individual.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M022",
+      "nome": "ChatGPT Imagens 2.5",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "rotulo_produto",
+      "funcao_documentada": "Geração e edição de imagem",
+      "fontes_ids": [
+        "S29"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Motor/variante API não fixado pelo rótulo do produto.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M023",
+      "nome": "GPT-Image-2.5 Flare",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Geração e edição de imagem",
+      "fontes_ids": [
+        "S29"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M024",
+      "nome": "GPT-Image-2.5 Sunburst",
+      "fornecedor_id": "FOR-openai",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Imagem detalhada",
+      "fontes_ids": [
+        "S29"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M025",
+      "nome": "Firefly Image 5",
+      "fornecedor_id": "FOR-adobe",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Imagem",
+      "fontes_ids": [
+        "S66"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M026",
+      "nome": "Firefly Image 4",
+      "fornecedor_id": "FOR-adobe",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Imagem",
+      "fontes_ids": [
+        "S66"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M027",
+      "nome": "Firefly Image 4 Ultra",
+      "fornecedor_id": "FOR-adobe",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Imagem",
+      "fontes_ids": [
+        "S66"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M028",
+      "nome": "Firefly Video",
+      "fornecedor_id": "FOR-adobe",
+      "tipo_identificacao": "familia_nao_versionada",
+      "funcao_documentada": "Vídeo",
+      "fontes_ids": [
+        "S31"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Versão e controles a verificar.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M029",
+      "nome": "Midjourney V8.2",
+      "fornecedor_id": "FOR-midjourney",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Geração de imagem",
+      "fontes_ids": [
+        "S33"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M030",
+      "nome": "Midjourney Edit Model",
+      "fornecedor_id": "FOR-midjourney",
+      "tipo_identificacao": "familia_nao_versionada",
+      "funcao_documentada": "Edição visual",
+      "fontes_ids": [
+        "S33"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M031",
+      "nome": "Ideogram 4.5",
+      "fornecedor_id": "FOR-ideogram",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Edição localizada",
+      "fontes_ids": [
+        "S34"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M032",
+      "nome": "Ideogram 4.0",
+      "fornecedor_id": "FOR-ideogram",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Geração de imagem",
+      "fontes_ids": [
+        "S34"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M033",
+      "nome": "Veo 3.1 Lite",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Vídeo e extensão",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M034",
+      "nome": "Veo 3.1 Fast",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Vídeo por texto ou referências",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M035",
+      "nome": "Veo 3.1 Quality",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Vídeo por texto ou quadros",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Não suporta edição video-to-video nem Ingredients nesta fonte.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M036",
+      "nome": "Gemini Omni Flash 1.1",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Geração e edição de clipes",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M037",
+      "nome": "Nano Banana Pro",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "rotulo_produto",
+      "funcao_documentada": "Imagem",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M038",
+      "nome": "Nano Banana 2.1",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "rotulo_produto",
+      "funcao_documentada": "Imagem",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M039",
+      "nome": "Nano Banana 2 Lite",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "rotulo_produto",
+      "funcao_documentada": "Imagem",
+      "fontes_ids": [
+        "S36"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M040",
+      "nome": "Runway Gen-4.5",
+      "fornecedor_id": "FOR-runway",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Texto/imagem para vídeo",
+      "fontes_ids": [
+        "S37"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M041",
+      "nome": "Runway Gen-4 Turbo",
+      "fornecedor_id": "FOR-runway",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Imagem para vídeo",
+      "fontes_ids": [
+        "S38"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M042",
+      "nome": "Runway Aleph 2.0",
+      "fornecedor_id": "FOR-runway",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Edição de vídeo",
+      "fontes_ids": [
+        "S38"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M043",
+      "nome": "Runway Act-Two",
+      "fornecedor_id": "FOR-runway",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Animação por vídeo de atuação",
+      "fontes_ids": [
+        "S38"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M044",
+      "nome": "Eleven v4",
+      "fornecedor_id": "FOR-elevenlabs",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Síntese de fala",
+      "fontes_ids": [
+        "S39"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M045",
+      "nome": "Eleven v3",
+      "fornecedor_id": "FOR-elevenlabs",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Síntese de fala",
+      "fontes_ids": [
+        "S39"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M046",
+      "nome": "Eleven Multilingual v2",
+      "fornecedor_id": "FOR-elevenlabs",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Síntese de fala",
+      "fontes_ids": [
+        "S39"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Pode ser o padrão de novos projetos; confirmar seleção.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M047",
+      "nome": "Suno v6",
+      "fornecedor_id": "FOR-suno",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Geração musical",
+      "fontes_ids": [
+        "S41"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M048",
+      "nome": "Suno v6-wild",
+      "fornecedor_id": "FOR-suno",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Exploração musical",
+      "fontes_ids": [
+        "S41"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M049",
+      "nome": "Suno v6-mini",
+      "fornecedor_id": "FOR-suno",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Rascunho musical",
+      "fontes_ids": [
+        "S41"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M050",
+      "nome": "Kling 4.0",
+      "fornecedor_id": "FOR-kuaishou-kling",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Vídeo audiovisual",
+      "fontes_ids": [
+        "S43"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M051",
+      "nome": "Kling Image 3.0",
+      "fornecedor_id": "FOR-kuaishou-kling",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Imagem e séries",
+      "fontes_ids": [
+        "S43"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M052",
+      "nome": "Avatar V",
+      "fornecedor_id": "FOR-heygen",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Apresentador humano por referência de vídeo",
+      "fontes_ids": [
+        "S44"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M053",
+      "nome": "Avatar IV",
+      "fornecedor_id": "FOR-heygen",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Avatar de foto ou personagem",
+      "fontes_ids": [
+        "S44"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M054",
+      "nome": "Gemini 4 Carbon",
+      "fornecedor_id": "FOR-google",
+      "tipo_identificacao": "modelo_nomeado",
+      "funcao_documentada": "Referência externa de raciocínio",
+      "fontes_ids": [
+        "S46",
+        "S50"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": "Fora da shortlist de chat; benchmark não demonstra acesso comum.",
+      "desempenho_nas_44_tarefas": null
+    },
+    {
+      "id": "M055",
+      "nome": "Sonar",
+      "fornecedor_id": "FOR-perplexity",
+      "tipo_identificacao": "familia_nao_versionada",
+      "funcao_documentada": "Pesquisa com fontes",
+      "fontes_ids": [
+        "S17"
+      ],
+      "data_verificacao": "2026-11-03",
+      "especializacao_no_setor_comprovada": false,
+      "observacao": null,
+      "desempenho_nas_44_tarefas": null
+    }
+  ],
+  "capacidades": [
+    {
+      "id": "CAP-extracao",
+      "nome": "Extração estruturada",
+      "definicao": "Localizar informações explícitas e preservar ausências e referências."
+    },
+    {
+      "id": "CAP-calculo",
+      "nome": "Cálculo verificável",
+      "definicao": "Aplicar fórmula e unidades dadas, com tratamento explícito de exceções."
+    },
+    {
+      "id": "CAP-comparacao",
+      "nome": "Comparação de registros",
+      "definicao": "Confrontar documentos, regras e versões sem presumir equivalência."
+    },
+    {
+      "id": "CAP-redacao",
+      "nome": "Redação controlada",
+      "definicao": "Redigir com fatos fornecidos, respeitando finalidade, idioma e limites."
+    },
+    {
+      "id": "CAP-sintese",
+      "nome": "Síntese fundamentada",
+      "definicao": "Resumir informações sem acrescentar fatos e preservando divergências."
+    },
+    {
+      "id": "CAP-classificacao",
+      "nome": "Classificação orientada por critérios",
+      "definicao": "Aplicar categorias fornecidas e marcar insuficiência de dados."
+    },
+    {
+      "id": "CAP-planejamento",
+      "nome": "Organização de ações",
+      "definicao": "Estruturar ações e dependências sem criar aprovações, responsáveis ou prazos."
+    },
+    {
+      "id": "CAP-qualidade_dados",
+      "nome": "Conferência da qualidade dos dados",
+      "definicao": "Encontrar duplicidades, lacunas e incompatibilidades por regras explícitas."
+    },
+    {
+      "id": "CAP-busca",
+      "nome": "Consulta a fontes autorizadas",
+      "definicao": "Recuperar trechos pertinentes e indicar origem e ausência de resposta."
+    },
+    {
+      "id": "CAP-codigo",
+      "nome": "Leitura e elaboração de código",
+      "definicao": "Explicar ou propor consultas e transformações com revisão e ambiente de teste."
+    },
+    {
+      "id": "CAP-imagem",
+      "nome": "Geração de imagem",
+      "definicao": "Aderência ao briefing, texto, composição e referências"
+    },
+    {
+      "id": "CAP-edicao_imagem",
+      "nome": "Edição de imagem",
+      "definicao": "Mudanças solicitadas e preservação das regiões não editadas"
+    },
+    {
+      "id": "CAP-design",
+      "nome": "Design editável",
+      "definicao": "Elementos editáveis, hierarquia e fidelidade de marca"
+    },
+    {
+      "id": "CAP-video",
+      "nome": "Geração de vídeo",
+      "definicao": "Coerência temporal, movimento e aderência ao roteiro"
+    },
+    {
+      "id": "CAP-edicao_video",
+      "nome": "Edição de vídeo",
+      "definicao": "Mudança localizada e continuidade preservada"
+    },
+    {
+      "id": "CAP-avatar",
+      "nome": "Apresentador virtual",
+      "definicao": "Sincronismo, identidade autorizada e clareza"
+    },
+    {
+      "id": "CAP-fala",
+      "nome": "Síntese de fala",
+      "definicao": "Pronúncia pt-BR, inteligibilidade e expressividade"
+    },
+    {
+      "id": "CAP-musica",
+      "nome": "Geração musical",
+      "definicao": "Aderência ao briefing, duração e coerência"
+    },
+    {
+      "id": "CAP-traducao",
+      "nome": "Tradução contextual",
+      "definicao": "Preservação semântica, datas, números e tom"
+    }
+  ],
+  "fontes": [
+    {
+      "id": "S01",
+      "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt",
+      "titulo": "Modelos e disponibilidade no ChatGPT",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S02",
+      "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+      "titulo": "GPT-6.1 Sol: lançamento e acesso",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S03",
+      "url": "https://chatgpt.com/pt-BR/pricing/",
+      "titulo": "Planos ChatGPT",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S04",
+      "url": "https://learn.chatgpt.com/docs/build-skills?translationFallback=pt-BR",
+      "titulo": "Skills e plugins em ChatGPT e Codex",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S05",
+      "url": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts",
+      "titulo": "Criação e edição de GPTs: restrições atuais",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S06",
+      "url": "https://claude.com/pricing",
+      "titulo": "Planos e famílias Claude",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S07",
+      "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan",
+      "titulo": "Fable por plano",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S08",
+      "url": "https://support.claude.com/en/articles/12512180-use-skills-in-claude",
+      "titulo": "Skills no Claude",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S09",
+      "url": "https://support.claude.com/pt/articles/12138966-notas-de-lancamento",
+      "titulo": "Claude: atualizações de modelos e produto",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S10",
+      "url": "https://support.google.com/gemini/answer/18648722?hl=pt-BR",
+      "titulo": "Famílias Gemini e acesso por plano",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S11",
+      "url": "https://support.google.com/gemini/answer/15235603?hl=en",
+      "titulo": "Gems com instruções e arquivos",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S12",
+      "url": "https://support.google.com/gemininotebook/answer/16213268",
+      "titulo": "Planos do Gemini Notebook / NotebookLM",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S13",
+      "url": "https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-analyst-in-microsoft-365-copilot",
+      "titulo": "Agente Analyst",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S14",
+      "url": "https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "titulo": "Disponibilidade Microsoft 365 Copilot",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S15",
+      "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-build-agents",
+      "titulo": "Agent Builder sem programação",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S16",
+      "url": "https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you",
+      "titulo": "Planos e modos Perplexity",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S17",
+      "url": "https://www.perplexity.ai/help-center/en/articles/10352901-what-is-perplexity-pro",
+      "titulo": "Modelos mencionados pela ajuda Perplexity Pro",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S18",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "titulo": "DeepSeek: atualização também na web e no app",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S19",
+      "url": "https://chat.qwen.ai/legal-agreement/models",
+      "titulo": "Modelos do Qwen Chat",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Conteúdo recuperado por pesquisa indexada; a abertura direta exibiu página de compatibilidade. Confirmar seletor antes de fixar versão."
+    },
+    {
+      "id": "S20",
+      "url": "https://help.mistral.ai/en/articles/682992-le-chat-is-now-vibe",
+      "titulo": "Le Chat passa a Vibe",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S21",
+      "url": "https://mistral.ai/pricing/",
+      "titulo": "Mistral Vibe: recursos e planos",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S22",
+      "url": "https://x.ai/pricing",
+      "titulo": "Planos Grok",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S23",
+      "url": "https://docs.x.ai/developers/models",
+      "titulo": "Modelos xAI: confirmação API, não prova de acesso no app",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S24",
+      "url": "https://about.fb.com/news/2026/07/meta-ai-muse-spark-doesnt-just-think-it-acts/",
+      "titulo": "Meta AI com Muse Spark 1.1 e liberação por mercados",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S25",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "titulo": "Muse: lançamento inicial nos Estados Unidos",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S26",
+      "url": "https://www.canva.com/newsroom/news/canva-create-2026-ai/",
+      "titulo": "Canva AI 2.0 e Canva Design Model",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S27",
+      "url": "https://www.canva.com/newsroom/news/canva-brush/",
+      "titulo": "Canva Brush e referência ao Canva Craft",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S28",
+      "url": "https://gamma.app/pricing?billing=monthly",
+      "titulo": "Gamma: planos, modelos parceiros e créditos",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S29",
+      "url": "https://openai.com/pt-BR/index/introducing-chatgpt-images-2-5/",
+      "titulo": "ChatGPT Imagens 2.5; variantes API",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S30",
+      "url": "https://help.openai.com/en/articles/11084440-images-in-chatgpt",
+      "titulo": "Disponibilidade da geração de imagens no ChatGPT",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S31",
+      "url": "https://blog.adobe.com/en/publish/2026/03/19/adobe-firefly-expands-video-image-creation-with-new-ai-capabilities-custom-models",
+      "titulo": "Firefly: estúdio, modelos próprios e parceiros",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S32",
+      "url": "https://www.adobe.com/content/dam/cc/tnt/emea/intl1202/Firefly_Prompt_Guide_2026_EN.pdf",
+      "titulo": "Guia Firefly Image 5 e Image 4",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "falha_reconsulta_documento_grande",
+      "limite": "PDF não recuperado nesta revisão. S66 substitui a comprovação de modelos Firefly Image."
+    },
+    {
+      "id": "S33",
+      "url": "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version",
+      "titulo": "Midjourney V8.2 e editor",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S34",
+      "url": "https://ideogram.ai/models/4.5",
+      "titulo": "Ideogram 4.5 no aplicativo",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S35",
+      "url": "https://ideogram.ai/pricing/",
+      "titulo": "Planos e créditos Ideogram",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S36",
+      "url": "https://support.google.com/flow/answer/16352836?hl=en",
+      "titulo": "Modelos e recursos Google Flow",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S37",
+      "url": "https://help.runwayml.com/hc/en-us/articles/46974685288467-Creating-with-Gen-4-5",
+      "titulo": "Gen-4.5 no aplicativo web e planos elegíveis",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S38",
+      "url": "https://academy.runwayml.com/models-pricing",
+      "titulo": "Modelos e créditos Runway, incluindo Aleph 2.0",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S39",
+      "url": "https://elevenlabs.io/docs/eleven-creative/products/studio",
+      "titulo": "ElevenCreative Studio e modelos de fala",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S40",
+      "url": "https://elevenlabs.io/pricing",
+      "titulo": "ElevenLabs: planos e licença comercial por plano",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S41",
+      "url": "https://help.suno.com/en/articles/13924801",
+      "titulo": "Suno v6 e variantes por plano",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S42",
+      "url": "https://suno.com/pricing",
+      "titulo": "Suno: assinatura, créditos e condições comerciais",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S43",
+      "url": "https://kling.ai/",
+      "titulo": "Kling 4.0, Image 3.0 e Canvas",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S44",
+      "url": "https://help.heygen.com/en/articles/14602974-avatar-v-is-now-available-on-heygen",
+      "titulo": "HeyGen Avatar V e Avatar IV",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S45",
+      "url": "https://www.heygen.com/pricing",
+      "titulo": "HeyGen: planos, créditos e Avatar V",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S46",
+      "url": "https://artificialanalysis.ai/models/releases/comparisons",
+      "titulo": "Artificial Analysis: comparação Carbon e Opus",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S47",
+      "url": "https://artificialanalysis.ai/models",
+      "titulo": "Artificial Analysis: escopo e metodologia do índice",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S48",
+      "url": "https://arena.ai/leaderboard/image/text-to-image",
+      "titulo": "Arena: preferências em geração de imagem, quadro de 26/10/2026",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S49",
+      "url": "https://arena.ai/leaderboard?mode=text",
+      "titulo": "Arena: agentes; quadro consultado em 03/11/2026",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S50",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+      "titulo": "Gemini 4 Carbon: acesso inicialmente restrito",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S51",
+      "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+      "titulo": "Descontinuação do Sora",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "preservada_da_v1_nao_reconsultada",
+      "limite": "Fonte documental; não demonstra resultado nas 44 tarefas."
+    },
+    {
+      "id": "S52",
+      "url": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt",
+      "titulo": "Análise de dados no ChatGPT",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S53",
+      "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "titulo": "Projetos no ChatGPT",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S54",
+      "url": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+      "titulo": "Execução e arquivos no Claude",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S55",
+      "url": "https://support.claude.com/pt/articles/12512176-o-que-sao-skills",
+      "titulo": "Skills no Claude",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S56",
+      "url": "https://support.google.com/gemini/answer/14903178?hl=en",
+      "titulo": "Arquivos nos apps Gemini",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S57",
+      "url": "https://support.google.com/gemini/answer/15146780?hl=en",
+      "titulo": "Gems e conhecimento",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S58",
+      "url": "https://support.google.com/gemininotebook/answer/16179559",
+      "titulo": "Chat, citações e recursos experimentais do Notebook",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S59",
+      "url": "https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-researcher-in-microsoft-365-copilot",
+      "titulo": "Researcher no Copilot",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S60",
+      "url": "https://support.microsoft.com/pt-br/excel/get-direct-answers-to-your-data-analysis-questions",
+      "titulo": "Copilot no Excel com análise por Python",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S61",
+      "url": "https://www.perplexity.ai/pt/hub/products/projects",
+      "titulo": "Perplexity Projects substitui Spaces",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S62",
+      "url": "https://www.perplexity.ai/help-center/en/articles/10352903-what-is-pro-search",
+      "titulo": "Perplexity Pro Search",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S63",
+      "url": "https://docs.mistral.ai/vibe",
+      "titulo": "Vibe: unificação Chat e Work e Skills",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S64",
+      "url": "https://help.gamma.app/pt-BR/articles/15002203-como-eu-crio-com-agent-no-gamma",
+      "titulo": "Gamma Agent: Plan, Express e Research",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S65",
+      "url": "https://help.gamma.app/pt-BR/articles/8022861-qual-e-a-maneira-mais-facil-de-exportar-meu-gamma",
+      "titulo": "Exportação e limites Gamma",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S66",
+      "url": "https://helpx.adobe.com/pt/firefly/web/work-with-images/generate-images/generate-images-from-text-descriptions.html",
+      "titulo": "Modelos de imagem Firefly na web",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S67",
+      "url": "https://helpx.adobe.com/pt/firefly/mobile/edit-images/edit-with-text/edit-images-with-prompt-to-edit.html",
+      "titulo": "Modelos parceiros em edição no Firefly mobile",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S68",
+      "url": "https://openai.com/index/gdpval/",
+      "titulo": "GDPval: desenho e limites da avaliação profissional",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S69",
+      "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "titulo": "Metodologia Intelligence Index v5.0",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S70",
+      "url": "https://artificialanalysis.ai/evaluations/gdpval-aa",
+      "titulo": "GDPval-AA v2.1: tarefas e ambiente",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S71",
+      "url": "https://canary.arena.ai/blog/factuality-in-arena",
+      "titulo": "Arena: preferência, factualidade e intervalos",
+      "tipo": "avaliador_independente",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Não constitui teste local nem certificação de adequação."
+    },
+    {
+      "id": "S72",
+      "url": "https://www.anthropic.com/claude-haiku-5-5",
+      "titulo": "Haiku 5.5: lançamento",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Alegações de lançamento não substituem teste no contexto local."
+    },
+    {
+      "id": "S73",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5",
+      "titulo": "Sonnet 5.5: lançamento",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Alegações de lançamento não substituem teste no contexto local."
+    },
+    {
+      "id": "S74",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "titulo": "Opus 5.5: lançamento",
+      "tipo": "fabricante",
+      "data_consulta": "2026-11-03",
+      "revisao_v2": "reconsultada",
+      "limite": "Alegações de lançamento não substituem teste no contexto local."
+    }
+  ],
+  "rotas_genericas": [
+    {
+      "id": "U01",
+      "tarefa_generica": "Redigir e revisar comunicação",
+      "configuracoes_ids": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "entradas": "Texto aprovado, público e tom",
+      "saida": "Minuta",
+      "criterios": "Fidelidade, clareza e revisão necessária",
+      "limite": "Não criar promessas ou fatos.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U02",
+      "tarefa_generica": "Extrair e comparar documentos",
+      "configuracoes_ids": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "entradas": "Documentos legíveis e requisitos",
+      "saida": "Matriz com referências",
+      "criterios": "Exatidão dos campos e cobertura",
+      "limite": "Verificar OCR antes de usar valores.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U03",
+      "tarefa_generica": "Reconciliar tabelas e indicadores",
+      "configuracoes_ids": [
+        "C02",
+        "C07",
+        "C12",
+        "C43"
+      ],
+      "entradas": "Tabelas, chaves, períodos e fórmulas",
+      "saida": "Arquivo com cálculos e divergências",
+      "criterios": "Reconciliação e tolerância numérica",
+      "limite": "Não aceitar números sem cálculo verificável.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U04",
+      "tarefa_generica": "Consultar manual ou material de estudo",
+      "configuracoes_ids": [
+        "C11",
+        "C09",
+        "C08"
+      ],
+      "entradas": "Fontes autorizadas e versões",
+      "saida": "Resposta com citações",
+      "criterios": "Sustentação de cada afirmação",
+      "limite": "Não preencher lacunas internas com web.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U05",
+      "tarefa_generica": "Pesquisar informação atual",
+      "configuracoes_ids": [
+        "C14",
+        "C13",
+        "C04"
+      ],
+      "entradas": "Pergunta, período e fontes prioritárias",
+      "saida": "Relatório com referências",
+      "criterios": "Qualidade das fontes e atualidade",
+      "limite": "Não confundir quantidade de links com evidência.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U06",
+      "tarefa_generica": "Reutilizar procedimento",
+      "configuracoes_ids": [
+        "C08",
+        "C09",
+        "C17"
+      ],
+      "entradas": "Procedimento aprovado e exemplos",
+      "saida": "Rotina assistida repetível",
+      "criterios": "Consistência entre casos",
+      "limite": "Skills, Gems e projetos não são treinamento de pesos.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U07",
+      "tarefa_generica": "Criar apresentação editável",
+      "configuracoes_ids": [
+        "C20",
+        "C21",
+        "C03"
+      ],
+      "entradas": "Roteiro, números aprovados e marca",
+      "saida": "Deck editável",
+      "criterios": "Fidelidade, editabilidade e legibilidade",
+      "limite": "Imagem de slide não é slide com texto editável.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U08",
+      "tarefa_generica": "Gerar imagem por briefing",
+      "configuracoes_ids": [
+        "C22",
+        "C29",
+        "C23"
+      ],
+      "entradas": "Briefing e referências",
+      "saida": "Imagem",
+      "criterios": "Aderência, composição e legibilidade",
+      "limite": "Não usar para diagramas factuais sem verificação.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U09",
+      "tarefa_generica": "Explorar direção de arte",
+      "configuracoes_ids": [
+        "C24",
+        "C20",
+        "C22"
+      ],
+      "entradas": "Moodboard e critérios estéticos",
+      "saida": "Variações visuais",
+      "criterios": "Adequação ao briefing",
+      "limite": "Preferência estética não é factualidade.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U10",
+      "tarefa_generica": "Gerar cenas de vídeo",
+      "configuracoes_ids": [
+        "C26",
+        "C30",
+        "C36"
+      ],
+      "entradas": "Roteiro e referência",
+      "saida": "Clipe",
+      "criterios": "Continuidade, movimento e duração",
+      "limite": "Escolher pelo controle necessário, não apenas pelo nome da família.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U11",
+      "tarefa_generica": "Vídeo com apresentador humano",
+      "configuracoes_ids": [
+        "C37",
+        "C38"
+      ],
+      "entradas": "Roteiro e identidade autorizada",
+      "saida": "Vídeo com avatar",
+      "criterios": "Sincronismo e clareza",
+      "limite": "Selecionar V ou IV conforme origem do look.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U12",
+      "tarefa_generica": "Narração em português brasileiro",
+      "configuracoes_ids": [
+        "C33"
+      ],
+      "entradas": "Roteiro, voz e pronúncias",
+      "saida": "Áudio",
+      "criterios": "Inteligibilidade, números e nomes",
+      "limite": "Não presumir desempenho pt-BR sem ouvir o áudio.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U13",
+      "tarefa_generica": "Música e trilha",
+      "configuracoes_ids": [
+        "C34",
+        "C35"
+      ],
+      "entradas": "Briefing, estilo e letra opcional",
+      "saida": "Faixa musical",
+      "criterios": "Coerência, duração e aderência",
+      "limite": "Wild é exploração; condições de contratação serão avaliadas depois.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U14",
+      "tarefa_generica": "Alternativas de conversa",
+      "configuracoes_ids": [
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "entradas": "Caso de texto representativo",
+      "saida": "Resposta revisada",
+      "criterios": "Fidelidade e ferramentas disponíveis",
+      "limite": "C16/C18/C19 têm confirmação parcial ou histórica.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U15",
+      "tarefa_generica": "Editar imagem preservando referência",
+      "configuracoes_ids": [
+        "C25",
+        "C22",
+        "C23",
+        "C29"
+      ],
+      "entradas": "Imagem e mudanças delimitadas",
+      "saida": "Imagem editada",
+      "criterios": "Preservação fora da alteração",
+      "limite": "Inspecionar cada etapa de edição.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U16",
+      "tarefa_generica": "Editar vídeo existente",
+      "configuracoes_ids": [
+        "C31",
+        "C28"
+      ],
+      "entradas": "Clipe e mudanças desejadas",
+      "saida": "Clipe editado",
+      "criterios": "Mudança correta e continuidade",
+      "limite": "Gen-4.5 e Veo Quality não são esta mesma rota.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U17",
+      "tarefa_generica": "Animação por atuação",
+      "configuracoes_ids": [
+        "C32"
+      ],
+      "entradas": "Vídeo de atuação e personagem",
+      "saida": "Animação",
+      "criterios": "Expressão, movimento e sincronismo",
+      "limite": "Distinguir de vídeo gerado apenas por texto.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U18",
+      "tarefa_generica": "Resposta bilíngue contextual",
+      "configuracoes_ids": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "entradas": "Mensagem e política",
+      "saida": "Resposta em duas línguas",
+      "criterios": "Equivalência semântica e números",
+      "limite": "Não inventar condições durante a tradução.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U19",
+      "tarefa_generica": "Triar chamado de suporte",
+      "configuracoes_ids": [
+        "C05",
+        "C01",
+        "C09"
+      ],
+      "entradas": "Relato, evidências e formulário",
+      "saida": "Chamado estruturado",
+      "criterios": "Campos corretos e lacunas",
+      "limite": "Não declarar causa sem evidência.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U20",
+      "tarefa_generica": "Organizar decisões de reunião",
+      "configuracoes_ids": [
+        "C11",
+        "C05",
+        "C03"
+      ],
+      "entradas": "Notas ou transcrição fornecidas",
+      "saida": "Ata e ações",
+      "criterios": "Separação entre sugestão e decisão",
+      "limite": "Transcrição automática de áudio é outra etapa a validar.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U21",
+      "tarefa_generica": "Documentar transformação de dados",
+      "configuracoes_ids": [
+        "C03",
+        "C06",
+        "C10"
+      ],
+      "entradas": "Código ou especificação",
+      "saida": "Dicionário de linhagem",
+      "criterios": "Correspondência com a implementação",
+      "limite": "Não inventar tabelas ou campos.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    },
+    {
+      "id": "U22",
+      "tarefa_generica": "Verificar qualidade de dados",
+      "configuracoes_ids": [
+        "C02",
+        "C07",
+        "C43"
+      ],
+      "entradas": "Tabela e contrato de campos",
+      "saida": "IDs e regras violadas",
+      "criterios": "Precisão e cobertura dos erros",
+      "limite": "Não corrigir silenciosamente a base original.",
+      "tipo": "rota_documental_nao_ranking",
+      "ligacao_organizacional": "Não constitui nova tarefa contextualizada observada."
+    }
+  ],
+  "pendencias": [
+    {
+      "id": "P01",
+      "objeto": "GPT-6.1 Sol",
+      "situacao": "resolvida_documentalmente",
+      "descricao": "Separado Work de Chat; não indicar GPT-6.1 Sol em Chat comum.",
+      "fontes_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "P02",
+      "objeto": "Luna",
+      "situacao": "ressalva_preservada",
+      "descricao": "Ajuda do Chat cita GPT-5.6 Luna; anúncio novo cita GPT-6 Luna. Não presumir migração de todos os usuários.",
+      "fontes_ids": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "P03",
+      "objeto": "Perplexity",
+      "situacao": "ressalva_preservada",
+      "descricao": "Ajuda enumera modelos parceiros de gerações anteriores; Research é orquestrado. Seletor exato continua sem confirmação.",
+      "fontes_ids": [
+        "S17",
+        "S61"
+      ]
+    },
+    {
+      "id": "P04",
+      "objeto": "Vibe",
+      "situacao": "resolvida_documentalmente",
+      "descricao": "Guia atual descreve Chat/Work unificados com fast/think; artigo antigo separa modos. Usar fonte atual e registrar migração.",
+      "fontes_ids": [
+        "S20",
+        "S63"
+      ]
+    },
+    {
+      "id": "P05",
+      "objeto": "Qwen",
+      "situacao": "pendente",
+      "descricao": "Busca indexada recupera modelo; abertura direta não mostra ficha. Confirmar na interface.",
+      "fontes_ids": [
+        "S19"
+      ]
+    },
+    {
+      "id": "P06",
+      "objeto": "Grok",
+      "situacao": "pendente",
+      "descricao": "Não inferir acesso no chat a partir da versão API 4.7.",
+      "fontes_ids": [
+        "S23"
+      ]
+    },
+    {
+      "id": "P07",
+      "objeto": "Meta AI",
+      "situacao": "pendente",
+      "descricao": "Versão 1.1 é histórica; versão atual e equivalência entre superfícies não fixadas.",
+      "fontes_ids": [
+        "S24"
+      ]
+    },
+    {
+      "id": "P08",
+      "objeto": "ChatGPT Imagens",
+      "situacao": "resolvida_documentalmente",
+      "descricao": "Rótulo do produto e variantes API Flare/Sunburst mantidos separados.",
+      "fontes_ids": [
+        "S29"
+      ]
+    },
+    {
+      "id": "P09",
+      "objeto": "44 tarefas",
+      "situacao": "pendente",
+      "descricao": "Validar tarefas e gabaritos com responsáveis; executar comparação independente.",
+      "fontes_ids": []
+    },
+    {
+      "id": "P10",
+      "objeto": "Cobertura",
+      "situacao": "limite_de_escopo",
+      "descricao": "Catálogo seletivo: não representa todos os modelos existentes. Imagem/áudio/vídeo têm rotas genéricas, sem novas tarefas organizacionais observadas.",
+      "fontes_ids": []
+    },
+    {
+      "id": "P11",
+      "objeto": "Preços, contratação e região",
+      "situacao": "adiada_por_usuario",
+      "descricao": "Não pesquisados nem usados para pontuar nesta versão.",
+      "fontes_ids": []
+    },
+    {
+      "id": "P12",
+      "objeto": "Treinamento setorial e pt-BR",
+      "situacao": "nao_demonstrado",
+      "descricao": "Nenhum vínculo presume treinamento para um cargo; desempenho em português brasileiro precisa de medição.",
+      "fontes_ids": []
+    },
+    {
+      "id": "P13",
+      "objeto": "Notebook",
+      "situacao": "resolvida_documentalmente",
+      "descricao": "Chat com fontes e funções agentivas experimentais separados em C11/C44.",
+      "fontes_ids": [
+        "S58"
+      ]
+    },
+    {
+      "id": "P14",
+      "objeto": "S32 Firefly PDF",
+      "situacao": "fonte_substituta_encontrada",
+      "descricao": "PDF não recuperado por tamanho; modelos Image comprovados por ajuda web S66.",
+      "fontes_ids": [
+        "S32",
+        "S66"
+      ]
+    }
+  ],
+  "resultados_locais": [],
+  "observacao": "Visão compacta derivada do catálogo completo; não inclui gabaritos nem toda a base profissional. Consultar JSON completo para protocolos e resultados externos."
+}

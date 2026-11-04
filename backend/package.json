@@ -1,0 +1,19 @@
+{
+  "name": "orbe-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend do Orbe: cadastro de visitantes, respostas das etapas e recomendação documental de IA por tarefa.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.4.0",
+    "better-sqlite3": "11.8.1",
+    "cors": "2.8.5",
+    "express": "4.21.2"
+  }
+}

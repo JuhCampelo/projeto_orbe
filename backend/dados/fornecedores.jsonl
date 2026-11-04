@@ -1,0 +1,20 @@
+{"id": "FOR-openai", "nome": "OpenAI"}
+{"id": "FOR-anthropic", "nome": "Anthropic"}
+{"id": "FOR-google", "nome": "Google"}
+{"id": "FOR-microsoft", "nome": "Microsoft"}
+{"id": "FOR-perplexity", "nome": "Perplexity"}
+{"id": "FOR-deepseek", "nome": "DeepSeek"}
+{"id": "FOR-alibaba-qwen", "nome": "Alibaba / Qwen"}
+{"id": "FOR-mistral-ai", "nome": "Mistral AI"}
+{"id": "FOR-xai-spacexsi", "nome": "xAI / SpaceXSI"}
+{"id": "FOR-meta", "nome": "Meta"}
+{"id": "FOR-canva", "nome": "Canva"}
+{"id": "FOR-gamma", "nome": "Gamma"}
+{"id": "FOR-adobe", "nome": "Adobe"}
+{"id": "FOR-midjourney", "nome": "Midjourney"}
+{"id": "FOR-ideogram", "nome": "Ideogram"}
+{"id": "FOR-runway", "nome": "Runway"}
+{"id": "FOR-elevenlabs", "nome": "ElevenLabs"}
+{"id": "FOR-suno", "nome": "Suno"}
+{"id": "FOR-kuaishou-kling", "nome": "Kuaishou / Kling"}
+{"id": "FOR-heygen", "nome": "HeyGen"}
