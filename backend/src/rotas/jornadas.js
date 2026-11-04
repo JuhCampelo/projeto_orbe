@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("../db");
 const cat = require("../catalogo");
-const { recomendar, missoesDoTexto, cartoesDocumentais } = require("../recomendador");
+const { recomendar, missoesDoTexto, areaDoTexto, cartoesDocumentais } = require("../recomendador");
 const ia = require("../ia");
 
 const inserirConsulta = db.prepare(`
@@ -50,9 +50,9 @@ const textoOpcional = (valor, max) => {
 
 const buscarVisitante = db.prepare("SELECT id FROM visitantes WHERE id = ?");
 const inserirJornada = db.prepare(`
-  INSERT INTO jornadas (visitante_id, area_id, cargo_texto, setor_texto, descricao_livre,
+  INSERT INTO jornadas (visitante_id, area_id, area_texto, cargo_texto, setor_texto, descricao_livre,
                         versao_catalogo, data_catalogo, resposta_json)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`);
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);
 const inserirMissao = db.prepare("INSERT INTO jornada_missoes (jornada_id, missao_id, origem) VALUES (?, ?, ?)");
 const inserirExibida = db.prepare(`
   INSERT INTO recomendacoes_exibidas (jornada_id, missao_id, rota_id, tarefa_id, configuracao_id, tipo_vinculo, posicao_exibicao)
@@ -60,7 +60,7 @@ const inserirExibida = db.prepare(`
 
 const salvar = db.transaction((dados, missoes, resposta) => {
   const r = inserirJornada.run(
-    dados.visitante_id, dados.area, dados.cargo, dados.setor, dados.descricao,
+    dados.visitante_id, dados.area, dados.area_texto, dados.cargo, dados.setor, dados.descricao,
     resposta.versao_catalogo, resposta.data_catalogo, JSON.stringify(resposta)
   );
   const jornadaId = Number(r.lastInsertRowid);
@@ -95,14 +95,19 @@ router.post("/", async (req, res) => {
   const visitanteId = semVisitante ? null : Number(body.visitante_id);
   if (!semVisitante && (!Number.isInteger(visitanteId) || !buscarVisitante.get(visitanteId))) erros.push("visitante_id: visitante não encontrado");
 
-  if (typeof body.area !== "string" || !cat.mapa.areas[body.area]) erros.push("area: valor inválido");
+  // Etapa 1: o front atual envia a área em texto livre (area_texto); o id de área antigo continua aceito.
+  const areaTexto = textoOpcional(body.area_texto, 120);
+  if (!areaTexto.ok) erros.push("area_texto: até 120 caracteres");
+  if (body.area !== undefined && (typeof body.area !== "string" || !cat.mapa.areas[body.area])) erros.push("area: valor inválido");
+  if (body.area === undefined && !areaTexto.valor) erros.push("area_texto: informe a área de atuação");
+  const areaId = body.area !== undefined ? body.area : areaDoTexto(areaTexto.valor);
 
   const cargo = textoOpcional(body.cargo, 80);
   const setor = textoOpcional(body.setor, 80);
-  const descricao = textoOpcional(body.descricao, 240);
+  const descricao = textoOpcional(body.descricao, 1000);
   if (!cargo.ok) erros.push("cargo: até 80 caracteres");
   if (!setor.ok) erros.push("setor: até 80 caracteres");
-  if (!descricao.ok) erros.push("descricao: até 240 caracteres");
+  if (!descricao.ok) erros.push("descricao: até 1000 caracteres");
 
   const escolhidas = body.missoes === undefined ? [] : body.missoes;
   if (!Array.isArray(escolhidas) || escolhidas.length > MAX_MISSOES ||
@@ -113,10 +118,10 @@ router.post("/", async (req, res) => {
 
   if (erros.length) return res.status(400).json({ erros });
 
-  // Mesma regra do frontend: pelo menos uma missão ou descrição com 12+ caracteres.
-  const textoValido = descricao.valor && descricao.valor.length >= 12;
+  // Etapa 2: o front atual envia só a descrição livre da missão.
+  const textoValido = Boolean(descricao.valor && descricao.valor.length >= 3);
   if (escolhidas.length === 0 && !textoValido) {
-    return res.status(400).json({ erros: ["missoes: escolha ao menos uma missão ou descreva a necessidade (12+ caracteres)"] });
+    return res.status(400).json({ erros: ["descricao: descreva sua missão"] });
   }
 
   const doTexto = textoValido ? missoesDoTexto(descricao.valor).filter((m) => !escolhidas.includes(m)) : [];
@@ -124,17 +129,21 @@ router.post("/", async (req, res) => {
     ...escolhidas.map((id) => ({ id, origem: "selecionada" })),
     ...doTexto.map((id) => ({ id, origem: "texto" }))
   ];
-  if (missoes.length === 0) {
-    return res.status(422).json({ erros: ["Não identifiquei uma missão na descrição. Selecione ao menos uma tarefa."] });
+  // Sem missão reconhecida por palavra-chave, a IA ainda interpreta o texto; sem IA, não há o que mostrar.
+  if (missoes.length === 0 && !ia.ativo) {
+    return res.status(422).json({ erros: ["Não identifiquei uma missão na descrição. Explique sua necessidade com mais detalhes."] });
   }
 
-  const resposta = recomendar(body.area, missoes.map((m) => m.id));
+  const resposta = recomendar(areaId, missoes.map((m) => m.id));
   const jornadaId = salvar(
-    { visitante_id: visitanteId, area: body.area, cargo: cargo.valor, setor: setor.valor, descricao: descricao.valor },
+    { visitante_id: visitanteId, area: areaId, area_texto: areaTexto.valor, cargo: cargo.valor, setor: setor.valor, descricao: descricao.valor },
     missoes,
     resposta
   );
   const descoberta = await gerarEtapa3(jornadaId, missoes, resposta);
+  if (descoberta.etapa3.cartoes.length === 0) {
+    return res.status(422).json({ jornada_id: jornadaId, erros: ["Não identifiquei uma missão na descrição. Explique sua necessidade com mais detalhes."] });
+  }
   res.status(201).json({ jornada_id: jornadaId, ...resposta, ...descoberta });
 });
 

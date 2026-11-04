@@ -66,26 +66,45 @@ function tarefasExemplo(areaId, missao) {
     }));
 }
 
-// Mesmo reconhecimento de texto livre do front/app.js (identifyCustomTasks),
-// para o backend chegar às mesmas missões que o frontend.
+// Reconhecimento de missões no texto livre: as mesmas palavras do identifyCustomTasks do front,
+// aceitando plural e variações (ex.: "planilhas", "resumo", "automatizar", que a versão do front não pegava).
 const PADROES_TEXTO = [
-  ["reunioes", /\b(reuniao|reunioes|transcri|ata|conversa)\b/],
-  ["atendimento", /\b(cliente|atendimento|suporte|responder|chat)\b/],
-  ["automacao", /\b(automat|processo|repetitiv|integrar|fluxo)\b/],
-  ["codigo", /\b(codigo|program|software|desenvolv|aplicativo|site)\b/],
-  ["dados", /\b(dados|planilha|analise|relatorio|metricas|grafico)\b/],
-  ["apresentacoes", /\b(apresent|slides|visual|pitch)\b/],
-  ["imagem", /\b(imagem|ilustr|foto|design|arte)\b/],
-  ["video", /\b(video|animacao|filme)\b/],
-  ["documentos", /\b(documento|pdf|contrato|arquivo)\b/],
-  ["pesquisa", /\b(pesquis|resum|informac|estudar|fontes)\b/],
-  ["escrita", /\b(escrever|texto|redac|email|comunic|revis)\b/],
-  ["ideias", /\b(ideia|criativ|brainstorm|planej)\b/]
+  ["reunioes", /\b(reuni\w*|transcri\w*|atas?|conversas?)\b/],
+  ["atendimento", /\b(clientes?|atendimento\w*|suporte\w*|respond\w*|chats?)\b/],
+  ["automacao", /\b(automat\w*|automa[cç]\w*|processos?|repetitiv\w*|integr\w*|fluxos?)\b/],
+  ["codigo", /\b(codigos?|program\w*|software\w*|desenvolv\w*|aplicativos?|sites?)\b/],
+  ["dados", /\b(dados|planilhas?|analis\w*|relatorios?|metricas?|graficos?)\b/],
+  ["apresentacoes", /\b(apresent\w*|slides?|visua\w*|pitch\w*)\b/],
+  ["imagem", /\b(imagens?|imagem|ilustr\w*|fotos?|design\w*|artes?)\b/],
+  ["video", /\b(videos?|animac\w*|filmes?)\b/],
+  ["documentos", /\b(documentos?|pdfs?|contratos?|arquivos?)\b/],
+  ["pesquisa", /\b(pesquis\w*|resum\w*|informac\w*|estud\w*|fontes?)\b/],
+  ["escrita", /\b(escrev\w*|textos?|redac\w*|redig\w*|e-?mails?|comunic\w*|revis\w*)\b/],
+  ["ideias", /\b(ideias?|criativ\w*|brainstorm\w*|planej\w*)\b/]
 ];
 
+const normalizar = (texto) => String(texto || "").toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[̀-ͯ]/g, "");
+
 function missoesDoTexto(texto) {
-  const normalizado = String(texto || "").toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const normalizado = normalizar(texto);
   return PADROES_TEXTO.filter(([, p]) => p.test(normalizado)).map(([id]) => id);
+}
+
+// A etapa 1 do front agora é texto livre ("Sua área de atuação"). Deduz a área do mapa_frontend.json
+// por palavras-chave (ligação proposta pela equipe Orbe); sem correspondência, "outra".
+const PADROES_AREA = [
+  ["rh", /\b(rh|recursos humanos|pessoas|departamento pessoal|dp|folha|recrutamento)\b/],
+  ["dados", /\b(dados|analytics|bi|business intelligence|estatistica|ciencia de dados)\b/],
+  ["tecnologia", /\b(tecnologia|ti|software|desenvolvimento|desenvolvedor|programacao|programador|sistemas|dev|backend|frontend)\b/],
+  ["marketing", /\b(marketing|comunicacao|publicidade|propaganda|social media|midia|redes sociais|design)\b/],
+  ["vendas", /\b(venda|vendas|comercial|varejo|loja|e-?commerce)\b/],
+  ["atendimento", /\b(atendimento|suporte|sac|recepcao|cliente|clientes|call center)\b/],
+  ["administrativo", /\b(administrativo|administracao|financeiro|financas|compras|suprimentos|contabilidade|juridico|secretaria|escritorio)\b/]
+];
+
+function areaDoTexto(texto) {
+  const t = normalizar(texto);
+  return (PADROES_AREA.find(([, p]) => p.test(t)) || ["outra"])[0];
 }
 
 function recomendar(areaId, missaoIds) {
@@ -122,6 +141,7 @@ function cartaoBase(configuracaoId) {
   const app = cat.aplicacoes.get(cfg.aplicacao_id);
   return {
     configuracao_id: c.configuracao_id,
+    aplicacao_id: cfg.aplicacao_id, // o front usa para escolher o logo
     name: c.aplicacao,
     maker: cat.fornecedores.get(app.fornecedor_id).nome,
     monogram: c.aplicacao.trim().charAt(0).toUpperCase(),
@@ -179,6 +199,6 @@ function cartoesDocumentais(documental) {
 }
 
 module.exports = {
-  recomendar, missoesDoTexto, resolverConfiguracao, cartaoBase, nomesAlternativas, seloSeguro, cartoesDocumentais,
+  recomendar, missoesDoTexto, areaDoTexto, resolverConfiguracao, cartaoBase, nomesAlternativas, seloSeguro, cartoesDocumentais,
   MAX_CARTOES, MODELO_NAO_IDENTIFICADO
 };

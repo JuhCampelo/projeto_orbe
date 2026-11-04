@@ -67,15 +67,19 @@ function montarPedido(jornada, missoes, documental) {
     "Um visitante do estande Orbe preencheu as etapas abaixo. Ele não faz perguntas: gere diretamente a etapa 3, \"Uma nova descoberta\", que ele verá na tela.",
     "",
     "Etapa 1 — Vamos nos conhecer:",
-    `- Área: ${area ? area.label : jornada.area_id}`,
+    `- Sua área de atuação (texto do visitante): ${jornada.area_texto || (area ? area.label : jornada.area_id)}`,
     `- Cargo ou função: ${jornada.cargo_texto || "não informado"}`,
     `- Setor da empresa: ${jornada.setor_texto || "não informado"}`,
     "",
     "Etapa 2 — O que você quer realizar?:",
-    ...missoes.map((m) => `- Missão "${m.missao_id}": ${cat.mapa.missoes[m.missao_id]?.label || m.missao_id}${m.origem === "texto" ? " (reconhecida no texto livre)" : ""}`),
-    `- Texto livre: ${jornada.descricao_livre || "não informado"}`,
+    `- Descreva sua missão (texto do visitante): ${jornada.descricao_livre || "não informado"}`,
+    missoes.length
+      ? "- Missões reconhecidas no texto por palavra-chave (use os mesmos missao_id nos cartões):"
+      : "- Nenhuma missão reconhecida por palavra-chave: interprete o texto e deixe \"missoes\" vazio nos cartões.",
+    ...missoes.map((m) => `  - "${m.missao_id}": ${cat.mapa.missoes[m.missao_id]?.label || m.missao_id}`),
     "",
     "Pontos de partida já localizados na base pelo backend (ligação proposta pela equipe Orbe, validação pendente):",
+    ...(documental.missoes.length ? [] : ["- nenhum: use a base completa a partir do texto do visitante."]),
     ...documental.missoes.map((m) =>
       `- ${m.missao_id}: rotas ${m.rotas.map((r) => `${r.rota_id} (${r.candidatos_sem_ranking.map((c) => c.configuracao_id).join(", ")})`).join("; ")}` +
       `; tarefas análogas ${m.tarefas_exemplo.map((t) => t.tarefa_id).join(", ") || "nenhuma"}${m.lacuna ? `; lacuna: ${m.lacuna}` : ""}`
@@ -107,7 +111,8 @@ function montarCartoes(saida, missoes, documental) {
     vistos.add(r.configuracao_id);
     for (const id of r.alternativas_ids) if (!cat.configuracoes.has(id)) descartados.push(id);
     const doCartao = r.missoes.filter((m) => missoesValidas.has(m));
-    const reserva = cat.mapa.missoes[doCartao[0] || missoes[0].missao_id].label;
+    const idReserva = doCartao[0] || missoes[0]?.missao_id;
+    const reserva = idReserva ? cat.mapa.missoes[idReserva].label : "Para sua missão";
     cartoes.push({
       ...rec.cartaoBase(r.configuracao_id),
       selo: rec.seloSeguro(r.selo, reserva),

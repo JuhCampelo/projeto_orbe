@@ -1,10 +1,12 @@
 -- Banco próprio do Orbe: guarda o que o visitante respondeu e o que foi mostrado a ele.
 -- O catálogo de IA continua nos arquivos do chefe (dados/BASE_CONSULTA_PROJETO.json).
 
+-- Cadastro da tela "Identificação inicial" do front: nome, telefone/WhatsApp e Instagram.
 CREATE TABLE IF NOT EXISTS visitantes (
   id                 INTEGER PRIMARY KEY AUTOINCREMENT,
   nome               TEXT    NOT NULL,
-  email              TEXT    NOT NULL,
+  email              TEXT,
+  telefone           TEXT,
   instagram          TEXT,
   consentimento_lgpd INTEGER NOT NULL DEFAULT 0 CHECK (consentimento_lgpd IN (0, 1)),
   criado_em          TEXT    NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -14,8 +16,9 @@ CREATE INDEX IF NOT EXISTS idx_visitantes_email ON visitantes(email);
 -- Uma jornada = uma passagem pelas etapas 1, 2 e 3.
 CREATE TABLE IF NOT EXISTS jornadas (
   id               INTEGER PRIMARY KEY AUTOINCREMENT,
-  visitante_id     INTEGER REFERENCES visitantes(id),  -- null enquanto o front não tiver cadastro
-  area_id          TEXT    NOT NULL,          -- etapa 1 (ids do front/app.js)
+  visitante_id     INTEGER REFERENCES visitantes(id),  -- null se o cadastro não chegou ao servidor
+  area_id          TEXT    NOT NULL,          -- área do mapa_frontend.json (deduzida do texto, ou "outra")
+  area_texto       TEXT,                      -- etapa 1: "Sua área de atuação", como o visitante digitou
   cargo_texto      TEXT,                      -- etapa 1, campo opcional
   setor_texto      TEXT,                      -- etapa 1, campo opcional
   descricao_livre  TEXT,                      -- etapa 2, "Ou conte um pouco mais"
