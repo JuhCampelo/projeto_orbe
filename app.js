@@ -72,7 +72,6 @@ const welcome = $("#welcome");
 const opening = $("#opening");
 const journey = $("#journey");
 const results = $("#results");
-const closing = $("#closing");
 
 function renderQrCode() {
   const image = $("#qr-code");
@@ -214,7 +213,6 @@ function openJourney() {
   opening.hidden = true;
   welcome.hidden = true;
   results.hidden = true;
-  closing.hidden = true;
   journey.hidden = false;
   $("#area-input").value = state.area;
   $("#custom-input").value = state.custom;
@@ -367,7 +365,6 @@ function renderResults() {
   document.querySelectorAll(".progress-node").forEach((node) => node.classList.toggle("progress-node--active", node.textContent.includes("03")));
   journey.hidden = true;
   results.hidden = false;
-  closing.hidden = true;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -384,16 +381,6 @@ $("#start-button").addEventListener("click", () => {
 $("#enter-orbe-button").addEventListener("click", () => {
   opening.hidden = true;
   welcome.hidden = false;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-$("#closing-button").addEventListener("click", () => {
-  results.hidden = true;
-  closing.hidden = false;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-$("#closing-back-button").addEventListener("click", () => {
-  closing.hidden = true;
-  results.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 $("#identity-phone").addEventListener("input", (event) => {
@@ -444,10 +431,8 @@ function restartJourney() {
   $("#area-input").value = "";
   $("#custom-input").value = "";
   results.hidden = true;
-  closing.hidden = true;
   opening.hidden = true;
   welcome.hidden = false;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 $("#restart-button").addEventListener("click", restartJourney);
-$("#closing-restart-button").addEventListener("click", restartJourney);

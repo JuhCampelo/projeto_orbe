@@ -23,29 +23,39 @@
     <div class="ground"></div>
   </div>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Orbe, início">
+    <a class="brand" href="#" aria-label="Orbe e ITIA, início">
       <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
       <span>orbe<span class="brand-period">.</span></span>
+      <span class="brand-partner" aria-label="Instituto de Tecnologia e Inteligência Artificial">
+        <span class="brand-partner-divider" aria-hidden="true"></span>
+        <img src="assets/brands/itia-logo.png" alt="ITIA">
+      </span>
     </a>
-    <div class="topbar-note"><span class="status-dot"></span> GUIA DE DESCOBERTA DE IA</div>
+    <nav class="topbar-navigation" aria-label="Navegação do site">
+      <div class="topbar-note"><span class="status-dot"></span> GUIA DE DESCOBERTA DE IA</div>
+      <a class="topbar-page-link" href="institucional.html">Projeto e créditos <span aria-hidden="true">↗</span></a>
+    </nav>
   </header>
 
   <main>
-    <section class="view view--active qr-view" id="opening" aria-labelledby="opening-title">
-      <div class="qr-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> ACESSE O ORBE</div>
-        <h1 id="opening-title">Explore o Orbe.</h1>
-        <p class="hero-description">Aponte a câmera do celular para o QR Code e acesse o site.</p>
+    <section class="view view--active qr-view opening-view" id="opening" aria-labelledby="opening-title">
+      <div class="opening-copy">
+        <div class="opening-divider opening-divider--top" aria-hidden="true"><span></span><i>◆</i><span></span></div>
+        <h1 id="opening-title">Sua empresa pode ser<br>a próxima a evoluir com <span>IA.</span></h1>
+        <p class="opening-subtitle">O melhor desafio ganha uma<br><strong>mentoria gratuita</strong> na própria empresa.</p>
+        <div class="opening-divider opening-divider--bottom" aria-hidden="true"><span></span><i>◆</i><span></span></div>
+        <p class="opening-caption">Apresente seu desafio. Transforme possibilidades em resultados.</p>
         <button class="button button--primary" id="enter-orbe-button" type="button">
-          <span>Entrar no Orbe</span><span class="button-arrow" aria-hidden="true">→</span>
+          <span>Começar minha jornada</span><span class="button-arrow" aria-hidden="true">→</span>
         </button>
       </div>
       <div class="qr-card">
         <div class="qr-frame">
           <img id="qr-code" alt="QR Code para acessar o site público do Orbe" hidden>
-          <p class="qr-status" id="qr-status" aria-live="polite">O QR Code ficará disponível quando o Orbe estiver publicado em um endereço HTTPS público.</p>
+          <p class="qr-status" id="qr-status" aria-live="polite">O QR Code estará disponível quando o Orbe for publicado em um endereço HTTPS público.</p>
         </div>
         <a class="qr-site-link" id="qr-site-link" hidden></a>
+        <p class="qr-instruction">Aponte a câmera do celular para acessar o Orbe.</p>
       </div>
     </section>
 
@@ -175,25 +185,6 @@
           <div class="summary-note"><span>◈</span> Recomendações orientativas. Confirme recursos, preços e políticas de dados diretamente com cada fornecedor.</div>
           <button class="button button--quiet restart-button" id="restart-button"><span aria-hidden="true">↺</span> Refazer jornada</button>
         </aside>
-      </div>
-      <div class="results-actions">
-        <button class="button button--primary" id="closing-button" type="button">
-          <span>Continuar</span><span class="button-arrow" aria-hidden="true">→</span>
-        </button>
-      </div>
-    </section>
-
-    <section class="view closing-view" id="closing" aria-labelledby="closing-title" hidden>
-      <div class="closing-content">
-        <div class="closing-divider closing-divider--top" aria-hidden="true"><span></span><i>◆</i><span></span></div>
-        <h1 id="closing-title">Sua empresa pode ser<br>a próxima a evoluir com <span>IA.</span></h1>
-        <p class="closing-subtitle">O melhor desafio ganha uma<br><strong>mentoria gratuita</strong> na própria empresa.</p>
-        <div class="closing-divider closing-divider--bottom" aria-hidden="true"><span></span><i>◆</i><span></span></div>
-        <p class="closing-caption">Apresente seu desafio. Transforme possibilidades em resultados.</p>
-        <div class="closing-actions">
-          <button class="button button--quiet" id="closing-back-button" type="button"><span aria-hidden="true">←</span> Voltar às recomendações</button>
-          <button class="button button--primary" id="closing-restart-button" type="button"><span aria-hidden="true">↺</span> Refazer jornada</button>
-        </div>
       </div>
     </section>
   </main>
