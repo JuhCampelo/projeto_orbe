@@ -12,6 +12,17 @@ Configuração: copie `.env.example` para `.env` (na pasta `backend/`) e preench
 - `ANTHROPIC_API_KEY`: liga a geração da etapa 3 pela IA. Sem ela, a etapa 3 sai só com a indicação documental (`descoberta_status: "desligada"`).
 - Opcionais: `PORT`, `ORBE_DB` (caminho do banco, padrão `data/orbe.sqlite`), `ORBE_ADMIN_TOKEN` (liga o export CSV), `ORBE_CORS_ORIGIN` (se o front for hospedado em outro domínio, lista separada por vírgula).
 
+## Publicar no Render + QR Code
+1. Suba a branch para o GitHub. No Render: **New > Blueprint**, escolha o repositório `projeto_orbe`. O `render.yaml` da raiz cria o serviço `orbe` (branch `Backend`, plano free, Node 22).
+2. Quando pedir, cole a `ANTHROPIC_API_KEY`. O `ORBE_ADMIN_TOKEN` é gerado sozinho (veja em **Environment**).
+3. Ao terminar o deploy, abra a URL `https://orbe-xxxx.onrender.com`. A tela inicial mostra o QR Code dessa URL.
+
+O QR é gerado pelo próprio backend (`GET /api/acesso/qrcode.svg`, pacote `qrcode`), sem serviço externo. O endereço vem de `ORBE_URL_PUBLICA` ou, se ela não existir, de `RENDER_EXTERNAL_URL`, que o Render preenche sozinho. `GET /api/acesso` → `{ url }` (`null` sem endereço, e aí o cartão mostra o aviso). Para o monitor do estande mostrar o QR do Render abrindo o Orbe pelo `localhost`, coloque `ORBE_URL_PUBLICA=https://orbe-xxxx.onrender.com` no `.env` local.
+
+**Atenção no plano gratuito:**
+- O disco é apagado a cada deploy ou reinício. O SQLite (`data/orbe.sqlite`) perde cadastros e jornadas. Para guardar, use um Persistent Disk (plano pago) montado em `/var/data` com `ORBE_DB=/var/data/orbe.sqlite`, ou baixe os dados antes por `GET /api/admin/export.csv`.
+- O serviço dorme depois de 15 min sem acesso, e o primeiro acesso seguinte leva cerca de 50 s. Abra o site um pouco antes de a feira começar.
+
 ## De onde vem cada dado
 | Arquivo | Papel no organograma |
 |---|---|

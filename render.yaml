@@ -1,0 +1,18 @@
+# Blueprint do Render: New > Blueprint > escolha este repositório e a branch.
+# Roda a partir da raiz porque o backend também serve a pasta front/.
+services:
+  - type: web
+    name: orbe
+    runtime: node
+    plan: free
+    branch: Backend
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/ia/status
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ORBE_ADMIN_TOKEN
+        generateValue: true

@@ -43,33 +43,25 @@ const journey = $("#journey");
 const results = $("#results");
 const closing = $("#closing");
 
-function renderQrCode() {
+// O backend gera o QR com o endereço público (ORBE_URL_PUBLICA ou, no Render, RENDER_EXTERNAL_URL).
+// Sem endereço configurado, o cartão mantém a mensagem de "disponível quando publicado".
+async function renderQrCode() {
   const image = $("#qr-code");
   const status = $("#qr-status");
   const siteLink = $("#qr-site-link");
-  const url = new URL(window.location.href);
-  url.search = "";
-  url.hash = "";
-  const hostname = url.hostname.toLowerCase();
-  const isLocalAddress = hostname === "localhost"
-    || hostname.endsWith(".localhost")
-    || hostname.endsWith(".local")
-    || hostname.endsWith(".test")
-    || hostname.endsWith(".invalid")
-    || hostname === "[::1]"
-    || /^(0|10|127)\./.test(hostname)
-    || /^169\.254\./.test(hostname)
-    || /^192\.168\./.test(hostname)
-    || /^172\.(1[6-9]|2\d|3[01])\./.test(hostname);
-
-  if (url.protocol !== "https:" || isLocalAddress) {
+  let url = null;
+  try {
+    const response = await fetch(`${API_BASE}/api/acesso`);
+    if (response.ok) url = (await response.json()).url;
+  } catch {
     return;
   }
+  if (!url) return;
 
-  siteLink.href = url.href;
-  siteLink.textContent = url.href;
+  siteLink.href = url;
+  siteLink.textContent = url;
   siteLink.hidden = false;
-  image.src = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&format=svg&ecc=Q&margin=12&color=0B192C&bgcolor=F8F9FA&data=${encodeURIComponent(url.href)}`;
+  image.src = `${API_BASE}/api/acesso/qrcode.svg`;
   image.hidden = false;
   status.hidden = true;
 }
@@ -315,20 +307,31 @@ async function renderResults() {
   const controller = new AbortController();
   state.analysisController = controller;
   let data;
+  const postJourney = () => fetch(`${API_BASE}/api/jornadas`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      visitante_id: state.identity && state.identity.visitorId ? state.identity.visitorId : undefined,
+      area_texto: state.area,
+      descricao: state.custom.trim()
+    }),
+    signal: controller.signal
+  });
   try {
     await ensureVisitorRegistered();
     if (controller.signal.aborted) return;
-    const response = await fetch(`${API_BASE}/api/jornadas`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        visitante_id: state.identity && state.identity.visitorId ? state.identity.visitorId : undefined,
-        area_texto: state.area,
-        descricao: state.custom.trim()
-      }),
-      signal: controller.signal
-    });
+    let response = await postJourney();
     data = await response.json();
+    // Cadastro guardado no navegador aponta para um visitante que não existe mais (banco recriado):
+    // descarta o id antigo, cadastra de novo com os mesmos dados e reenvia a jornada uma vez.
+    if (response.status === 409 && data.codigo === "visitante_inexistente") {
+      const { visitorId, ...identity } = state.identity || {};
+      saveIdentityProfile(identity);
+      await ensureVisitorRegistered();
+      if (controller.signal.aborted) return;
+      response = await postJourney();
+      data = await response.json();
+    }
     if (response.status === 422) {
       showAnalysisMessage("Precisamos de mais um detalhe.", "Não identifiquei uma missão específica na descrição. Volte e explique sua necessidade com mais detalhes para receber recomendações úteis.");
       return;

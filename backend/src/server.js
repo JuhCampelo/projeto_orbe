@@ -19,6 +19,7 @@ app.use("/api/visitantes", require("./rotas/visitantes"));
 app.use("/api/opcoes", require("./rotas/opcoes"));
 app.use("/api/jornadas", require("./rotas/jornadas"));
 app.get("/api/ia/status", (_req, res) => res.json({ ativo: require("./ia").ativo, modelo: require("./ia").MODELO }));
+app.use("/api/acesso", require("./rotas/acesso"));
 app.use("/api/admin", require("./rotas/admin"));
 app.use("/api", (_req, res) => res.status(404).json({ erros: ["rota não encontrada"] }));
 

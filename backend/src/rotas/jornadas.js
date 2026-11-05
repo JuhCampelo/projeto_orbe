@@ -93,7 +93,11 @@ router.post("/", async (req, res) => {
   // visitante_id é opcional enquanto a tela de cadastro não estiver no front.
   const semVisitante = body.visitante_id === undefined || body.visitante_id === null;
   const visitanteId = semVisitante ? null : Number(body.visitante_id);
-  if (!semVisitante && (!Number.isInteger(visitanteId) || !buscarVisitante.get(visitanteId))) erros.push("visitante_id: visitante não encontrado");
+  if (!semVisitante && (!Number.isInteger(visitanteId) || !buscarVisitante.get(visitanteId))) {
+    // Acontece quando o banco foi recriado e o navegador ainda guarda o id antigo: o front refaz o cadastro.
+    console.warn(`Jornada com visitante_id inexistente (${body.visitante_id}); o front deve refazer o cadastro`);
+    return res.status(409).json({ codigo: "visitante_inexistente", erros: ["visitante_id: visitante não encontrado"] });
+  }
 
   // Etapa 1: o front atual envia a área em texto livre (area_texto); o id de área antigo continua aceito.
   const areaTexto = textoOpcional(body.area_texto, 120);
