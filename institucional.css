@@ -354,12 +354,47 @@
 }
 
 .team-card {
+  position: relative;
   display: flex;
   min-width: 0;
   flex-direction: column;
   align-items: center;
   padding: 24px 12px 18px;
   overflow: hidden;
+}
+
+.team-github-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(241, 240, 235, .16);
+  border-radius: 50%;
+  background: rgba(11, 25, 44, .78);
+  color: var(--ink);
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.team-github-link svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.team-github-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(90, 156, 203, .55);
+  background: #0B192C;
+  color: #F8F9FA;
+}
+
+.team-github-link:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
 }
 
 .team-photo-wrap {
